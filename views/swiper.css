@@ -1,0 +1,308 @@
+/**
+ * Swiper 4.5.0
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * http://www.idangero.us/swiper/
+ **/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+}
+.swiper-container-no-flexbox .swiper-slide {
+    float: left;
+}
+.swiper-container-vertical > .swiper-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+.swiper-container-android .swiper-slide,
+.swiper-wrapper {
+    transform: translate3d(0px, 0, 0);
+}
+.swiper-container-multirow > .swiper-wrapper {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.swiper-container-free-mode > .swiper-wrapper {
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+.swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform opacity;
+    z-index: 5;
+}
+.swiper-slide .container {z-index: 20;}
+.swiper-slide:after {
+    content: ''; 
+    position: absolute; 
+    z-index: 2; 
+    left: 0; top: 0; 
+    width: 100%; height: 100%; 
+    background: #000; 
+    opacity: .5;
+}
+.swiper-slide-invisible-blank {
+    visibility: hidden;
+}
+/* Auto Height */
+.swiper-container-autoheight,
+.swiper-container-autoheight .swiper-slide {
+    height: auto;
+}
+.swiper-container-autoheight .swiper-wrapper {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    transition-property: height, -webkit-transform;
+    transition-property: transform, height;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-container-wp8-horizontal,
+.swiper-container-wp8-horizontal > .swiper-wrapper {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+}
+.swiper-container-wp8-vertical,
+.swiper-container-wp8-vertical > .swiper-wrapper {
+    -ms-touch-action: pan-x;
+    touch-action: pan-x;
+}
+/* 슬라이드 사진 시작 */
+.slides {
+    padding: 0;
+    width: 1400px;
+    height: 680px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .slides * {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  .slides input { display: none; }
+  
+  .slide-container { display: block; }
+  
+  .slide {
+  
+    opacity: 0;
+    width: 1400px;
+    height: 680px;
+    display: block;
+    position: absolute;
+  
+    transform: scale(0);
+  
+    transition: all .7s ease-in-out;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* 슬라이드 사진 끝 */
+  
+  /* 슬라이드 버튼 시작 */
+  .nav label {
+    top: 80px;
+    width: 200px;
+    height: 740px;
+    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+  
+    transition: opacity .2s;
+  
+    color: #ffffff;
+    font-size: 156pt;
+    text-align: center;
+    line-height: 480px;
+    font-family: "Varela Round", sans-serif;
+
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+  }
+  
+  .slide:hover + .nav label { opacity: 0.5; }
+  
+  .nav label:hover { opacity: 1; }
+  
+  .nav .next { right: 0; }
+  
+  input:checked + .slide-container  .slide {
+    opacity: 1;
+  
+    transform: scale(1);
+  
+    transition: opacity 1s ease-in-out;
+  }
+  
+  input:checked + .slide-container .nav label { display: block; }
+  
+  .nav-dots {
+  width: 100%;
+  bottom: 9px;
+  height: 11px;
+  display: block;
+  position: absolute;
+  text-align: center;
+  }
+  
+  .nav-dots .nav-dot {
+  top: -30px;
+  width: 18px;
+  height: 18px;
+  margin: 0 4px;
+  position: relative;
+  border-radius: 100%;
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  }
+  
+  .nav-dots .nav-dot:hover {
+  cursor: pointer;
+  background: #56288f;
+  }
+  
+  input#img-1:checked ~ .nav-dots label#img-dot-1,
+  input#img-2:checked ~ .nav-dots label#img-dot-2,
+  input#img-3:checked ~ .nav-dots label#img-dot-3,
+  input#img-4:checked ~ .nav-dots label#img-dot-4,
+  input#img-5:checked ~ .nav-dots label#img-dot-5,
+  input#img-6:checked ~ .nav-dots label#img-dot-6 {
+  background: #56288f;}
+  /* 슬라이드 버튼 끝 */
+  
+  /* 슬라이드 사진 글씨 시작 */
+.h1_text {
+    position: fixed;
+    top: 0;
+    left: 230px;
+    color: #ffffff;
+    font-size: 35px;
+    font-family: 'TheJamsil5Bold';
+    white-space: nowrap;
+    text-decoration: underline;
+    text-underline-offset: 15px;
+    text-decoration-thickness: 3px;
+  }
+  
+  .h1_text:hover {
+    color: #56288f;
+    transition: color 0.6s ease;
+  }
+  /* 슬라이드 사진 글씨 끝 */
+
+  
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
+.swiper-pagination.swiper-pagination-hidden {
+    opacity: 0;
+}
+
+/* Common Styles */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+/* Bullets */
+.swiper-pagination-bullets-dynamic {
+    overflow: hidden;
+    font-size: 0;
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+    transform: scale(0.33);
+    position: relative;
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active {
+    transform: scale(1);
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+    transform: scale(1);
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+    transform: scale(0.66);
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
+    transform: scale(0.33);
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
+    transform: scale(0.66);
+}
+.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
+    transform: scale(0.33);
+}
+.swiper-pagination-bullet {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #ccc;
+    opacity: 0.2;
+}
+button.swiper-pagination-bullet {
+    border: none;
+    margin: 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fff;
+}
+.swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+}
