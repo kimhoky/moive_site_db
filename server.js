@@ -7,7 +7,7 @@ dbConfig.connect(conn);
 
 // 추가 (이건 그냥 별거 아님)
 app.get('/', function (req, res) {
-    var sql = 'SELECT movie_name FROM moive';
+    var sql = 'SELECT movie_name FROM moive where movie_name like "%어벤%"';
     conn.query(sql, function (err, rows, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
         else res.render('index.ejs', {list : rows});
@@ -24,6 +24,9 @@ app.get('/list', function (req, res) {
         else res.render('index.ejs', {list : rows});
     });
 });
+app.get('/login', function(req, res) {
+    res.render('login.ejs');
+});                         //로그인으로 가게함
 
 app.listen(3000, () => console.log('포트 3000번에서 시작'));
 var bodyParser = require('body-parser');
