@@ -97,19 +97,20 @@ app.post('/chinformation', function (req, res) {
    
     var sql2 = 'SELECT User_pw from user WHERE User_name = "U1"';
     conn.query(sql2, function (err, data, fields) {
-        if(data == body.password){
-            if(body.chpassword.lenght!=0){
+        if(data[0].User_pw == body.password){
+            console.log(body.chpassword);
+            if(body.chpassword != " "){
                 conn.query(sql,params,function(err,rows,fields){
                     if(err) console.log('query is not excuted. insert fail...\n' + err);
-                    // else res.write("<script>alert('Information has changed + PW has changed');location.href='/my_page';</script>");
+                    else res.write("<script>alert('Information has changed + PW has changed');location.href='/my_page';</script>");
                 });
             }
             else  conn.query(sql3, params2, function(err,rows,fields) {
                 if(err) console.log('query is not excuted. insert fail...\n' + err);
-                //else res.write("<script>alert('Information has changed ');location.href='/my_page';</script>");
+                else res.write("<script>alert('Information has changed ');location.href='/my_page';</script>");
         });
       
-    }else console.log(err);
+    }else console.log(data);
        
         });
         
