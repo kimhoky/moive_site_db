@@ -10,18 +10,34 @@ app.get('/', function (req, res) {
     var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
     conn.query(sql, function (err, row, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else var sql2 = 'SELECT movie_agecut FROM movie WHERE movie_name IN (SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC)'
-            conn.query(sql2, function (err, rows, fields) {
-                if(err) console.log('query is not excuted. select fail...\n' + err);
-                else res.render('index.ejs', {title : row, age : rows});
+        else res.render('index.ejs', {title : row});
             });
         
         
        
-    });
+    
     
     // res.render('index.ejs',{title : sql});
 });
+
+
+// app.get('/', function (req, res) {
+//     var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
+//     conn.query(sql, function (err, row, fields) {
+//         if(err) console.log('query is not excuted. select fail...\n' + err);
+//         else var sql2 = 'SELECT movie_agecut FROM movie WHERE movie_name IN (SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC)'
+//             conn.query(sql2, function (err, rows, fields) {
+//                 if(err) console.log('query is not excuted. select fail...\n' + err);
+//                 else res.render('index.ejs', {title : row, age : rows});
+//             });
+        
+        
+       
+//     });
+    
+//     // res.render('index.ejs',{title : sql});
+// });
+
 app.use(express.static("views"));
 // 추가 (이게 핵심)
 app.get('/list', function (req, res) {
