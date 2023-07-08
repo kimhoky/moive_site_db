@@ -64,6 +64,35 @@ var bodyParser = require('body-parser');
 
 app.use(express.urlencoded({extended: true}));
 
+app.post('/chinformation', function (req, res) {
+    var body = req.body;
+    var sql = 'UPDATE user set User_age =?, User_pw=?, User_Phonenum=?, User_email=? WHERE User_name = "U1"';
+    var params = [body.age, body.chpassword, body.phone, body.email];
+
+    var sql3 = 'UPDATE user set User_age =?, User_Phonenum=?,User_email=? WHERE User_name = "U1"';
+    var params2 = [body.age, body.phone, body.email];
+
+   
+    var sql2 = 'SELECT User_pw from user WHERE User_name = "U1"';
+    conn.query(sql2, function (err, data, fields) {
+        if(data == body.password){
+            if(body.chpassword.lenght!=0){
+                conn.query(sql,params,function(err,rows,fields){
+                    if(err) console.log('query is not excuted. insert fail...\n' + err);
+                    // else res.write("<script>alert('Information has changed + PW has changed');location.href='/my_page';</script>");
+                });
+            }
+            else  conn.query(sql3, params2, function(err,rows,fields) {
+                if(err) console.log('query is not excuted. insert fail...\n' + err);
+                //else res.write("<script>alert('Information has changed ');location.href='/my_page';</script>");
+        });
+      
+    }else console.log(err);
+       
+        });
+        
+});
+
 app.post('/membership', function (req, res) {
     var body = req.body;
     var sql = 'INSERT INTO user VALUES(?, ?, ?,? ,? ,?, ?)';
