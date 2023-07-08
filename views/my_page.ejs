@@ -64,11 +64,11 @@
                     </nav>
                     <nav class="nav">
                         <ul class="clearfix">
-                            <li><a href="/">영화</a></li>
-                            <li><a href="/">영화관</a></li>
-                            <li><a href="/">스토어</a></li>
+                            <li><a href="/movie">영화</a></li>
+                            <li><a href="/the_moie">영화관</a></li>
+                            <li><a href="#">스토어</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
-                            <!-- <li><a href="/login">로그인</a></li> -->
+                            <li><a href="/login">로그인</a></li>
                         </ul>
                     </nav>    
                 </div>
@@ -142,7 +142,6 @@
             <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
             <h2 class="profile-info"><%= mypage[0].User_name %></h2>
         </div>
-        <h2>자기소개서</h2>
         <div class="mypage_form-group">
             <label for="age">나이:</label>
             <input type="text" id="age" name="age" placeholder="<%= mypage[0].User_age %>">
@@ -162,6 +161,14 @@
         <div class="mypage_form-group">
             <label for="salary">금액:</label>
             <input type="number" id="salary" name="salary" required placeholder="<%= mypage[0].User_cash %>">
+        </div>
+        <div class="mypage_form-group">
+            <label for="phone">폰번호:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="password">변경할 비밀번호:</label>
+            <input type="tel" id="phone" name="phone" required>
         </div>
         <div class="form-group">
             <button type="submit" class="btn">수정</button>
