@@ -75,5 +75,5 @@ app.post('/membership', function (req, res) {
         });
        
         });
-        //res.redirect('/login');
+        
 });
