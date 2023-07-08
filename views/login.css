@@ -48,8 +48,8 @@
     border-radius: var(--button-radius);
     box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
       0 0.7rem 0.7rem rgba(0, 0, 0, 0.22);
-    height: var(--max-height);
-    max-width: var(--max-width);
+    height:100%;
+    /* max-width: var(--max-width); */
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -65,17 +65,21 @@
   .container--signin {
     left: 0;
     width: 50%;
+    height: 100%;
     z-index: 2;
   }
   
   .container.right-panel-active .container--signin {
     transform: translateX(100%);
+    height: 100%;
+    width:100%;
   }
   
   .container--signup {
     left: 0;
     opacity: 0;
     width: 50%;
+    height: 100%;
     z-index: 1;
   }
   

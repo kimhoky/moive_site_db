@@ -56,13 +56,21 @@ var bodyParser = require('body-parser');
 
 app.use(express.urlencoded({extended: true}));
 
-app.post('/write', function (req, res) {
+app.post('/membership', function (req, res) {
     var body = req.body;
-    var sql = 'INSERT INTO user VALUES(?, ?, ?)';
-    var params = [body.id, body.name, body.age];
+    var sql = 'INSERT INTO user VALUES(?, ?, ?,? ,? ,?, ?)';
+    var params = [body.user_id, body.user_pw, body.user_name,body.user_age, body.user_phonenum, body.user_email,null];
+
+   
+    var sql2 = 'SELECT * from user WHERE user_id =?';
+    conn.query(sql2,[body.user_id], function (err, data, fields) {
+        if(data.length!=0){res.write("<script>alert('Already this ID tooken');location.href='/login';</script>");}
     
-    conn.query(sql, params, function(err) {
-        if(err) console.log('query is not excuted. insert fail...\n' + err);
-        else res.redirect('/list');
-    });
+        else conn.query(sql, params, function(err) {
+            if(err) console.log('query is not excuted. insert fail...\n' + err);
+            else res.redirect('/');
+        });
+       
+        });
+        //res.redirect('/login');
 });
