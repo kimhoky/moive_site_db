@@ -7,10 +7,13 @@ dbConfig.connect(conn);
 
 // 추가 (이건 그냥 별거 아님)
 app.get('/', function (req, res) {
-    var sql = 'SELECT movie_name FROM moive where movie_name like "%어벤%"';
-    conn.query(sql, function (err, rows, fields) {
+    var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
+    conn.query(sql, function (err, row, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('index.ejs', {list : rows});
+       
+        else res.render('index.ejs', {title : row});
+        
+       
     });
     
     // res.render('index.ejs',{title : sql});
@@ -18,7 +21,7 @@ app.get('/', function (req, res) {
 app.use(express.static("views"));
 // 추가 (이게 핵심)
 app.get('/list', function (req, res) {
-    var sql = 'SELECT * FROM user';
+    var sql = 'SELECT user_id FROM user where user_age = 20';
     conn.query(sql, function (err, rows, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
         else res.render('index.ejs', {list : rows});
