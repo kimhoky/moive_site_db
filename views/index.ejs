@@ -217,81 +217,29 @@
                     </div>
                     <div class="movie_chart">
                         <div class="chart_cont1">
+                            <% for (var i=0; i < 4; i++) { %>
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/<%= title[0].review_moviename %>.jpg" srcset="assets/img/poster01@2.jpg 2x" alt="침묵">
+                                        <img src="assets/img/<%= title[i].review_moviename %>.jpg" alt="<%= title[i].review_moviename %>">
                                     </figure>
-                                    <div class="rank"><strong>1</strong></div>
+                                    <div class="rank"><strong><%= i+1 %></strong></div>
                                     <div class="mx">
                                         <span class="icon m ir_pm">MX</span>
                                         <span class="icon b ir_pm">Boutique</span>
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[0].review_moviename %> </strong></h3>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </strong></h3>
                                     <div class="infor_btn">
                                         <a href="#">상세정보</a>
                                         <a href="#">예매하기</a>
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="assets/img/<%= title[1].review_moviename %>.jpg" srcset="assets/img/poster02@2.jpg 2x" alt="신세계">
-                                    </figure>
-                                    <div class="rank"><strong>2</strong></div>
-                                    <div class="mx">
-                                        <span class="icon m ir_pm">MX</span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon a19 ir_pm">19세 이상 관람</span> <strong><%= title[1].review_moviename %></strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="#">상세정보</a>
-                                        <a href="#">예매하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="assets/img/<%= title[2].review_moviename %>.jpg" srcset="assets/img/poster03@2.jpg 2x" alt="마스터">
-                                    </figure>
-                                    <div class="rank"><strong>3</strong></div>
-                                    <div class="mx">
-                                        <span class="icon m ir_pm">MX</span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon a12 ir_pm">12세 이상 관람</span> <strong><%= title[2].review_moviename %></strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="#">상세정보</a>
-                                        <a href="#">예매하기</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="poster">
-                                    <figure>
-                                        <img src="assets/img/poster04.jpg" srcset="assets/img/poster04@2.jpg 2x" alt="마약왕">
-                                    </figure>
-                                    <div class="rank"><strong>4</strong></div>
-                                    <div class="mx">
-                                        <span class="icon m ir_pm">MX</span>
-                                    </div>
-                                </div>
-                                <div class="infor">
-                                    <h3><span class="icon a15 ir_pm">15세 이상 관람</span> <strong>마약왕</strong></h3>
-                                    <div class="infor_btn">
-                                        <a href="#">상세정보</a>
-                                        <a href="#">예매하기</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <% }; %>
                         </div>
-                        <!-- //chart_cont1-->
+                            
                         <div class="chart_cont2">
                             <div>
                                 <div class="poster">
