@@ -64,11 +64,11 @@
                     </nav>
                     <nav class="nav">
                         <ul class="clearfix">
-                            <li><a href="#">영화</a></li>
-                            <li><a href="#">영화관</a></li>
+                            <li><a href="/movie">영화</a></li>
+                            <li><a href="/the_moie">영화관</a></li>
                             <li><a href="#">스토어</a></li>
-                            <li><a href="#">마이페이지</a></li>
-                            <li><a href="#">로그인</a></li>
+                            <li><a href="/my_page">마이페이지</a></li>
+                            <li><a href="/login">로그인</a></li>
                         </ul>
                     </nav>    
                 </div>
@@ -141,18 +141,16 @@
         <div class="profile">
             <img src="사진링크" alt="프로필 사진" class="profile-img">
             <h2 class="profile-info">이름</h2>
+            <input type="text" id="age" name="name" required>
         </div>
-        <h2>자기소개서</h2>
         <div class="mypage_form-group">
             <label for="age">나이:</label>
             <input type="text" id="age" name="age" required>
         </div>
         <div class="mypage_form-group">
-            <label for="gender">성별:</label>
-            <select id="gender" name="gender" required>
-                <option value="">선택하세요</option>
-                <option value="male">남성</option>
-                <option value="female">여성</option>
+        
+
+        
             </select>
         </div>
         <div class="mypage_form-group">
@@ -166,6 +164,14 @@
         <div class="mypage_form-group">
             <label for="salary">금액:</label>
             <input type="number" id="salary" name="salary" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="phone">폰번호:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="password">변경할 비밀번호:</label>
+            <input type="tel" id="phone" name="phone" required>
         </div>
         <div class="form-group">
             <button type="submit" class="btn">수정</button>
