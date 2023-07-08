@@ -25,12 +25,12 @@
       
         <!-- Sign In -->
         <div class="container__form container--signin">
-          <form action="#" class="form" id="form2">
+          <form action="/login_process" class="form" id="form2" method="POST">
             <h2 class="form__title">로그인</h2>
-            <input type="email" placeholder="아이디" class="input" />
-            <input type="password" placeholder="비밀번호" class="input" />
+            <input type="text" placeholder="아이디" class="input" name="user_id" />
+            <input type="text" placeholder="비밀번호" class="input" name="user_pw" />
             <a href="#" class="link">비밀번호 찾기</a>
-            <button class="btn">로그인</button>
+            <button class="btn" type="submit">로그인</button>
           </form>
         </div>
       
