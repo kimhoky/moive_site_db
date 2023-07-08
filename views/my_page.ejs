@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
+    <meta name="keywords" content="메가박스, 유투브, 영화, 최신영화, 영화관, CGV, 롯데시네마, 웹스토리보이, 웹스, 사이트 만들기, 따라하기">
+    <title>메가박스 사이트 코딩하기 : 영화 차트 탭 메뉴</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./swiper.css">
+    
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/favicon_72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="assets/icons/favicon_96.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/icons/favicon_144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="assets/icons/favicon_192.png" />
+    
+    <!-- 페이스북 메타 태그 -->
+    <meta property="og:title" content="메가박스 사이트 만들기" />
+    <meta property="og:url" content="https://github.com/webstoryboy/megabox2019" />
+    <meta property="og:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg" />
+    <meta property="og:description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다." />
+   
+    <!-- 트위터 메타 태그 -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="메가박스 사이트 만들기">
+    <meta name="twitter:url" content="https://github.com/webstoryboy/megabox2019/">
+    <meta name="twitter:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg">
+    <meta name="twitter:description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
+    
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+    
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+   
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <a href="#">
+                            <em><img src="assets/img/logo.png" alt="MEGABOX"></em>
+                            <strong><img src="assets/img/logo-sub.png" alt="LIFE THEATER"></strong>
+                        </a>    
+                    </h1>
+                    <nav id="mNav">
+                        <h2 class="ir_so">메가박스 전체메뉴</h2>
+                        <a href="#" class="ham"><span></span></a>
+                    </nav>
+                    <nav class="nav">
+                        <ul class="clearfix">
+                            <li><a href="#">영화</a></li>
+                            <li><a href="#">영화관</a></li>
+                            <li><a href="#">스토어</a></li>
+                            <li><a href="#">마이페이지</a></li>
+                            <li><a href="#">로그인</a></li>
+                        </ul>
+                    </nav>    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+    
+    
+ 
+    <style>
+        .mypage_container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 100px;
+            border: 3px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .mypage_profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mypage_profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .mypage_profile-info {
+            font-weight: bold;
+        }
+
+        .mypage_form-group {
+            margin-bottom: 15px;
+        }
+
+        .mypage_form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .mypage_form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>      <!--mypage 소개창-->
+    <div class="mypage_container">
+        <div class="profile">
+            <img src="사진링크" alt="프로필 사진" class="profile-img">
+            <h2 class="profile-info">이름</h2>
+        </div>
+        <h2>자기소개서</h2>
+        <div class="mypage_form-group">
+            <label for="age">나이:</label>
+            <input type="text" id="age" name="age" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="gender">성별:</label>
+            <select id="gender" name="gender" required>
+                <option value="">선택하세요</option>
+                <option value="male">남성</option>
+                <option value="female">여성</option>
+            </select>
+        </div>
+        <div class="mypage_form-group">
+            <label for="phone">폰번호:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="mypage_form-group">
+            <label for="salary">금액:</label>
+            <input type="number" id="salary" name="salary" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn">수정</button>
+        </div>
+    </div>
+</body>
+    
+    
+    
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="script.js"></script>
+
+    <script>
+        //배너 이미지 슬라이드
+        var swiper = new Swiper('.swiper-container',{
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+        
+        //영화차트 탭 메뉴
+        var movBtn = $(".movie_title > ul > li");    
+        var movCont = $(".movie_chart > div");  
+
+        movCont.hide().eq(0).show();
+
+        movBtn.click(function(e){
+            e.preventDefault();
+            var target = $(this);         
+            var index = target.index();  
+            movBtn.removeClass("active");   
+            target.addClass("active");    
+            movCont.css("display","none");
+            movCont.eq(index).css("display","block");
+        });
+    </script>
+</body>
+</html>

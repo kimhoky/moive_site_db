@@ -50,6 +50,9 @@ app.get('/list', function (req, res) {
 app.get('/login', function(req, res) {
     res.render('login.ejs');
 });                         //로그인으로 가게함
+app.get('/my_page', function(req, res) {
+    res.render('my_page.ejs');
+});                         //마이페이지으로 가게함
 
 app.listen(3000, () => console.log('포트 3000번에서 시작'));
 var bodyParser = require('body-parser');
