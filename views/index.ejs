@@ -68,7 +68,7 @@
                             <li><a href="#">스토어</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
                             <% if (IS) { %>
-                            <li><a><%= nickname %></a></li>
+                            <li><a onclick="logoutCheck()"><%= nickname %></a></li>
                             <% } else { %>
                             <li><a href="/login">로그인</a></li>
                             <% }; %>
@@ -276,6 +276,13 @@
             movCont.css("display","none");
             movCont.eq(index).css("display","block");
         });
+        function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
     </script>
 </body>
 </html>
