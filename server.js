@@ -44,7 +44,6 @@ app.get('/', function (req, res) {
     }
 });
 
-
 // app.get('/', function (req, res) {
 //     var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
 //     conn.query(sql, function (err, row, fields) {
@@ -74,16 +73,26 @@ app.get('/list', function (req, res) {
 app.get('/login', function(req, res) {
     res.render('login.ejs');
 });                         //로그인으로 가게함
+
+app.get('/logoutprocess', function(req, res) {
+    req.session.destroy(error => {if(error) console.log(error)});
+    res.redirect('/');
+})
 app.get('/my_page', function(req, res) {
-    var sql = 'SELECT * FROM user';
-    conn.query(sql, function (err, rows, fields) {
-        if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('my_page.ejs', {mypage : rows});
+    if (!authCheck.isOwner(req, res)) {
+        res.redirect('/login');
+    }
+    else {
+        var nickname = req.session.nickname;
+        var sql = 'SELECT * FROM user WHERE user_id =?';
+        conn.query(sql, [nickname], function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('my_page.ejs', {mypage : rows});
     });
-   
+    }
 });                         //마이페이지으로 가게함
 
-app.listen(3000, () => console.log('포트 3000번에서 시작'));
+
 
 
 app.post('/chinformation', function (req, res) {
@@ -162,3 +171,4 @@ app.post('/login_process', function (req, res) {
         document.location.href="/login";</script>`);    
     }
 });
+app.listen(3000, () => console.log('포트 3000번에서 시작'));
