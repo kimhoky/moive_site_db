@@ -99,8 +99,19 @@ app.get('/movie', function(req, res) {
     });
     
 });                         //영화페이지으로 감
-app.get('/search', function(req, res) {
-    res.render('search.ejs');
+
+app.post('/search', function(req, res) {
+    var body = req.body;
+    var searchinput = body.searchinput;
+    var rows;
+    var sql = 'SELECT * FROM movie WHERE movie_name LIKE  "%' + searchinput + '%" OR movie_genre LIKE "%' + searchinput + '%" GROUP BY movie_name' ;
+        conn.query(sql, function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('search.ejs', {title : rows, fields : fields});
+            
+            console.log(rows);
+    });
+    return false;
 });                         //검색페이지으로 감
 
 app.post('/chinformation', function (req, res) {
