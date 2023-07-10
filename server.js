@@ -70,7 +70,7 @@ app.get('/movie_in', function (req, res) {
     var sql = 'SELECT user_id FROM user where user_age = 20';
     conn.query(sql, function (err, rows, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('movie_in.ejs', {list : rows,IS:IS});
+        else res.render('movie_in.ejs', {list : rows,IS:IS, nickname : nickname});
     });
 });
 app.get('/login', function(req, res) {
