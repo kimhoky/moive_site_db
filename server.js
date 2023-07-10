@@ -103,9 +103,6 @@ app.post('/chinformation', function (req, res) {
 
     var sql3 = 'UPDATE user set User_age =?, User_Phonenum=?,User_email=? WHERE User_name =?';
     var params2 = [body.age, body.phone, body.email, body.name];
-    var params3 = body.name;
-
-   
     var sql2 = 'SELECT User_pw from user WHERE User_name =?';
     conn.query(sql2,[body.name], function (err, data, fields) {
         console.log(body.name);
