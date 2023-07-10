@@ -94,7 +94,86 @@
 .movie_chart > div > div .infor h3 span.a15 {background-position: 0px -125px;}
 .movie_chart > div > div .infor h3 span.a19 {background-position: -29px -125px;}
 .movie_chart > div > div .infor .infor_btn a {display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;}
+.main_box{
+  position: absolute;
+  width: 1000px;
+  height: 600px;
+  top: 450px;
+  background-color: #d0cfd1;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.info-box img {
+  width: 300px;
+  height: 400px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+
+.main_text {
+  margin-left: 350px;
+  margin-top: -480px;
+  width: 600px;
+  padding: 25px;
+
+}
+
+.main_text2 {
+  margin-left: 350px;
+  margin-top: 10px;
+  width: 600px;
+  padding: 25px;
+
+}
+
+.p_j{
+  font-size: 17px;
+}
+
+.detail-end {
+  padding: 15px;
+  clear: both;
+}
+
+.btn_T{
+  width: 200px;
+  margin-left: 65px;
+  margin-top: 20px;
+  border-radius: 25px;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 17px;
+  background-color: rgb(56, 10, 136);
+}
+
+
+
+.comment-bar {
+  margin-top: 15px;
+  display: flex;
+  max-width: 610px;
+  text-align: center;
+}
+
+#comment-input {
+  flex: 1;
+  height: 17px;
+  padding: 8px;
+  font-size: 14px;
+  resize: none;
+}
+
+#submit-btn {
+  background-color: rgb(56, 10, 136);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  cursor: pointer;
+}
 
 /* 미디어쿼리 */
 @media (max-width: 1290px){

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
+    <meta name="keywords" content="메가박스, 유투브, 영화, 최신영화, 영화관, CGV, 롯데시네마, 웹스토리보이, 웹스, 사이트 만들기, 따라하기">
+    <title>메가박스 사이트 코딩하기 : 영화 차트 탭 메뉴</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./swiper.css">
+
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+    
+
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <a href="#">
+                            <em><img src="assets/img/logo.png" alt="MEGABOX"></em>
+                            <strong><img src="assets/img/logo-sub.png" alt="LIFE THEATER"></strong>
+                        </a>    
+                    </h1>
+                    <nav id="mNav">
+                        <h2 class="ir_so">메가박스 전체메뉴</h2>
+                        <a href="#" class="ham"><span></span></a>
+                    </nav>
+                    <nav class="nav">
+                        <ul class="clearfix">
+                            <li><a href="/movie">영화</a></li>
+                            <li><a href="/the_moie">영화관</a></li>
+                            <li><a href="#">스토어</a></li>
+                            <li><a href="/my_page">마이페이지</a></li>
+                            <% if (IS) { %>
+                            <li><a onclick="logoutCheck()"><%= nickname %></a></li>
+                            <% } else { %>
+                            <li><a href="/login">로그인</a></li>
+                            <% }; %>
+                        </ul>
+                    </nav>    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+   <div class="main_box">
+
+        <div class="info-box"> <!-- 상세정보 박스-->
+            <div class="detail-title">
+            </div>
+            <div class="movie-intro">
+                <img src="assets/img/poster04.jpg">
+            </div>
+                <button class="btn_T">예매하기</button>
+        </div>
+        
+   
+        <div class="main_text"> 
+            <div>
+                <p class="p_소개1">[ 소개 ]</p>
+                <hr>
+                <div>
+                <p class="p_소개내용1">
+                    아틀란티카 바다의 왕 ‘트라이튼’의 사랑스러운 막내딸인 인어 ‘에리얼’은 늘 인간들이 사는 바다 너머 세상으로의 모험을 꿈꾼다. 
+                    어느 날, 우연히 바다 위로 올라갔다가 폭풍우 속 가라앉는 배에 탄 인간 ‘에릭 왕자’의 목숨을 구해준다. 
+                    갈망하던 꿈과 운명적인 사랑을 이루기 위해 용기를 낸 ‘에리얼’은 사악한 바다 마녀 ‘울슐라’와의 위험한 거래를 통해 다리를 얻게 된다. 
+                    드디어 바다를 벗어나 그토록 원하던 인간 세상으로 가게 되지만, 그 선택으로 ‘에리얼’과 아틀란티카 왕국 모두 위험에 처하게 되는데… 바닷속, 그리고 그 너머 아름다운 꿈과 사랑의 멜로디가 펼쳐진다!
+                </p>
+            </div>
+            </div>
+        </div>
+
+        <div class="main_text2"> 
+            <div>
+                <p class="p_기본정보1">[ 기본정보 ]</p>
+                <hr>
+                <div>
+                <p class="p_기본정보내용1">
+                    개봉 &nbsp; &nbsp;| &nbsp; &nbsp; 2006.07.27. <br>
+                    등급 &nbsp; &nbsp;| &nbsp; &nbsp; 12세 관람가<br>
+                    장르 &nbsp; &nbsp;| &nbsp; &nbsp; 모험, 액션, 스릴러, 코미디, 드라마, SF, 판타지<br>
+                    감독 &nbsp; &nbsp;| &nbsp; &nbsp; 봉준호<br>
+                    주연 &nbsp; &nbsp;| &nbsp; &nbsp; 송강호, 변희봉, 박해일, 배두나, 고아성<br>
+                    조연 &nbsp; &nbsp;| &nbsp; &nbsp; 오달수, 이재응, 이동호 등<br>
+                </p>
+            </div>
+            </div>
+        </div>
+
+        <div class="main_text2"> 
+            <div>
+                <p class="p_한줄평가">[ 감상평 ]</p>
+                <hr>
+                <div>
+                    <div class="comment-bar">
+                        <textarea id="comment-input" placeholder="감상평을 작성해주세요..."></textarea>
+                        <button id="submit-btn">등록</button>
+                      </div>
+            </div>
+            </div>
+        </div>
+
+    
+
+          
+
+    </div>
+
+
+
+    <div class="detail-end"></div> 
+
+    
+</body>
+</html>
