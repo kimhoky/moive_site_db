@@ -92,34 +92,45 @@ app.get('/my_page', function(req, res) {
     }
 });                         //마이페이지으로 가게함
 app.get('/movie', function(req, res) {
-    res.render('movie.ejs');
+    var sql = 'SELECT * FROM movie';
+        conn.query(sql, function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('movie.ejs', {movie : rows});
+    });
+    
 });                         //영화페이지으로 감
 
 
 app.post('/chinformation', function (req, res) {
     var body = req.body;
-    var sql = 'UPDATE user set User_age =?, User_pw=?, User_Phonenum=?, User_email=? WHERE User_name =? ' ;
-    var params = [body.age, body.chpassword, body.phone, body.email, body.name];
+    var sql = 'UPDATE user set User_age =?, User_pw=?, User_Phonenum=?, User_email=? WHERE User_name =?' ;
+    var params = [body.age, body.chpassword, body.phone, body.email, body.uname];
 
     var sql3 = 'UPDATE user set User_age =?, User_Phonenum=?,User_email=? WHERE User_name =?';
-    var params2 = [body.age, body.phone, body.email, body.name];
+    var params2 = [body.age, body.phone, body.email, body.uname];
+
     var sql2 = 'SELECT User_pw from user WHERE User_name =?';
-    conn.query(sql2,[body.name], function (err, data, fields) {
-        console.log(body.name);
+
+    conn.query(sql2,body.uname, function (err, data, fields) {
+        console.log(body.uname);
         if(data[0].User_pw == body.password){
             console.log(data[0].User_pw);
             if(body.chpassword != ""){
                 conn.query(sql,params,function(err,rows,fields){
                     if(err) console.log('query is not excuted. insert fail...\n' + err);
-                    else res.write("<script>alert('Information has changed + PW has changed');location.href='/my_page';</script>");
+                    else res.send(`<script type="text/javascript">alert("정보가 수정되었습니다! 비밀번호 변경이 완료되었습니다."); 
+                    document.location.href="/my_page";</script>`);
                 });
             }
             else  conn.query(sql3, params2, function(err,rows,fields) {
                 if(err) console.log('query is not excuted. insert fail...\n' + err);
-                else res.write("<script>alert('Information has changed ');location.href='/my_page';</script>");
+                else res.send(`<script type="text/javascript">alert("정보가 수정되었습니다!"); 
+                document.location.href="/my_page";</script>`);
+                
         });
       
-    }else res.write("<script>alert('Change failed. current pw is wrong. ');location.href='/my_page';</script>");
+    }else res.send(`<script type="text/javascript">alert("비밀번호가 틀렸습니다. 변경이 취소됩니다.");document.location.href="/my_page";</script>`);
+    
        
         });
         
@@ -133,7 +144,8 @@ app.post('/membership', function (req, res) {
    
     var sql2 = 'SELECT * from user WHERE user_id =?';
     conn.query(sql2,[body.user_id], function (err, data, fields) {
-        if(data.length!=0){res.write("<script>alert('Already this ID tooken');location.href='/login';</script>");}
+        if(data.length!=0){res.send(`<script type="text/javascript">alert("이미 있는 ID 입니다."); 
+        document.location.href="/login";</script>`);}
     
         else conn.query(sql, params, function(err) {
             if(err) console.log('query is not excuted. insert fail...\n' + err);
