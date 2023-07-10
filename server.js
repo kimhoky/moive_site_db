@@ -79,24 +79,48 @@ app.get('/logoutprocess', function(req, res) {
     res.redirect('/');
 })
 app.get('/my_page', function(req, res) {
+    var nickname = req.session.nickname;
+    var IS = req.session.is_logined;
+
     if (!authCheck.isOwner(req, res)) {
         res.redirect('/login'); //로그인 안하고 마이페이지 갈시
     }
     else {
         var nickname = req.session.nickname;
+        var IS = req.session.is_logined;
         var sql = 'SELECT * FROM user WHERE user_id =?';
         conn.query(sql, [nickname], function (err, rows, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('my_page.ejs', {mypage : rows});
+            else res.render('my_page.ejs', {mypage : rows, nickname : nickname, IS : IS});
     });
     }
-});                         //마이페이지으로 가게함
+});         //마이페이지으로 가게함
+
+
 app.get('/movie', function(req, res) {
-    var sql = 'SELECT * FROM movie';
+
+    if (!authCheck.isOwner(req, res)) {
+        var sql = 'SELECT * FROM movie';
         conn.query(sql, function (err, rows, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
             else res.render('movie.ejs', {movie : rows});
+    }); 
+    }
+    else {
+        var sql = 'SELECT * FROM movie';
+        var nickname = req.session.nickname;
+        var IS = req.session.is_logined;
+        var sql2 = 'SELECT * FROM user WHERE user_id =?';
+        conn.query(sql2, [nickname], function (err, row, fields) {
+            conn.query(sql, function (err, rows, fields) {
+                if(err) console.log('query is not excuted. select fail...\n' + err);
+                else res.render('movie.ejs', {movie : rows,  nickname : nickname, IS : IS});
+        }); 
+            
+           
     });
+    }
+
     
 });                         //영화페이지으로 감
 app.get('/search', function(req, res) {
