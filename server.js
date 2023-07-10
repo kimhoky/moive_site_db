@@ -80,7 +80,7 @@ app.get('/logoutprocess', function(req, res) {
 })
 app.get('/my_page', function(req, res) {
     if (!authCheck.isOwner(req, res)) {
-        res.redirect('/login');
+        res.redirect('/login'); //로그인 안하고 마이페이지 갈시
     }
     else {
         var nickname = req.session.nickname;
@@ -91,8 +91,9 @@ app.get('/my_page', function(req, res) {
     });
     }
 });                         //마이페이지으로 가게함
-
-
+app.get('/movie', function(req, res) {
+    res.render('movie.ejs');
+});                         //영화페이지으로 감
 
 
 app.post('/chinformation', function (req, res) {

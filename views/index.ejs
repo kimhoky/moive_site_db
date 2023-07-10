@@ -52,9 +52,10 @@
             <div class="row">
                 <div class="header clearfix">
                     <h1>
-                        <a href="#">
+                        <a href="index">
                             <em><img src="assets/img/logo.png" alt="MEGABOX"></em>
                             <strong><img src="assets/img/logo-sub.png" alt="LIFE THEATER"></strong>
+                    
                         </a>    
                     </h1>
                     <nav id="mNav">
@@ -65,7 +66,6 @@
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
                             <li><a href="/the_moie">영화관</a></li>
-                            <li><a href="#">스토어</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
                             <% if (IS) { %>
                             <li><a onclick="logoutCheck()"><%= nickname %></a></li>
@@ -79,6 +79,16 @@
         </div>
     </header>
     <!-- //header -->
+
+    <div class="search">
+        <div class="input-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="영화를 검색하세요" />
+            <button class="button"><img src="assets/img/search.png"></button>
+        </div>
+    
+    </div>
+         <!-- 검색창 -->
     
     
     <section id="banner">
@@ -284,5 +294,12 @@
             }
         }
     </script>
+    <!— 자바스크립트 라이브러리 —>
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="assets/js/ie-checker.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
 </body>
+<style>
+</style>
 </html>
