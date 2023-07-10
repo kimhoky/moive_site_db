@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 var authCheck = require('./authCheck');
-const f = require('session-file-store');
 
 
 dbConfig.connect(conn);
@@ -45,23 +44,6 @@ app.get('/', function (req, res) {
     }
 });
 
-// app.get('/', function (req, res) {
-//     var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
-//     conn.query(sql, function (err, row, fields) {
-//         if(err) console.log('query is not excuted. select fail...\n' + err);
-//         else var sql2 = 'SELECT movie_agecut FROM movie WHERE movie_name IN (SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC)'
-//             conn.query(sql2, function (err, rows, fields) {
-//                 if(err) console.log('query is not excuted. select fail...\n' + err);
-//                 else res.render('index.ejs', {title : row, age : rows});
-//             });
-        
-        
-       
-//     });
-    
-//     // res.render('index.ejs',{title : sql});
-// });
-
 app.use(express.static("views"));
 // 추가 (이게 핵심)
 app.get('/movie_in', function (req, res) {
@@ -70,7 +52,7 @@ app.get('/movie_in', function (req, res) {
     var sql = 'SELECT user_id FROM user where user_age = 20';
     conn.query(sql, function (err, rows, fields) {
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('movie_in.ejs', {list : rows,IS:IS, nickname : nickname});
+        else res.render('movie_in.ejs', {list : rows,IS:IS});
     });
 });
 app.get('/login', function(req, res) {
@@ -130,20 +112,16 @@ app.get('/movie', function(req, res) {
 app.post('/search', function(req, res) {
     var body = req.body;
     var searchinput = body.searchinput;
-    var nickname = req.session.nickname;
-    var IS = req.session.is_logined;
+    var rows;
     var sql = 'SELECT * FROM movie WHERE movie_name LIKE  "%' + searchinput + '%" OR movie_genre LIKE "%' + searchinput + '%" GROUP BY movie_name' ;
         conn.query(sql, function (err, rows, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('search.ejs', {title : rows, nickname : nickname, IS : IS});
-
+            else res.render('search.ejs', {title : rows, fields : fields});
+            
+            console.log(rows);
     });
     return false;
 });                         //검색페이지으로 감
-
-app.get('/reserve', function(req, res) {
-    res.render('reserve.ejs');
-})
 
 app.post('/chinformation', function (req, res) {
     var body = req.body;
