@@ -97,17 +97,19 @@ app.get('/my_page', function(req, res) {
 
 app.post('/chinformation', function (req, res) {
     var body = req.body;
-    var sql = 'UPDATE user set User_age =?, User_pw=?, User_Phonenum=?, User_email=? WHERE User_name = "U1"';
-    var params = [body.age, body.chpassword, body.phone, body.email];
+    var sql = 'UPDATE user set User_age =?, User_pw=?, User_Phonenum=?, User_email=? WHERE User_name =? ' ;
+    var params = [body.age, body.chpassword, body.phone, body.email, body.name];
 
-    var sql3 = 'UPDATE user set User_age =?, User_Phonenum=?,User_email=? WHERE User_name = "U1"';
-    var params2 = [body.age, body.phone, body.email];
+    var sql3 = 'UPDATE user set User_age =?, User_Phonenum=?,User_email=? WHERE User_name =?';
+    var params2 = [body.age, body.phone, body.email, body.name];
+    var params3 = body.name;
 
    
-    var sql2 = 'SELECT User_pw from user WHERE User_name = "U1"';
-    conn.query(sql2, function (err, data, fields) {
+    var sql2 = 'SELECT User_pw from user WHERE User_name =?';
+    conn.query(sql2,[body.name], function (err, data, fields) {
+        console.log(body.name);
         if(data[0].User_pw == body.password){
-            console.log(body.chpassword);
+            console.log(data[0].User_pw);
             if(body.chpassword != ""){
                 conn.query(sql,params,function(err,rows,fields){
                     if(err) console.log('query is not excuted. insert fail...\n' + err);

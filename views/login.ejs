@@ -9,19 +9,6 @@
     </head>
 <body>
     <div class="container right-panel-active">
-        <!-- Sign Up -->
-        <div class="container__form container--signup">
-          <form action="/membership" calass = "form" id="form" method="POST">
-            <h2 class="form__title">회원가입</h2>
-              아이디<input type="text" placeholder="아이디" class="input" name="user_id" />
-              비밀번호<input type="text" placeholder="비밀번호" class="input" name="user_pw" />
-             이름<input type="text" placeholder="이름" class="input" name="user_name"/>
-              나이 <input type="int" placeholder="나이" class="input" name="user_age"/>
-              전화번호<input type="text" placeholder="전화번호" class="input" name="user_phonenum" />
-              이메일 <input type="text" placeholder="이메일" class="input" name="user_email" />
-            <button class="btn" type="submit">회원가입</button>
-          </form>
-        </div>
       
         <!-- Sign In -->
         <div class="container__form container--signin">
@@ -33,6 +20,20 @@
             <button class="btn" type="submit">로그인</button>
           </form>
         </div>
+
+          <!-- Sign Up -->
+          <div class="container__form container--signup">
+            <form action="/membership" calass = "form" id="form" method="POST">
+              <h2 class="form__title">회원가입</h2>
+                아이디<input type="text" placeholder="아이디" class="input" name="user_id" />
+                비밀번호<input type="text" placeholder="비밀번호" class="input" name="user_pw" />
+               이름<input type="text" placeholder="이름" class="input" name="user_name"/>
+                나이 <input type="int" placeholder="나이" class="input" name="user_age"/>
+                전화번호<input type="text" placeholder="전화번호" class="input" name="user_phonenum" />
+                이메일 <input type="text" placeholder="이메일" class="input" name="user_email" />
+              <button class="btn" type="submit">회원가입</button>
+            </form>
+          </div>
       
         <!-- Overlay -->
         <div class="container__overlay">

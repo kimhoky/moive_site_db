@@ -68,7 +68,7 @@
                             <li><a href="/the_moie">영화관</a></li>
                             <li><a href="#">스토어</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
-                            <li><a href="/login">로그인</a></li>
+                            <!-- <li><a href="/login">로그인</a></li> -->
                         </ul>
                     </nav>    
                 </div>
@@ -140,11 +140,15 @@
     <div class="mypage_container">
         <div class="mypage_form-group">
             <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
-            <label for="name">이름 : <%= mypage[0].User_name %></label>
+            
             
         </div>
         <form action="/chinformation" calass = "form" id="form" method="POST">
         <div class="mypage_form-group">
+
+            <label for="name">이름 : </label>
+            <input type="text" id="name" name="name" value="<%= mypage[0].User_name %>" disabled/>
+
             <label for="age">나이:</label>
             <input type="int" id="age" name="age" value="<%= mypage[0].User_age %>"/>
        
