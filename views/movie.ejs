@@ -38,8 +38,13 @@
                     <nav class="nav">
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
+                            <li><a href="/movie">영화예매</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
-                            <li><a href="/login">로그인</a></li>
+                            <% if (IS) { %>
+                                <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
+                                <% } else { %>
+                                <li><a href="/login">로그인</a></li>
+                                <% }; %>
                         </ul>
                     </nav>    
                 </div>
@@ -164,7 +169,13 @@
         movCont.css("display","none"); 
         movCont.eq(index).css("display","block"); //해당되는 번호만 보여줌
     });
-
+    function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
 </script>
 </body>
 </html>
