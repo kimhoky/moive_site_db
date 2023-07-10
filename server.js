@@ -98,15 +98,15 @@ app.get('/my_page', function(req, res) {
 
 
 app.get('/movie', function(req, res) {
-
+    var nickname = req.session.nickname;
+    var IS = req.session.is_logined;
     if (!authCheck.isOwner(req, res)) {
         var sql = 'SELECT * FROM movie';
         conn.query(sql, function (err, rows, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('movie.ejs', {movie : rows});
+            else res.render('movie.ejs', {movie : rows, IS :IS});
     }); 
-    }
-    else {
+    }else {
         var sql = 'SELECT * FROM movie';
         var nickname = req.session.nickname;
         var IS = req.session.is_logined;
