@@ -99,7 +99,9 @@ app.get('/movie', function(req, res) {
     });
     
 });                         //영화페이지으로 감
-
+app.get('/search', function(req, res) {
+    res.render('search.ejs');
+});                         //검색페이지으로 감
 
 app.post('/chinformation', function (req, res) {
     var body = req.body;
