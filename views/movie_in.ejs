@@ -124,4 +124,13 @@
 
     
 </body>
+<script>
+    function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
+</script>
 </html>
