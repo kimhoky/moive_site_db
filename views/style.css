@@ -232,7 +232,35 @@
 @media (max-width: 320px){
     
 }
-@charset "utf-8";
+.개봉 {
+  display: inline-block;
+  margin-left: 5px; 
+}
+
+.등급 {
+  display: inline-block;
+  margin-left: 5px; 
+}
+
+.장르 {
+  display: inline-block;
+  margin-left: 5px; 
+}
+
+.감독 {
+  display: inline-block;
+  margin-left: 5px; 
+}
+
+.주연 {
+  display: inline-block;
+  margin-left: 5px; 
+}
+
+.조연 {
+  display: inline-block;
+  margin-left: 5px; 
+}
 
 /* Google Fonts - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
