@@ -10,9 +10,9 @@
     <title>메가박스 사이트 코딩하기 : 영화 차트 탭 메뉴</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./swiper.css">
+    <link rel="stylesheet" href="./reset.css?after">
+    <link rel="stylesheet" href="./style.css?after">
+    <link rel="stylesheet" href="./swiper.css?after">
     
     <!-- 파비콘 -->
     <link rel="shortcut icon" href="assets/icons/favicon.ico">
@@ -68,7 +68,7 @@
                             <li><a href="/the_moie">영화관</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
                             <% if (IS) { %>
-                            <li><a onclick="logoutCheck()"><%= nickname %></a></li>
+                            <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
                             <% } else { %>
                             <li><a href="/login">로그인</a></li>
                             <% }; %>
@@ -121,7 +121,7 @@
             <input type="radio" name="radio-btn" id="img-1" checked />
             <li class="slide-container">
             <div class="slide">
-                <img src="./assets/img/main_slider01.png" />              
+                <img src="./assets/img/main_slider02.png" />              
                 <div class="h1_text">
                 <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
               </div>
@@ -135,7 +135,7 @@
             <input type="radio" name="radio-btn" id="img-2" />
             <li class="slide-container">
                 <div class="slide">
-                    <img src="./assets/img/main_slider02.png" />              
+                    <img src="./assets/img/main_slider01.png" />              
                     <div class="h1_text">
                     <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
                   </div>
