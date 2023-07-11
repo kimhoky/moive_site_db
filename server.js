@@ -49,14 +49,17 @@ app.get('/reserve', function(req, res) {
         res.redirect('/login'); //로그인 안하고 마이페이지 갈시
     }
     else {
-        var nickname = req.session.nickname;
-        var IS = req.session.is_logined;
-        var sql = 'SELECT * FROM user WHERE user_id =?';
-        conn.query(sql, [nickname], function (err, rows, fields) {
-            if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('reserve.ejs', {mypage : rows, nickname : nickname, IS : IS});
-    });
+        let movie_name = req.query.movie_name;
+            res.render('reserve.ejs', {title : movie_name});
     }
+})
+
+app.get('/quickreserve', function(req, res) {
+    var sql = 'SELECT movie_name FROM movie';
+        conn.query(sql, function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('quickreserve.ejs', { title : rows});
+        });
 })
 
 app.use(express.static("views"));

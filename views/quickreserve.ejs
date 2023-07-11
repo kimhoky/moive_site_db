@@ -41,7 +41,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<ul class="book-right">
 					<div class="movie-select">
 						<select name="movie" id="movie">
-						  	<option value="gingerclown"><%= title %></option>
+							<% for(var i =0;i<title.length;i++) { %>
+								<option value="gingerclown"><%= title[i].movie_name %></option>
+							<% }; %>
 						</select>
 					  </div>
 					  <div class="day-select">
