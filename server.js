@@ -44,6 +44,21 @@ app.get('/', function (req, res) {
     }
 });
 
+app.get('/reserve', function(req, res) {
+    if (!authCheck.isOwner(req, res)) {
+        res.redirect('/login'); //로그인 안하고 마이페이지 갈시
+    }
+    else {
+        var nickname = req.session.nickname;
+        var IS = req.session.is_logined;
+        var sql = 'SELECT * FROM user WHERE user_id =?';
+        conn.query(sql, [nickname], function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('reserve.ejs', {mypage : rows, nickname : nickname, IS : IS});
+    });
+    }
+})
+
 app.use(express.static("views"));
 // 추가 (이게 핵심)
 app.post('/movie_in', function (req, res) {
@@ -115,15 +130,14 @@ app.get('/movie', function(req, res) {
 app.post('/search', function(req, res) {
     var body = req.body;
     var searchinput = body.searchinput;
-    var rows;
+    var nickname = req.session.nickname;
+    var IS = req.session.is_logined;
     var sql = 'SELECT * FROM movie WHERE movie_name LIKE  "%' + searchinput + '%" OR movie_genre LIKE "%' + searchinput + '%" GROUP BY movie_name' ;
         conn.query(sql, function (err, rows, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('search.ejs', {title : rows, fields : fields});
-            
-            console.log(rows);
+            else res.render('search.ejs', {title : rows, nickname : nickname, IS : IS});
+
     });
-    return false;
 });                         //검색페이지으로 감
 
 app.post('/chinformation', function (req, res) {
@@ -160,9 +174,6 @@ app.post('/chinformation', function (req, res) {
         });
         
 });
-app.get('/reserve', function(req, res) {
-    res.render('reserve.ejs');
-})
 
 app.post('/membership', function (req, res) {
     var body = req.body;

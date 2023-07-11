@@ -36,12 +36,9 @@
                             <li><a href="/movie">영화</a></li>
                             <li><a href="/reserve">영화예매</a></li>
                             <li><a href="/my_page">마이페이지</a></li>
-                            <% if (IS) { %>
-                                <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
-                            <% } else { %>
+                           
                                 <li><a href="/login">로그인</a></li>
-                            <% }; %>
-                        </ul>
+
                         </ul>
                     </nav>    
                 </div>
@@ -142,6 +139,10 @@
     box-shadow: none;
     border-radius: 0;
     position: relative;
-}                    
+}
+    .container{
+        background-color: #f0f0f0;
+    }
+                  
 </style>
 </html>
