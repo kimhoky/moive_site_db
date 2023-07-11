@@ -12,6 +12,7 @@
     list-style: none;
     padding: 0;
     z-index: 1;
+    
 }
 .swiper-container-no-flexbox .swiper-slide {
     float: left;
