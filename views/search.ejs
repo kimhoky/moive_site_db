@@ -65,15 +65,17 @@
             <% for (var i=0; i < title.length; i++) { %> 
             <div class="well search-result">
                 <div class="row">
-                    <a href="#">
-                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+                    <form action="/movie_in" class = "form" id="form" method="POST">
+                        <input type="text" name="moviename" style = "display:none" value =<%= title[i].movie_name %> />
+                        <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;"><div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
                             <img class="img-responsive" src="assets/img/<%= title[i].movie_name %>.jpg" alt="">
                         </div>
                         <div class="col-xs-6 col-sm-9 col-md-9 col-lg-10 title">
                             <h3><%= title[i].movie_name %></h3>
-                            <p><%= title[i].movie_name %></p>
-                        </div>
-                    </a>
+                            <p><%= title[i].movie_director %></p>
+                        </div></button>
+                    </form>
+                    
                 </div>
             </div>
             
