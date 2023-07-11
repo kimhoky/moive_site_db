@@ -46,13 +46,16 @@ app.get('/', function (req, res) {
 
 app.use(express.static("views"));
 // 추가 (이게 핵심)
-app.get('/movie_in', function (req, res) {
+app.post('/movie_in', function (req, res) {
+    var body = req.body;
     var nickname = req.session.nickname;
     var IS = req.session.is_logined;
-    var sql = 'SELECT user_id FROM user where user_age = 20';
-    conn.query(sql, function (err, rows, fields) {
+    var sql = 'SELECT * FROM movie WHERE movie_name=?';
+    console.log(body.moviename)
+    conn.query(sql,body.moviename, function (err, rows, fields) {
+        
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('movie_in.ejs', {list : rows,IS:IS});
+        else res.render('movie_in.ejs', {list : rows, IS:IS});
     });
 });
 app.get('/login', function(req, res) {
