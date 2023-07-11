@@ -157,6 +157,9 @@ app.post('/chinformation', function (req, res) {
         });
         
 });
+app.get('/reserve', function(req, res) {
+    res.render('reserve.ejs');
+})
 
 app.post('/membership', function (req, res) {
     var body = req.body;
