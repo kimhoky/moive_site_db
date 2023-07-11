@@ -92,9 +92,13 @@ app.get('/my_page', function(req, res) {
         var nickname = req.session.nickname;
         var IS = req.session.is_logined;
         var sql = 'SELECT * FROM user WHERE user_id =?';
+        var sql2 = 'SELECT * FROM reserve WHERE reserve_uid=? '
         conn.query(sql, [nickname], function (err, rows, fields) {
-            if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('my_page.ejs', {mypage : rows, nickname : nickname, IS : IS});
+            conn.query(sql2,[nickname],function(err,data,fields){
+                if(err) console.log('query is not excuted. select fail...\n' + err);
+                else res.render('my_page.ejs', {mypage : rows, myreserve : data ,nickname : nickname, IS : IS});
+            });
+            
     });
     }
 });         //마이페이지으로 가게함

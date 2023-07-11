@@ -139,48 +139,112 @@
         }
     </style>
 </head>
-<body>      <!--mypage 소개창-->
-    <div class="mypage_container">
-        <div class="mypage_form-group">
-            <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
+<body>
+    <div style="display:flex; height: fit-content; width: 100%; justify-content: center;">
+        <div class="mypage_container">
+            <div class="mypage_form-group">
+                <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
+                
+                
+            </div>
+            <form action="/chinformation" calass = "form" id="form" method="POST">
+            <div class="mypage_form-group">
+    
+                <label for="name">이름 : </label>
+                <input type="text" id="name" name="name" value="<%= mypage[0].User_name %>" disabled />
+                <input type ="text" id="unmae" name="uname" value="<%= mypage[0].User_name %>" style="display:none;"/>
+                <label for="age">나이:</label>
+                <input type="int" id="age" name="age" value="<%= mypage[0].User_age %>"/>
+           
+                <label for="password">현재 비밀번호:</label>
+                <input type="text" id="password" name="password"/>
+           
+                <label for="password">변경 비밀번호:</label>
+                <input type="text" id="chpassword" name="chpassword" value = "" />
+           
+                <label for="phone">폰번호:</label>
+                <input type="text" id="phone" name="phone" value="<%= mypage[0].User_phonenum %>"/>
+           
+                <label for="email">이메일:</label>
+                <input type="text" id="email" name="email" value="<%= mypage[0].User_email %>"/>
             
+                <label for="salary">금액:</label>
+                <input type="int" id="salary" name="cash"value="<%= mypage[0].User_cash %>"/>
+            </div>
+            <!-- <div class="form-group"> -->
+                <button type="submit" class="btn">수정</button>
+            <!-- </div> -->
+            </form>
+        </div><div class="mypage_container">
+            <div class="mypage_form-group">
+                <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
+                
+                
+            </div>
+           
+            <div class="mypage_form-group" style="font-size: 16px;">
+    
+           
+                <label for="password">예약 id:</label>
+                <label for="phone"><%= myreserve[0].reserve_id %></label>
+                
+           
+                <label for="phone">예약자 ID</label>
+                <label for="phone"><%= myreserve[0].reserve_uid %></label>
+                
+           
+                <label for="email">예약 좌석</label>
+                <label for="phone"><%= myreserve[0].reserve_seat %></label>
+                
             
-        </div>
-        <form action="/chinformation" calass = "form" id="form" method="POST">
-        <div class="mypage_form-group">
+                <label for="salary">영화 시작시간</label>
+                <label for="phone"><span id="formatted-date"></span></label>
+                
 
-            <label for="name">이름 : </label>
-            <input type="text" id="name" name="name" value="<%= mypage[0].User_name %>" disabled />
-            <input type ="text" id="unmae" name="uname" value="<%= mypage[0].User_name %>" style="display:none;"/>
-            <label for="age">나이:</label>
-            <input type="int" id="age" name="age" value="<%= mypage[0].User_age %>"/>
-       
-            <label for="password">현재 비밀번호:</label>
-            <input type="text" id="password" name="password"/>
-       
-            <label for="password">변경 비밀번호:</label>
-            <input type="text" id="chpassword" name="chpassword" value = "" />
-       
-            <label for="phone">폰번호:</label>
-            <input type="text" id="phone" name="phone" value="<%= mypage[0].User_phonenum %>"/>
-       
-            <label for="email">이메일:</label>
-            <input type="text" id="email" name="email" value="<%= mypage[0].User_email %>"/>
-        
-            <label for="salary">금액:</label>
-            <input type="int" id="salary" name="cash"value="<%= mypage[0].User_cash %>"/>
+                <label for="salary">영화 종료시간</label>
+                <label for="phone"><span id="formatted-edate"></span></label>
+                
+            </div>
+            
+            
         </div>
-        <!-- <div class="form-group"> -->
-            <button type="submit" class="btn">수정</button>
-        <!-- </div> -->
-        </form>
-    </div>
+    </div>      <!--mypage 소개창-->
+    
 </body>
     
     
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="script.js"></script>
+    <script>
+          window.onload = function tim() {
+          var dateString = "<%= myreserve[0].reserve_moviestart %>";
+          var dateStringend = "<%= myreserve[0].reserve_movieend %>";
+          var dateObj = new Date(dateString);
+          var dateObjend = new Date(dateStringend);
+    
+          var year = dateObj.getFullYear();
+          var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+          var day = ("0" + dateObj.getDate()).slice(-2);
+          var hours = ("0" + dateObj.getHours()).slice(-2);
+          var minutes = ("0" + dateObj.getMinutes()).slice(-2);
+
+          var eyear = dateObjend.getFullYear();
+          var emonth = ("0" + (dateObjend.getMonth() + 1)).slice(-2);
+          var eday = ("0" + dateObjend.getDate()).slice(-2);
+          var ehours = ("0" + dateObjend.getHours()).slice(-2);
+          var eminutes = ("0" + dateObjend.getMinutes()).slice(-2);
+
+
+          var formattedsDate = year + "년 " + month + "월 " + day + "일" + hours + "시 " + minutes + "분";
+          var formattedeDate = eyear + "년 " + emonth + "월 " + eday + "일" + ehours + "시 " + eminutes + "분";
+    
+          document.getElementById("formatted-date").innerHTML = formattedsDate;
+          document.getElementById("formatted-edate").innerHTML = formattedeDate;
+        };
+
+        
+      </script>
 
     <script>
         //배너 이미지 슬라이드
