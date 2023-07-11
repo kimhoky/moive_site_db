@@ -69,13 +69,19 @@ app.post('/movie_in', function (req, res) {
     var nickname = req.session.nickname;
     var IS = req.session.is_logined;
     var sql = 'SELECT * FROM movie WHERE movie_name=?';
+    var sql2 = 'SELECT * FROM review WHERE review_moviename=?'
     console.log(body.moviename)
     conn.query(sql,body.moviename, function (err, rows, fields) {
+        conn.query(sql2, body.moviename,function(err,data,fields){
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('movie_in.ejs', {list : rows, reviews:data, IS:IS, nickname : nickname});
+        });
         
-        if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('movie_in.ejs', {list : rows, IS:IS});
+       
     });
 });
+
+
 app.get('/login', function(req, res) {
     res.render('login.ejs');
 });                         //로그인으로 가게함
@@ -133,6 +139,38 @@ app.get('/movie', function(req, res) {
 
     
 });                         //영화페이지으로 감
+
+app.post('/inreview', function (req, res) {
+    var body = req.body;
+    var nickname = req.session.nickname;
+    var IS = req.session.is_logined;
+    
+    var sql = 'INSERT INTO review (review_uid, review_grade, review_olreview, review_moviename, review_writedate) values (?,?,?,?,NOW())';
+    var params = [nickname, body.rate, body.olreview, body.moviename]
+    var sql2 = 'SELECT * FROM movie WHERE movie_name=?'
+    var sql3 = 'SELECT * FROM review WHERE review_moviename =?'
+    if (!authCheck.isOwner(req, res)) {
+        res.redirect('/login'); //로그인 안하고 마이페이지 갈시
+    }
+
+    else{
+        console.log(body.rate);
+        conn.query(sql,params, function (err, rows, fields) {
+            conn.query(sql2,body.moviename,function(err,data){
+                conn.query(sql3,body.moviename,function(err,datas){
+                    if(err) console.log('query is not excuted. select fail...\n' + err);
+                    else res.render('movie_in.ejs', {list : data,reviews:datas, IS:IS, nickname:nickname});
+                });
+              
+            });
+        
+           
+            
+
+        });
+    }
+    
+});
 
 app.post('/search', function(req, res) {
     var body = req.body;

@@ -39,11 +39,17 @@
                     <nav class="nav">
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <li><a href="/the_moie">영화관</a></li>
-                            <li><a href="#">스토어</a></li>
-                            <li><a href="/my_page">내정보</a></li>
+                            <li><a href="/the_moie">영화예매</a></li>    
+                            <li><a href="/my_page">내정보</a></li>        
+                            <% if (IS) { %>
+                                <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
+                                <% } else { %>
+                                <li><a href="/login">로그인</a></li>
+                                <% }; %>
+                        </ul>
+                           
                        
-                            <li><a href="/login">로그인</a></li>
+                            
                   
                         </ul>
                     </nav>    
@@ -92,33 +98,56 @@
                 </p>
             </div>
             </div>
-        </div>
-
-        <div class="main_text2"> 
-            <div>
-                <p class="p_한줄평가">[ 감상평 ]</p>
-                <hr>
+            <div class="main_text3"> 
                 <div>
-                    <div class="comment-bar">
-                        <textarea id="comment-input" placeholder="감상평을 작성해주세요..."></textarea>
-                        <button id="submit-btn">등록</button>
-                      </div>
-            </div>
-            </div>
+                  <p class="p_한줄평가">[ 감상평 및 평점  ] <span class="rating-info"></span></p>
+                  <hr>
+                  <div class="comment-bar" style="width:100%">
+                    <form action="/inreview" calass = "form" id="form" method="POST" style="width:100%; display: flex; justify-content: center;">
+                        <input type="text" id="comment-input" name="olreview" placeholder="감상평을 작성해주세요..." style="width:70%; height:50%" >
+                        
+                       
+                        <input type="text" name="moviename" value="<%= list[0].movie_name %>" style="display:none" />
+                          <input type="number" id="rating-input" min="1" max="10" name="rate" placeholder="평점" style="height:50%" />
+                        <button id="submit-btn" type="submit">등록</button>
+                        
+                    </form>
+                    
+                  </div>
+                  <% if (reviews[0] != null) { %>
+                    <% for (var i=0; i < reviews.length; i++) { %> 
+                  <div  style="display: flex; font-size: 16px; justify-content: center;">
+                  
+                    <p>작성자 : <%= reviews[i].review_uid %> ---- </p>
+                    <p>한줄평 : <%= reviews[i].review_olreview %> ---- </p>   
+                    <p>평점: <%= reviews[i].review_grade%></p>
+                  </div>
+                  <% }; %>
+                  <% }else { %>
+                    <div>
+                        <h3>검색결과 없음</h3>
+                    </div>
+                <% }; %>
+                </div>
+              </div>
         </div>
 
-    
+        
+        
 
           
+</div>
 
-    </div>
 
+
+    
 
 
     <div class="detail-end"></div> 
 
     
 </body>
+
 <script>
     function logoutCheck() {
             if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
@@ -130,6 +159,9 @@
 
      
   </script>
+
+
+
   <script>
     window.onload = function() {
       var dateString = "<%= list[0].movie_releasedate %>";
