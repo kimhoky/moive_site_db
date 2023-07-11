@@ -172,6 +172,13 @@ app.post('/inreview', function (req, res) {
     
 });
 
+
+app.get('/login', function(req, res) {
+    res.render('login.ejs');
+});                         //영화시간선택으로 가게함
+
+
+
 app.post('/search', function(req, res) {
     var body = req.body;
     var searchinput = body.searchinput;
