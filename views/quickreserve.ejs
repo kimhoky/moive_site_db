@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>영화 예매페이지</title>
+<title>Movie Ticket Booking Widget Flat Responsive Widget Template :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,6 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.seat-charts.js"></script>
 
+
 <link rel="stylesheet" href="./reset.css">
 <link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="./swiper.css">
@@ -30,7 +31,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
 </head>
 <body>
-
 	<header id="header">
 		<div style="background-color:white;" >
 			<div class="row">
@@ -57,6 +57,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</header>
+
 <div class="content">
 	<h1>Movie Ticket Booking Widget</h1>
 	<div class="main">
@@ -76,7 +77,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<ul class="book-right">
 					<div class="movie-select">
 						<select name="movie" id="movie">
-						  	<option value="gingerclown"><%= title %></option>
+							<% for(var i =0;i<title.length;i++) { %>
+								<option value="gingerclown"><%= title[i].movie_name %></option>
+							<% }; %>
 						</select>
 					  </div>
 					  <div class="day-select">

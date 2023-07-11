@@ -41,12 +41,10 @@
                             <li><a href="/movie">영화</a></li>
                             <li><a href="/the_moie">영화관</a></li>
                             <li><a href="#">스토어</a></li>
-                            <li><a href="/my_page">마이페이지</a></li>
-                            <% if (IS) { %>
-                            <li><a onclick="logoutCheck()"><%= nickname %></a></li>
-                            <% } else { %>
+                            <li><a href="/my_page">내정보</a></li>
+                       
                             <li><a href="/login">로그인</a></li>
-                            <% }; %>
+                  
                         </ul>
                     </nav>    
                 </div>
@@ -63,7 +61,7 @@
             <div class="movie-intro">
                 <img src="assets/img/<%= list[0].movie_name %>.jpg">
             </div>
-                <button class="btn_T">예매하기</button>
+                <button class="btn_T"><a href="/reserve?movie_name=<%= list[0].movie_name %>">예매하기</a></button>
         </div>
         
    
