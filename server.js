@@ -44,6 +44,21 @@ app.get('/', function (req, res) {
     }
 });
 
+app.get('/reserve', function(req, res) {
+    if (!authCheck.isOwner(req, res)) {
+        res.redirect('/login'); //로그인 안하고 마이페이지 갈시
+    }
+    else {
+        var nickname = req.session.nickname;
+        var IS = req.session.is_logined;
+        var sql = 'SELECT * FROM user WHERE user_id =?';
+        conn.query(sql, [nickname], function (err, rows, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else res.render('reserve.ejs', {mypage : rows, nickname : nickname, IS : IS});
+    });
+    }
+})
+
 app.use(express.static("views"));
 // 추가 (이게 핵심)
 app.get('/movie_in', function (req, res) {
@@ -157,9 +172,6 @@ app.post('/chinformation', function (req, res) {
         });
         
 });
-app.get('/reserve', function(req, res) {
-    res.render('reserve.ejs');
-})
 
 app.post('/membership', function (req, res) {
     var body = req.body;
