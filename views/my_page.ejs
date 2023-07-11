@@ -181,20 +181,22 @@
                 
                 
             </div>
-           
+            <!-- 검색창 -->
+         <% if (myreserve[0] != null) { %>
+            <% for (var i=0; i < myreserve.length; i++) { %> 
             <div class="mypage_form-group" style="font-size: 16px;">
     
            
                 <label for="password">예약 id:</label>
-                <label for="phone"><%= myreserve[0].reserve_id %></label>
+                <label for="phone"><%= myreserve[i].reserve_id %></label>
                 
            
                 <label for="phone">예약자 ID</label>
-                <label for="phone"><%= myreserve[0].reserve_uid %></label>
+                <label for="phone"><%= myreserve[i].reserve_uid %></label>
                 
            
                 <label for="email">예약 좌석</label>
-                <label for="phone"><%= myreserve[0].reserve_seat %></label>
+                <label for="phone"><%= myreserve[i].reserve_seat %></label>
                 
             
                 <label for="salary">영화 시작시간</label>
@@ -206,6 +208,45 @@
                 
             </div>
             
+
+            <script>
+                window.onload = function tim() {
+                var dateString = "<%= myreserve[i].reserve_moviestart %>";
+                var dateStringend = "<%= myreserve[i].reserve_movieend %>";
+                var dateObj = new Date(dateString);
+                var dateObjend = new Date(dateStringend);
+          
+                var year = dateObj.getFullYear();
+                var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+                var day = ("0" + dateObj.getDate()).slice(-2);
+                var hours = ("0" + dateObj.getHours()).slice(-2);
+                var minutes = ("0" + dateObj.getMinutes()).slice(-2);
+      
+                var eyear = dateObjend.getFullYear();
+                var emonth = ("0" + (dateObjend.getMonth() + 1)).slice(-2);
+                var eday = ("0" + dateObjend.getDate()).slice(-2);
+                var ehours = ("0" + dateObjend.getHours()).slice(-2);
+                var eminutes = ("0" + dateObjend.getMinutes()).slice(-2);
+      
+      
+                var formattedsDate = year + "년 " + month + "월 " + day + "일" + hours + "시 " + minutes + "분";
+                var formattedeDate = eyear + "년 " + emonth + "월 " + eday + "일" + ehours + "시 " + eminutes + "분";
+          
+                document.getElementById("formatted-date").innerHTML = formattedsDate;
+                document.getElementById("formatted-edate").innerHTML = formattedeDate;
+              };
+      
+              
+            </script>
+            <% }; %>
+        
+            
+                
+            <% }else { %>
+                <div>
+                    <h3>검색결과 없음</h3>
+                </div>
+            <% }; %>
             
         </div>
     </div>      <!--mypage 소개창-->
