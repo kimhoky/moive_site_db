@@ -50,16 +50,33 @@ app.get('/reserve', function(req, res) {
     }
     else {
         let movie_name = req.query.movie_name;
-            res.render('reserve.ejs', {title : movie_name});
+        var sql1 = 'SELECT * FROM movie WHERE movie_name =?';
+        conn.query(sql1, [movie_name], function (err, rows1, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else 
+                var sql2 = 'SELECT reserve_seat FROM reserve WHERE reserve_moviename =?';
+                conn.query(sql2, [movie_name], function (err, rows2, fields) {
+                    if(err) console.log('query is not excuted. select fail...\n' + err);
+                    else res.render('reserve.ejs', { title : rows1, seats : rows2});
+                });
+        });
     }
 })
 
-app.get('/quickreserve', function(req, res) {
-    var sql = 'SELECT movie_name FROM movie';
-        conn.query(sql, function (err, rows, fields) {
+app.get('/reserving', function(req, res) {
+    let movie_name = req.query.movie_name;
+    let movie_time = req.query.movie_time;
+    let movie_seats = req.query.seats;
+    var movie_seat = movie_seats.split(',')
+    console.log(movie_name,movie_time, movie_seats.split(',').length);
+    for (var i = 0; i < movie_seat.length; i++) {
+        var sql = 'insert into `reserve` (`reserve_uid`,  `reserve_seat`, `reserve_moviestart`, `reserve_movieend`, `reserve_moviename`) VALUES ("' + req.session.nickname + '", "' + movie_seat[i] + '", "2023-07-07 00:00:00.000000", "2023-07-07 02:00:00.000000", "' + movie_name + '")';
+        conn.query(sql, [movie_name], function (err) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
-            else res.render('quickreserve.ejs', { title : rows});
         });
+    }
+    res.send(`<script type="text/javascript">alert("예매가 완료되었습니다!"); 
+    document.location.href="/";</script>`);
 })
 
 app.use(express.static("views"));
@@ -73,7 +90,7 @@ app.post('/movie_in', function (req, res) {
     conn.query(sql,body.moviename, function (err, rows, fields) {
         
         if(err) console.log('query is not excuted. select fail...\n' + err);
-        else res.render('movie_in.ejs', {list : rows, IS:IS});
+        else res.render('movie_in.ejs', {list : rows, IS:IS, nickname : nickname});
     });
 });
 app.get('/login', function(req, res) {

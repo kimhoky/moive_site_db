@@ -30,6 +30,7 @@
                         <a href="/">
                             <em><img src="assets/img/logo.png" alt="MEGABOX"></em>
                             <strong><img src="assets/img/logo-sub.png" alt="LIFE THEATER"></strong>
+                    
                         </a>    
                     </h1>
                     <nav id="mNav">
@@ -39,12 +40,13 @@
                     <nav class="nav">
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <li><a href="/the_moie">영화관</a></li>
-                            <li><a href="#">스토어</a></li>
+                            <li><a href="/quickreserve">영화예매</a></li>
                             <li><a href="/my_page">내정보</a></li>
-                       
+                            <% if (IS) { %>
+                            <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
+                            <% } else { %>
                             <li><a href="/login">로그인</a></li>
-                  
+                            <% }; %>
                         </ul>
                     </nav>    
                 </div>
@@ -143,5 +145,12 @@
 
       document.getElementById("formatted-date").innerHTML = formattedDate;
     };
+    function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
   </script>
 </html>
