@@ -191,8 +191,8 @@
                                 <div class="reserve_group" style="font-size: 16px;">
                         
                                     <div class="reservator_info">
-                                        <label for="password">예매번호:</label>
-                                        <label for="phone"><%= myreserve[i].reserve_id %></label>
+                                        <label for="password">예매 번호: </label>
+                                        <label for="phone"><%= i + 1 %></label>
                                         
                                    
                                         <label for="phone">예매자 ID: </label>
@@ -208,7 +208,7 @@
                                     <label for="salary">영화 이름: </label>
                                     <label for="salary"><%= myreserve[i].reserve_moviename %></label>
                                     <br>
-                                    
+
                                     <label for="salary">영화 시작시간 : </label>
                                     <label for="phone"><span id="formatted-date-<%= i %>"></span></label>
                                     
