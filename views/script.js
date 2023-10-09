@@ -27,3 +27,4 @@ movBtn.click(function(e){
     movCont.css("display","none");
     movCont.eq(index).css("display","block");
 });
+

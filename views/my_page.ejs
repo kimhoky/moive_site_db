@@ -89,6 +89,7 @@
             padding: 100px;
             border: 3px solid #ccc;
             border-radius: 5px;
+            
         }
 
         .mypage_profile {
@@ -138,9 +139,13 @@
             background-color: #45a049;
         }
         .reserve_group {
+            width:320px;
             margin: 5pt;
             border:1pt solid black ;
+            
         }
+        
+      
 
     </style>
 </head>
@@ -180,91 +185,108 @@
                 <button type="submit" class="btn">수정</button>
             <!-- </div> -->
             </form>
-                <button type="button" class="btn" style="margin-top:10px">예매 확인</button>
-
+            <div>
                 
-                        <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
+                
+                <!-- <img src="사진링크" alt="프로필 사진" class="profile-img"> -->
+              
+                <div class="re_gp">
+                    <% if (myreserve[0] != null) { %>
+                        <% for (var i=0; i < myreserve.length; i++) { %> 
+                        <div class="reserve_group" style="font-size: 16px;">
+                
+                            <div class="reserve_img" style="width: 320px; height:60%;">
+                                <img src="assets/img/<%= myreserve[i].reserve_moviename %>.jpg" alt="<%= myreserve[i].myreserve_moviename %>">
+                            </div>
+                            <div class="reserve_info">
+                                <div class="reservator_info">
+                                    <label for="password">예매 번호: </label>
+                                    <label for="phone"><%= i + 1 %></label>
+                                    
+                               
+                                    <label for="phone">예매자 ID: </label>
+                                    <label for="phone"><%= myreserve[i].reserve_uid %></label>
+                                    
+                               
+                                    <label for="email">예매 좌석: </label>
+                                    <label for="phone"><%= myreserve[i].reserve_seat %></label>
+                                </div>
+                               
+                                
+                            <div class="movie_info">
+                                <label for="salary">영화 이름: </label>
+                                <label for="salary"><%= myreserve[i].reserve_moviename %></label>
+                                <br>
+
+                                <label for="salary">영화 시작시간 : </label>
+                                <label for="phone"><span id="formatted-date-<%= i %>"></span></label>
+                                
+                                <br>
+                                <label for="salary">영화 종료시간: </label>
+                                <label for="phone"><span id="formatted-edate-<%= i %>"></span></label>
+                            </div>
+                            </div>
+                            
+                          
+                        
+                       
+                        </div>
+
+                       
+                        <% }; %>
+                        <script>
+                            <% for (var i=0; i < myreserve.length; i++) { %>
+                          
+                                var dateString<%= i %> = "<%= myreserve[0].reserve_moviestart %>";
+                                var dateStringend<%= i %> = "<%= myreserve[0].reserve_movieend %>";
+                                 var dateObj<%= i %> = new Date(dateString<%= i %>);
+                                 var dateObjend<%= i %> = new Date(dateStringend<%= i %>);
+
+
+                                var year<%= i %> = dateObj<%= i %>.getFullYear();
+                            var month<%= i %> = ("0" + (dateObj<%= i %>.getMonth() + 1)).padStart(2, '0');
+                            var day<%= i %> = ("0" + dateObj<%= i %>.getDate()).padStart(2, '0');
+                            var hours<%= i %> = ("0" + dateObj<%= i %>.getHours()).padStart(2, '0');
+                            var minutes<%= i %> = ("0" + dateObj<%= i %>.getMinutes()).padStart(2, '0');
+                  
+                            var eyear<%= i %> = dateObjend<%= i %>.getFullYear();
+                            var emonth<%= i %> = ("0" + (dateObjend<%= i %>.getMonth() + 1)).padStart(2, '0');
+                            var eday<%= i %> = ("0" + dateObjend<%= i %>.getDate()).padStart(2, '0');
+                            var ehours<%= i %> = ("0" + dateObjend<%= i %>.getHours()).padStart(2, '0');
+                            var eminutes<%= i %> = ("0" + dateObjend<%= i %>.getMinutes()).padStart(2, '0');
+                  
+                  
+                            var formattedsDate<%= i %> = year<%= i %> + "년 " + month<%= i %> + "월 " + day<%= i %> + "일" + hours<%= i %> + "시 " + minutes<%= i %> + "분";
+                            var formattedeDate<%= i %> = eyear<%= i %> + "년 " + emonth<%= i %> + "월 " + eday<%= i %> + "일" + ehours<%= i %> + "시 " + eminutes<%= i %> + "분";
                       
-                        
-                            <% if (myreserve[0] != null) { %>
-                                <% for (var i=0; i < myreserve.length; i++) { %> 
-                                <div class="reserve_group" style="font-size: 16px;">
-                        
-                                    <div class="reservator_info">
-                                        <label for="password">예매 번호: </label>
-                                        <label for="phone"><%= i + 1 %></label>
-                                        
-                                   
-                                        <label for="phone">예매자 ID: </label>
-                                        <label for="phone"><%= myreserve[i].reserve_uid %></label>
-                                        
-                                   
-                                        <label for="email">예매 좌석: </label>
-                                        <label for="phone"><%= myreserve[i].reserve_seat %></label>
-                                    </div>
-                                   
-                                    
-                                <div class="movie_info">
-                                    <label for="salary">영화 이름: </label>
-                                    <label for="salary"><%= myreserve[i].reserve_moviename %></label>
-                                    <br>
+                            console.log(formattedsDate<%= i %>);
+                            document.getElementById("formatted-date-<%= i %>").innerHTML = formattedsDate<%= i %>;
+                            document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
+                      
+                            <% }; %>  
 
-                                    <label for="salary">영화 시작시간 : </label>
-                                    <label for="phone"><span id="formatted-date-<%= i %>"></span></label>
-                                    
-                                    <br>
-                                    <label for="salary">영화 종료시간: </label>
-                                    <label for="phone"><span id="formatted-edate-<%= i %>"></span></label>
-                                </div>
-                                  
-                                
-                               
-                                </div>
+  
 
-                               
-                                <% }; %>
-                                <script>
-                                    <% for (var i=0; i < myreserve.length; i++) { %>
-                                  
-                                        var dateString<%= i %> = "<%= myreserve[0].reserve_moviestart %>";
-                                        var dateStringend<%= i %> = "<%= myreserve[0].reserve_movieend %>";
-                                         var dateObj<%= i %> = new Date(dateString<%= i %>);
-                                         var dateObjend<%= i %> = new Date(dateStringend<%= i %>);
+                        </script>
+                        
         
-        
-                                        var year<%= i %> = dateObj<%= i %>.getFullYear();
-                                    var month<%= i %> = ("0" + (dateObj<%= i %>.getMonth() + 1)).padStart(2, '0');
-                                    var day<%= i %> = ("0" + dateObj<%= i %>.getDate()).padStart(2, '0');
-                                    var hours<%= i %> = ("0" + dateObj<%= i %>.getHours()).padStart(2, '0');
-                                    var minutes<%= i %> = ("0" + dateObj<%= i %>.getMinutes()).padStart(2, '0');
-                          
-                                    var eyear<%= i %> = dateObjend<%= i %>.getFullYear();
-                                    var emonth<%= i %> = ("0" + (dateObjend<%= i %>.getMonth() + 1)).padStart(2, '0');
-                                    var eday<%= i %> = ("0" + dateObjend<%= i %>.getDate()).padStart(2, '0');
-                                    var ehours<%= i %> = ("0" + dateObjend<%= i %>.getHours()).padStart(2, '0');
-                                    var eminutes<%= i %> = ("0" + dateObjend<%= i %>.getMinutes()).padStart(2, '0');
-                          
-                          
-                                    var formattedsDate<%= i %> = year<%= i %> + "년 " + month<%= i %> + "월 " + day<%= i %> + "일" + hours<%= i %> + "시 " + minutes<%= i %> + "분";
-                                    var formattedeDate<%= i %> = eyear<%= i %> + "년 " + emonth<%= i %> + "월 " + eday<%= i %> + "일" + ehours<%= i %> + "시 " + eminutes<%= i %> + "분";
-                              
-                                    console.log(formattedsDate<%= i %>);
-                                    document.getElementById("formatted-date-<%= i %>").innerHTML = formattedsDate<%= i %>;
-                                    document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
-                              
-                                    <% }; %>    
-                                    
-                                </script>
-                                
+    <% }else { %>
+        <div>
+            <h3>검색결과 없음</h3>
+        </div>
+    <% }; %>
+
+  
+            </div>
                 
-            <% }else { %>
-                <div>
-                    <h3>검색결과 없음</h3>
-                </div>
-            <% }; %>
-            
+           
+                        </div>
+                            
+                       
         </div>
     </div>      <!--mypage 소개창-->
+    
+    
     
 </body>
     
@@ -272,7 +294,7 @@
     
     <!-- 자바스크립트 라이브러리 -->
     <script src="script.js"></script>
-   
+  
     
     <script>
         //배너 이미지 슬라이드
@@ -288,6 +310,12 @@
                 delay: 5000,
             },
         });
+        
+    
+    
+    
+
+        
         
         //영화차트 탭 메뉴
         var movBtn = $(".movie_title > ul > li");    
@@ -311,6 +339,7 @@
                 return false;
             }
         }
+       
     </script>
 </body>
 </html>
