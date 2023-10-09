@@ -46,10 +46,11 @@ app.get('/', function (req, res) {
 
 app.get('/reserve', function(req, res) {
     if (!authCheck.isOwner(req, res)) {
-        res.redirect('/login'); //로그인 안하고 마이페이지 갈시
+        res.redirect('/login'); //로그인 안하고 예매페이지 갈시
     }
     else {
         let movie_name = req.query.movie_name;
+        let movie_time = req.query.movie_time;
         var sql1 = 'SELECT * FROM movie WHERE movie_name =?';
         conn.query(sql1, [movie_name], function (err, rows1, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
@@ -57,7 +58,7 @@ app.get('/reserve', function(req, res) {
                 var sql2 = 'SELECT reserve_seat FROM reserve WHERE reserve_moviename =?';
                 conn.query(sql2, [movie_name], function (err, rows2, fields) {
                     if(err) console.log('query is not excuted. select fail...\n' + err);
-                    else res.render('reserve.ejs', { title : rows1, seats : rows2});
+                    else res.render('reserve.ejs', { title : rows1, seats : rows2, movie_time : movie_time});
                 });
         });
     }

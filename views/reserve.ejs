@@ -68,12 +68,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="booking-details">
 				<ul class="book-left">
 					<li>Movie </li>
+					<li>Date </li>
 					<li>Time </li>
 					<li>Tickets</li>
 					<li>Total</li>
 					<li>Seats :</li>
 				</ul>
-			<!-- <form action="/reserving" class="form" id="form" method="POST"> -->
 				<ul class="book-right">
 					<div class="movie-select">
 						<select name="movie" id="movie">
@@ -89,7 +89,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<input type="time" id="movie-time" name="movie-time">
 					  </div>
 					<li>: <span id="counter">0</span></li>
-					<li>: <b><i>$</i><span id="total">0</span></b></li>
+					<li>: <b><i>₩</i><span id="total">0</span></b></li>
 				</ul>
 				<div class="clear"></div>
 				<ul id="selected-seats" class="scrollbar scrollbar1"></ul>
@@ -204,10 +204,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					+ " 가격 : " + ttotal
 					+ " 좌석 : " + seat
 					) == true){    //확인
-                document.location.href="/reserving/?movie_name="+movie_name+"&movie_time="+movie_time+"&seats="+seat;
-            }else{   //취소
-                return false;
-            }
+							document.location.href="/reserving/?movie_name="+movie_name+"&movie_time="+movie_time+"&seats="+seat;
+							}else{   //취소
+								return false;
+							}
 			}
 		</script>
 </div>
