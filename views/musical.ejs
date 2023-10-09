@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
+    <meta name="keywords" content="메가박스, 유투브, 영화, 최신영화, 영화관, CGV, 롯데시네마, 웹스토리보이, 웹스, 사이트 만들기, 따라하기">
+    <title>fresh tomato</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css?after">
+    <link rel="stylesheet" href="./style.css?after">
+    <link rel="stylesheet" href="./swiper.css?after">
+    
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" href="assets/icons/freash_tomato_logo.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/icons/freash_tomato_logo.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="assets/icons/freash_tomato_logo.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/icons/freash_tomato_logo.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="assets/icons/freash_tomato_logo.png" />
+    
+    <!-- 페이스북 메타 태그 -->
+    <meta property="og:title" content="메가박스 사이트 만들기" />
+    <meta property="og:url" content="https://github.com/webstoryboy/megabox2019" />
+    <meta property="og:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg" />
+    <meta property="og:description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다." />
+   
+    <!-- 트위터 메타 태그 -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="메가박스 사이트 만들기">
+    <meta name="twitter:url" content="https://github.com/webstoryboy/megabox2019/">
+    <meta name="twitter:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg">
+    <meta name="twitter:description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
+    
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+    
+    <!-- HTLM5shiv ie6~8 -->
+    <!--[if lt IE 9]> 
+      <script src="assets/js/html5shiv.min.js"></script>
+      <script type="text/javascript">
+         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+      </script>
+   <![endif]-->
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <a href="/">
+                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="height: 2rem; width: 7rem;"></strong>
+                    
+                        </a>    
+                    </h1>
+                    <nav id="mNav">
+                        <h2 class="ir_so">메가박스 전체메뉴</h2>
+                        <a href="#" class="ham"><span></span></a>
+                    </nav>
+                    <nav class="nav">
+                        <ul class="clearfix">
+                            <li><a href="/movie">영화</a></li>
+                            <li><a href="/quickreserve">영화예매</a></li>
+                            <li><a href="/my_page">내정보</a></li>
+                            <% if (IS) { %>
+                            <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
+                            <% } else { %>
+                            <li><a href="/login">로그인</a></li>
+                            <% }; %>
+                        </ul>
+                    </nav>    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+    <div class="search">
+        <div class="input-box">
+            <i class="uil uil-search"></i>
+            <form action="/search" calass = "form" id="form" method="POST">
+                <input type="text" placeholder="영화를 검색하세요" class="input" name="searchinput"/>
+                <a href="/search">
+                    <button class="button">
+                        <img src="assets/img/search.png">
+                    </button>
+                </a>
+            </form>
+        </div>
+    </div>
+         <!-- 검색창 -->
+    
+    
+    <section id="banner">
+        <div class="banner_menu">
+            <h2 class="ir_so">배너 영역</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="bm_left">
+                        <ul>
+                            <!-- <li class="total"><a href="#">전체메뉴</a></li>
+                            <li class="line"><a href="#">필름 소사이어티</a></li>
+                            <li><a href="#">클래식 소사이어티</a></li> -->
+                        </ul>
+                    </div>
+                    <div class="bm_right">
+                        <ul>
+                            <!-- <li class="line"><a href="custom/faq.html">고객센터</a></li>
+                            <li class="line"><a href="#">멤버쉽</a></li>
+                            <li><a href="#">VIP</a></li> -->
+                        </ul>
+                        <ul>
+                            <!-- <li class="white"><a href="#">상영시간표</a></li> -->
+                            <!-- <li class="purple"><a href="/quickreserve">빠른예매</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--슬라이더-->
+        <ul class="slides">
+            <input type="radio" name="radio-btn" id="img-1" checked />
+            <li class="slide-container">
+            <div class="slide">
+                <img src="./assets/img/main_slider02.png" />              
+                <div class="h1_text">
+              </div>
+                </div>
+            <div class="nav">
+              <label for="img-4" class="prev">&#x2039;</label>
+              <label for="img-2" class="next">&#x203a;</label>
+            </div>
+            </li>
+        
+            <input type="radio" name="radio-btn" id="img-2" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="./assets/img/main_slider01.png" />              
+                    <div class="h1_text">
+                  </div>
+                </div>
+            <div class="nav">
+              <label for="img-1" class="prev">&#x2039;</label>
+              <label for="img-3" class="next">&#x203a;</label>
+            </div>
+            </li>
+        
+            <input type="radio" name="radio-btn" id="img-3" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="./assets/img/main_slider03.jpg" />              
+                </div>
+            <div class="nav">
+              <label for="img-2" class="prev">&#x2039;</label>
+              <label for="img-4" class="next">&#x203a;</label>
+            </div>
+            </li>
+        
+            <input type="radio" name="radio-btn" id="img-4" />
+            <li class="slide-container">
+                <div class="slide">
+                    <img src="./assets/img/main_slider04_03.jpg" />              
+                    <!-- <div class="h1_text">
+                    <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1>
+                  </div> -->
+                </div>
+            <div class="nav">
+              <label for="img-3" class="prev">&#x2039;</label>
+              <label for="img-1" class="next">&#x203a;</label>
+            </div>
+            </li>
+        
+        
+            <li class="nav-dots">
+              <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+              <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+              <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+              <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+              
+              
+            </li>
+      </ul>
+    </section>
+    <!-- //banner -->
+    
+    
+    <section id="movie">
+        <h2 class="ir_so">최신 영화 정보</h2>
+ 
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="movie">
+                    <div class="choice_btn">
+                   <button herf="/lndex">영화 목록</button>
+                    <button herf="/musical">뮤지컬 목록</button>
+                </div>
+                    
+                    <div class="movie_chart">
+                        <div class="chart_cont1">
+                            <% for (var i=0; i < 4; i++) { %>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/<%= title[i].review_moviename %>.jpg" alt="<%= title[i].review_moviename %>">
+                                    </figure>
+                                    <div class="rank"><strong><%= i+1 %></strong></div>
+                                    <div class="mx">
+                                        <span class="icon m ir_pm">MX</span>
+                                        <span class="icon b ir_pm">Boutique</span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </strong></h3>
+                                    
+                                    <div class="infor_btn" style="display:flex; gap: 3px; ">
+                                        <form action="/movie_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="moviename" style = "display:none" value =<%= title[i].review_moviename %> />
+                                            <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
+                                        </form>
+                                        <a href="/reserve?movie_name=<%= title[i].review_moviename %>">예매하기</a>
+                                    </div>
+                                        
+                                        
+                                    
+                                </div>
+                            </div>
+                            <% }; %>
+                        </div>
+                            
+                        <div class="chart_cont2">
+                            <% for (var i=4; i < 8; i++) { %>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/<%= title[i].review_moviename %>.jpg" alt="<%= title[i].review_moviename %>">
+                                    </figure>
+                                    <div class="rank"><strong><%= i+1 %></strong></div>
+                                    <div class="mx">
+                                        <span class="icon m ir_pm">MX</span>
+                                        <span class="icon b ir_pm">Boutique</span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </strong></h3>
+                                    <div class="infor_btn" style="display:flex; gap: 3px; ">
+                                        <form action="/movie_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="moviename" style = "display:none" value =<%= title[i].review_moviename %> />
+                                            <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
+                                        </form>
+                                        <a href="/reserve?movie_name=<%= title[i].review_moviename %>">예매하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }; %>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- //movie -->
+    
+    
+    
+    <!-- 자바스크립트 라이브러리 -->
+    <script src="script.js"></script>
+
+    <script>
+        //배너 이미지 슬라이드
+        var swiper = new Swiper('.swiper-container',{
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+        
+        //영화차트 탭 메뉴
+        var movBtn = $(".movie_title > ul > li");    
+        var movCont = $(".movie_chart > div");  
+
+        movCont.hide().eq(0).show();
+
+        movBtn.click(function(e){
+            e.preventDefault();
+            var target = $(this);         
+            var index = target.index();  
+            movBtn.removeClass("active");   
+            target.addClass("active");    
+            movCont.css("display","none");
+            movCont.eq(index).css("display","block");
+        });
+        function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
+        
+    </script>
+    <script>
+        function moveSearchBar() {
+  var searchBar = document.querySelector('.search');
+  var windowWidth = window.innerWidth;
+
+  // Calculate the left position based on screen width
+  var leftPosition = windowWidth - 500; // Adjust the value as needed
+
+  // Set the left position for the search bar
+  searchBar.style.left = leftPosition + 'px';
+}
+
+// Call the function on page load and when the window is resized
+window.onload = moveSearchBar;
+window.onresize = moveSearchBar;
+
+    </script>
+    <!— 자바스크립트 라이브러리 —>
+    <script src="assets/js/jquery.min_1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="assets/js/ie-checker.js"></script>
+    <script src="assets/js/swiper.min.js"></script>
+</body>
+<style>
+</style>
+</html>
