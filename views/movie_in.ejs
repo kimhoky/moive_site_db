@@ -115,20 +115,23 @@
                     </form>
                     
                   </div>
-                  <% if (reviews[0] != null) { %>
-                    <% for (var i=0; i < reviews.length; i++) { %> 
-                  <div  style="display: flex; font-size: 16px; justify-content: center;">
-                  
-                    <p>작성자 : <%= reviews[i].review_uid %> ---- </p>
-                    <p>한줄평 : <%= reviews[i].review_olreview %> ---- </p>   
-                    <p>평점: <%= reviews[i].review_grade%></p>
+                  <div class="review_box">
+                    <% if (reviews[0] != null) { %>
+                        <% for (var i=0; i < reviews.length; i++) { %> 
+                      <div  style="display: flex; font-size: 16px; justify-content: center;">
+                      
+                        <p>작성자 : <%= reviews[i].review_uid %> ---- </p>
+                        <p>한줄평 : <%= reviews[i].review_olreview %> ---- </p>   
+                        <p>평점: <%= reviews[i].review_grade%></p>
+                      </div>
+                      <% }; %>
+                      <% }else { %>
+                        <div>
+                            <h3>검색결과 없음</h3>
+                        </div>
+                    <% }; %>
                   </div>
-                  <% }; %>
-                  <% }else { %>
-                    <div>
-                        <h3>검색결과 없음</h3>
-                    </div>
-                <% }; %>
+                
                 </div>
               </div>
         </div>
