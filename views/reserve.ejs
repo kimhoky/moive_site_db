@@ -106,6 +106,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			var seat = [];
 			var sm = 0;
 			var ttotal = 0;
+			var movie_time ='';
+			// 10-09 수정
+			// var movie_day = ' running[0].movie_day %>'
+			// var movie_time = ' running[0].movie_starttime %>';
 			var price = <%= title[0].movie_price %>; //price
 			$(document).ready(function() {
 				$cart = $('#selected-seats'), //Sitting Area
@@ -196,7 +200,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 			function reserveCheck() {
 				var movie_name = '<%= title[0].movie_name %>';
-				var movie_time = '';
 				if (confirm(
 					"이 내용으로 예매 하시겠습니까?"
 					+ " 영화 : " + movie_name
@@ -208,6 +211,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							}else{   //취소
 								return false;
 							}
+			}
+			if ( movie_time != null) {
+				document.getElementById("day").innerHTML = movie_day;
+				document.getElementById("movie-time").innerHTML = movie_time;
 			}
 		</script>
 </div>

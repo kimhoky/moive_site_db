@@ -50,7 +50,6 @@ app.get('/reserve', function(req, res) {
     }
     else {
         let movie_name = req.query.movie_name;
-        let movie_time = req.query.movie_time;
         var sql1 = 'SELECT * FROM movie WHERE movie_name =?';
         conn.query(sql1, [movie_name], function (err, rows1, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
@@ -58,7 +57,22 @@ app.get('/reserve', function(req, res) {
                 var sql2 = 'SELECT reserve_seat FROM reserve WHERE reserve_moviename =?';
                 conn.query(sql2, [movie_name], function (err, rows2, fields) {
                     if(err) console.log('query is not excuted. select fail...\n' + err);
-                    else res.render('reserve.ejs', { title : rows1, seats : rows2, movie_time : movie_time});
+                    else 
+                    var movie_day = '';
+                    var movie_time = '';
+                    if (req.query.movie_day != null) {
+                        let movie_day = req.query.movie_day;
+                        let movie_time = req.query.movie_time;
+                        var sql3 = 'SELECT * FROM screening WHERE screening_name =' + movie_name + ' AND screening_day =' + movie_day + ' AND screening_stime =' + movie_time;
+                        conn.query(sql3, [movie_name], function (err, rows3, fields) {
+                            if(err) console.log('query is not excuted. select fail...\n' + err);
+                            else 
+                                res.render('reserve.ejs', { title : rows1, seats : rows2, screening : rows3});
+                        });
+                    }
+                    else {
+                        res.render('reserve.ejs', { title : rows1, seats : rows2});
+                    }
                 });
         });
     }
