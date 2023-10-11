@@ -503,6 +503,7 @@
     .header h1 strong {top: 19px;}
     
     .swiper-button-prev, .swiper-button-next {display: none;}
+    .input-box{left:470px;}
 }
 
 @media (max-width: 1024px){
@@ -514,6 +515,7 @@
     
     .banner_menu .bm_left ul {display: none;}
     .banner_menu .bm_right ul:first-child {display: none;}
+    .input-box{left:360px;}
 }
 
 @media (max-width: 960px){
@@ -522,6 +524,7 @@
     .slider .swiper-slide h2:after {bottom: -15px;}
     .slider .swiper-slide h2 em {font-size: 34px;}
     .slider .swiper-slide p {font-size: 16px; padding-top: 35px;}
+    .input-box{left:250px;}
 }
 
 @media (max-width: 768px){
@@ -529,6 +532,7 @@
     #mNav {right: 6px;}
     .header h1 {text-align: left;}
     .header h1 strong {display: none;}
+    .input-box{left:200px;}
 }
 
 @media (max-width: 600px){
@@ -542,6 +546,7 @@
     .banner_menu .bm_right li.white a {font-size: 14px; padding: 3px 5px 5px 5px; color: #fff; background: rgba(0,0,0,0.6); border-color:#fff;}
     .banner_menu .bm_right li.purple a {font-size: 14px; padding: 3px 5px 5px 5px; color: #fff; background: rgba(0,0,0,0.6); border-color:#fff;}
     .swiper-pagination-bullet {width: 13px !important; height: 13px !important;}
+    .input-box{left:150px;}
 }
 
 @media (max-width: 480px){

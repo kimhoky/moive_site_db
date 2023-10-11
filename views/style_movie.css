@@ -7,8 +7,7 @@
   width: 800px;
   height: 100px;
   margin: 0 auto;
-  justify-content: center;
-  align-items: center;
+  
   margin-top: 100px;
 }
 
@@ -18,7 +17,7 @@
   width: 700px;
   background: #fff;
   border-bottom: 3px solid #000000;
-  z-index: 9999;
+  
   margin-left: 40px;
 }
 .input-box i,
@@ -75,6 +74,7 @@
     font-size: 14px;
     padding: 8px 18px;
   }
+  
 }
 
 /* 레이아웃 */
@@ -182,6 +182,7 @@
     .header h1 strong {top: 19px;}
     
     .swiper-button-prev, .swiper-button-next {display: none;}
+    
 }
 
 @media (max-width: 1024px){
