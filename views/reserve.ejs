@@ -198,23 +198,33 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				return total;
 			}
 
-			function reserveCheck() {
-				var movie_name = '<%= title[0].movie_name %>';
-				if (confirm(
-					"이 내용으로 예매 하시겠습니까?"
-					+ " 영화 : " + movie_name
-					+ " 시간 : " + movie_time
-					+ " 가격 : " + ttotal
-					+ " 좌석 : " + seat
-					) == true){    //확인
-							document.location.href="/reserving/?movie_name="+movie_name+"&movie_time="+movie_time+"&seats="+seat;
-							}else{   //취소
-								return false;
-							}
-			}
 			if ( movie_time != null) {
 				document.getElementById("day").innerHTML = movie_day;
 				document.getElementById("movie-time").innerHTML = movie_time;
+			}
+
+			function reserveCheck() {
+				if ( seat == 0) {
+					alert( "좌석을 선택해 주세요!");
+				}
+				// else if ( ){
+
+				// }
+				else {
+					var movie_name = '<%= title[0].movie_name %>';
+					if (confirm(
+						"이 내용으로 예매 하시겠습니까?"
+						+ " 영화 : " + movie_name
+						+ " 날짜 : " + movie_day
+						+ " 시간 : " + movie_time
+						+ " 가격 : " + ttotal
+						+ " 좌석 : " + seat
+						) == true){    //확인
+								document.location.href="/reserving/?movie_name="+movie_name+"&movie_time="+movie_time+"&seats="+seat;
+								}else{   //취소
+									return false;
+								}
+					}
 			}
 		</script>
 </div>

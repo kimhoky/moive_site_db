@@ -58,22 +58,35 @@ app.get('/reserve', function(req, res) {
                 conn.query(sql2, [movie_name], function (err, rows2, fields) {
                     if(err) console.log('query is not excuted. select fail...\n' + err);
                     else 
-                    var movie_day = '';
-                    var movie_time = '';
                     if (req.query.movie_day != null) {
                         let movie_day = req.query.movie_day;
-                        let movie_time = req.query.movie_time;
-                        var sql3 = 'SELECT * FROM screening WHERE screening_name =' + movie_name + ' AND screening_day =' + movie_day + ' AND screening_stime =' + movie_time;
-                        conn.query(sql3, [movie_name], function (err, rows3, fields) {
-                            if(err) console.log('query is not excuted. select fail...\n' + err);
-                            else 
-                                res.render('reserve.ejs', { title : rows1, seats : rows2, screening : rows3});
-                        });
+                        let movie_stime = req.query.movie_stime;
+                        let movie_etime = req.query.movie_etime;
+                        var screening = screening[3];
+                        screening[0] = movie_day
+                        screening[1] = movie_stime
+                        screening[2] = movie_etime
+                        res.render('reserve.ejs', { title : rows1, seats : rows2, screening : screening});
                     }
                     else {
                         res.render('reserve.ejs', { title : rows1, seats : rows2});
                     }
                 });
+        });
+    }
+})
+
+app.get('/reserve2' , function(req, res) {
+    if (!authCheck.isOwner(req, res)) {
+        res.redirect('/login');
+    }
+    else {
+        let movie_name = req.query.movie_name;
+        var sql1 = 'SELECT * FROM screening WHERE screening_name =?';
+        conn.query(sql1, [movie_name], function (err, rows1, fields) {
+            if(err) console.log('query is not excuted. select fail...\n' + err);
+            else
+            res.render('reserve2.ejs', { screening : rows1});
         });
     }
 })
