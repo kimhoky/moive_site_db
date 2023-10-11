@@ -117,7 +117,9 @@ app.post('/movie_in', function (req, res) {
 app.get('/login', function(req, res) {
     res.render('login.ejs');
 });                         //로그인으로 가게함
-
+app.get('/choice', function(req, res) {
+    res.render('choice.ejs');
+});   
 app.get('/logoutprocess', function(req, res) {
     req.session.destroy(error => {if(error) console.log(error)});
     res.redirect('/');

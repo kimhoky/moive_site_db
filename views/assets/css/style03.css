@@ -43,5 +43,109 @@
 .banner_menu li.line:after {content: ''; width: 1px; height: 14px; background: #fff; position: absolute; right: -18px; top: 2px;}
 
 
-
+@media (max-width: 1080px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 1024px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 991px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 800px){
+	#banner {
+        position: relative;
+        width: 20%;
+        height: 30%;
+    }
+}
+@media (max-width: 768px){
+    #banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 736px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 667px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 640px){
+    #banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 600px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 568px){
+    #banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 480px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 414px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 384px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 375px){
+    #banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
+@media (max-width: 320px){
+	#banner {
+        position: relative;
+        width: 90%;
+        height: 80%;
+    }
+}
 
