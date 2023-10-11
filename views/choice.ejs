@@ -199,19 +199,17 @@
                 <!-- col-head -->
                 <div class="col-head" id="skip_movie_list">
                   <h3 class="sreader">영화</h3>
-                  <a href="#" class="skip_to_something" onclick="skipToSomething('skip_theater_list');return false;">영화선택 건너뛰기</a>
+             
                 </div>
                 <!-- col-body -->
                 <div class="col-body" style="height: 565px;">
                   <!-- 영화선택 -->
                   <div class="movie-select">
-                    <div class="tabmenu">
-                     
-                      <div class="tabmenu-selectbox MOVIECOLLAGE" style="display:none;">
-                      
-                      </div>
-                   
-                    </div>
+                    <ul>
+                    <img src="\assets\img\가디언즈오브갤럭시3.jpg">     <!--영화 이미지-->
+                    <a style="font-size: 24px;">영화제목</a>
+                    </ul>
+                 
  
                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
                       <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;"><div class="selectbox-movie-type checkedBD" style="width: auto; top: 36px; display: none;">
@@ -683,8 +681,13 @@
             dayElement.addEventListener('click', function() {
                 var selectedDate = dayElement.getAttribute('date');
                 console.log('선택한 날짜:', selectedDate);
+                
             });
         });
+
+
+
+
         function bt(){
           alert("좌석선택 클릭");
         }
@@ -694,6 +697,9 @@
     
     </body>
 <style>
+  .movie-name{
+    font-size: 100px;
+  }
 
   
   </style>
