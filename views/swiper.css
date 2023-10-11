@@ -142,9 +142,9 @@
   
   /* 슬라이드 버튼 시작 */
   .nav label {
-    top: 80px;
+    
     width: 200px;
-    height: 740px;
+    height: 500px;
     display: none;
     position: absolute;
     opacity: 0;
@@ -306,4 +306,163 @@ button.swiper-pagination-bullet {
 }
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 4px;
+}
+@media (max-width: 1290px){
+    .slides {
+        padding: 0;
+        width: 1000px;
+        height: 600px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+      .slide {
+  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      
+        transform: scale(0);
+      
+        transition: all .7s ease-in-out;
+      }
+      .nav label {
+    
+        width: 200px;
+        height: 500px;
+        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: 9;
+        cursor: pointer;
+      
+        transition: opacity .2s;
+      
+        color: #ffffff;
+        font-size: 156pt;
+        text-align: center;
+        line-height: 480px;
+        font-family: "Varela Round", sans-serif;
+    
+        text-shadow: 0px 0px 15px rgb(119, 119, 119);
+      }
+    }
+
+@media (max-width: 1024px){
+    .slides {
+        padding: 0;
+        width: 950px;
+        height: 550px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+      .slide {
+  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      
+        transform: scale(0);
+      
+        transition: all .7s ease-in-out;
+      }
+      .nav label {
+    
+        width: 100px;
+        height: 300px;
+        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: 9;
+        cursor: pointer;
+      
+        transition: opacity .2s;
+      
+        color: #ffffff;
+        font-size: 156pt;
+        text-align: center;
+        line-height: 480px;
+        font-family: "Varela Round", sans-serif;
+    
+        text-shadow: 0px 0px 15px rgb(119, 119, 119);
+      }
+      
+}
+
+@media (max-width: 960px){
+    .slides {
+        padding: 0;
+        width: 800px;
+        height: 450px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+      .slide {
+  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      
+        transform: scale(0);
+      
+        transition: all .7s ease-in-out;
+      }
+}
+
+@media (max-width: 768px){
+    .slides {
+        padding: 0;
+        width: 600px;
+        height: 350px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+      .slide {
+  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      
+        transform: scale(0);
+      
+        transition: all .7s ease-in-out;
+      }
+}
+
+@media (max-width: 480px){
+    .slides {
+        padding: 0;
+        width: 300px;
+        height: 180px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+      }
+      .slide {
+  
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+      
+        transform: scale(0);
+      
+        transition: all .7s ease-in-out;
+      }
+}
+
+@media (max-width: 320px){
+    
 }

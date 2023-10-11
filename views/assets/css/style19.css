@@ -247,7 +247,7 @@ body.modal_on {overflow: hidden;}
     .container {width: 100%;}
     #header .row {padding-right: 0;}
     .header .nav li:last-child {border-right: 0;}
-    
+    .slider {width: 100%; height: 600px;}
     .slider .swiper-slide.ss3 {text-align: center;} 
 }
 
@@ -265,6 +265,7 @@ body.modal_on {overflow: hidden;}
     .service li {width: 25%; height: auto; border: 0; }
     .service li a strong {display: block; padding-bottom: 10%;}
     .service li a span {display: block;}
+    .slider {width: 90%; height: 580px;}
 }
 
 @media (max-width: 960px){
@@ -276,8 +277,8 @@ body.modal_on {overflow: hidden;}
     
     .banner_menu .bm_left ul {display: none;}
     .banner_menu .bm_right ul:first-child {display: none;}
+    .slider {width: 80%; height: 550px;}
     
-    .slider {height: 500px;}
     .slider .swiper-slide h3 {margin-top: 210px; font-size: 40px;}
     .slider .swiper-slide p {margin-bottom: 100px; font-size: 20px;}
     
@@ -313,7 +314,7 @@ body.modal_on {overflow: hidden;}
     .movie_title li a {position: relative; font-size: 18px; color: #666; font-weight: 400; padding: 0; margin-right: 35px;}
     .movie_title li.active a:before {content: ''; position: absolute; z-index: 10000; left: 0; bottom: -10px; width: 100%; height: 2px; background: #666;}
     .movie_title li.active a {background: none; color: #666;}
-    
+    .slider {width: 60%; height: 480px;}
     #event .row {padding: 0 24px;}
     .event {padding: 24px; background: #fff;}
     .event h2 {font-size: 24px; font-weight: 700; height: 27px;  margin-bottom: 20px; padding-bottom: 10px;}
@@ -341,7 +342,7 @@ body.modal_on {overflow: hidden;}
     .banner_menu .bm_right li.white a {font-size: 14px; padding: 3px 5px 5px 5px; color:#fff; background: rgba(0,0,0,0.6); border-color:#fff;}
     .banner_menu .bm_right li.purple a {font-size: 14px; padding: 3px 5px 5px 5px; color:#fff; background: rgba(0,0,0,0.6); border-color:#fff;}
     
-    .slider {height: 400px;}
+    .slider {width: 40%; height: 370px;}
     .slider .swiper-slide h3 {margin-top: 200px; font-size: 30px; }
     .slider .swiper-slide p {margin-bottom: 100px; font-size: 12px;}
     .swiper-button-prev, .swiper-button-next {display: none;}
