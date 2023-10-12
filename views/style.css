@@ -569,3 +569,30 @@
   margin-left: 700px;
 margin-top: 50px;
 }
+
+/*영화 선택(시간) 스타일*/
+    .movie-name {
+      font-size: 10px;
+    }
+  
+    .movie-time {
+     
+      height: 100px;
+      width: 300px;
+    }
+  
+    .custom-button {
+      width: 346px;
+      /* 원하는 너비 설정 */
+      height: 50px;
+      /* 원하는 높이 설정 */
+      background-color: #3498db;
+      /* 배경색 설정 */
+      color: #fff;
+      /* 글자색 설정 */
+      border: none;
+      border-radius: 5px;
+      /* 모서리 둥글게 만들기 */
+      cursor: pointer;
+      margin: 5px;
+    }
