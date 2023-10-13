@@ -23,9 +23,10 @@ app.get('/', function (req, res) {
     var nickname = req.session.nickname;
     var IS = req.session.is_logined;
     if (!authCheck.isOwner(req, res)) {
-        var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
+       var sql = 'SELECT review_moviename FROM review GROUP BY review_moviename order by AVG(review_grade) DESC';
         conn.query(sql, function (err, row, fields) {
             if(err) console.log('query is not excuted. select fail...\n' + err);
+           
             else res.render('index.ejs', {title : row, nickname : nickname, IS : IS});
                 });
         return false;
