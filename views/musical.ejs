@@ -5,8 +5,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="webstoryboy">
-    
-    
+
     <meta name="description" content="티켓팅을 위한 사이트">
     <meta name="keywords" content="티켓팅을 위한 사이트">
     <title>Fresh Tomato</title>
@@ -42,6 +41,7 @@
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
     
+    
     <!-- HTLM5shiv ie6~8 -->
     <!--[if lt IE 9]> 
       <script src="assets/js/html5shiv.min.js"></script>
@@ -58,24 +58,25 @@
                 <div class="header clearfix">
                     <h1>
                         <a href="/">
-                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="height: 2rem; width: 7rem;"></strong>
+     
+                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
                     
                         </a>    
                     </h1>
+
+                    
                     <nav id="mNav">
                         <h2 class="ir_so">티켓팅 전체메뉴</h2>
                         <a href="#" class="ham"><span></span></a>
                     </nav>
                     <nav class="nav">
+                     
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <li><a href="/quickreserve">영화예매</a></li>
+                            <li><a href="/choice">영화예매</a></li>
                             <li><a href="/my_page">내정보</a></li>
-                            <% if (IS) { %>
-                            <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
-                            <% } else { %>
-                            <li><a href="/login">로그인</a></li>
-                            <% }; %>
+                          
+         
                         </ul>
                     </nav>    
                 </div>
@@ -126,17 +127,16 @@
                 </div>
             </div>
         </div>
-
-        <!--슬라이더-->
         <ul class="slides">
             <input type="radio" name="radio-btn" id="img-1" checked />
             <li class="slide-container">
             <div class="slide">
                 <img src="./assets/img/main_slider02.png" />              
                 <div class="h1_text">
+                <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
               </div>
                 </div>
-            <div class="nav">
+            <div class="nav" style="top:0">
               <label for="img-4" class="prev">&#x2039;</label>
               <label for="img-2" class="next">&#x203a;</label>
             </div>
@@ -147,6 +147,7 @@
                 <div class="slide">
                     <img src="./assets/img/main_slider01.png" />              
                     <div class="h1_text">
+                    <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
                   </div>
                 </div>
             <div class="nav">
@@ -159,6 +160,9 @@
             <li class="slide-container">
                 <div class="slide">
                     <img src="./assets/img/main_slider03.jpg" />              
+                    <!-- <div class="h1_text">
+                    <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1>
+                  </div> -->
                 </div>
             <div class="nav">
               <label for="img-2" class="prev">&#x2039;</label>
@@ -196,17 +200,15 @@
     
     <section id="movie">
         <h2 class="ir_so">최신 영화 정보</h2>
- 
-
-        </div>
-
         <div class="container">
             <div class="row">
                 <div class="movie">
-                    <div class="choice_btn">
-                   <button herf="/lndex">영화 목록</button>
-                    <button herf="/musical">뮤지컬 목록</button>
-                </div>
+            
+                    <div class="index_button">
+                      <div class="movie_button"> <button><a herf="#">영화 순위</a></button></div>
+                         <div class="musical_button"> <button><a herf="#">뮤지컬 순위</a></button></div>
+                         </div>
+          
                     
                     <div class="movie_chart">
                         <div class="chart_cont1">
@@ -317,24 +319,6 @@
                 return false;
             }
         }
-        
-    </script>
-    <script>
-        function moveSearchBar() {
-  var searchBar = document.querySelector('.search');
-  var windowWidth = window.innerWidth;
-
-  // Calculate the left position based on screen width
-  var leftPosition = windowWidth - 500; // Adjust the value as needed
-
-  // Set the left position for the search bar
-  searchBar.style.left = leftPosition + 'px';
-}
-
-// Call the function on page load and when the window is resized
-window.onload = moveSearchBar;
-window.onresize = moveSearchBar;
-
     </script>
     <!— 자바스크립트 라이브러리 —>
     <script src="assets/js/jquery.min_1.12.4.js"></script>
