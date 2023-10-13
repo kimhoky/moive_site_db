@@ -206,10 +206,16 @@
         <div class="container">
             <div class="row">
                 <div class="movie">
-                   
+
+                    <div class="index_button">
+                      <div class="movie_button"> <button><a href="#">영화 순위</a></button></div>
+                         <div class="musical_button"> <button><a href="/musical">뮤지컬 순위</a></button></div>
+                         </div>
+          
                     
                     <div class="movie_chart">
                         <div class="chart_cont1">
+                            <h2 style="font-size: 30px; margin: 10px;">영화 순위</h2>
                             <% for (var i=0; i < 4; i++) { %>
                             <div>
                                 <div class="poster">
@@ -326,5 +332,23 @@
     <script src="assets/js/swiper.min.js"></script>
 </body>
 <style>
+
+  .index_button .movie_button button,
+  .index_button .musical_button button {
+    background-color: Light/Gray/Black/Black (4%); 
+    color: #FFFFFF; 
+    font-size: 18px; 
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    margin: 3px;
+      border-radius: 10px;
+  }
+
+  
+  .index_button .movie_button button:hover,
+  .index_button .musical_button button:hover {
+    background-color: #0056b3;
+  }
 </style>
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <head>
@@ -14,10 +15,54 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./swiper.css">
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
     
+    <style>
+        
+.star-rating {
+  border:solid 1px #ccc;
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content:space-around;
+  padding:0 .2em;
+  text-align:center;
+  width:5em;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:white;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+}
+
+/* explanation */
+
+article {
+  background-color:#ffe;
+  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
+  color:#006;
+  font-family:cursive;
+  font-style:italic;
+  margin:4em;
+  max-width:30em;
+  padding:2em;
+}
+    </style>
 
 </head>
 <body>
@@ -103,37 +148,55 @@
                   <p class="p_한줄평가">[ 감상평 및 평점  ] <span class="rating-info"></span></p>
                   <hr>
                   <div class="comment-bar" style="width:100%">
+                   
                     <form action="/inreview" calass = "form" id="form" method="POST" style="width:100%; display: flex; justify-content: center;">
                         <input type="text" id="comment-input" name="olreview" placeholder="감상평을 작성해주세요..." style="width:70%; height:50%" >
                         
                        
                         <input type="text" name="moviename" value="<%= list[0].movie_name %>" style="display:none" />
-                          <input type="number" id="rating-input" min="1" max="10" name="rate" placeholder="평점" style="height:50%" />
+                        <div class="star-rating">
+                            <input type="radio" id="5-stars" name="rating" value="5" onclick="getnum(event)"/>
+                            <label for="5-stars" class="star">&#9733;</label>
+                            <input type="radio" id="4-stars" name="rating" value="4" onclick="getnum(event)"/>
+                            <label for="4-stars" class="star">&#9733;</label>
+                            <input type="radio" id="3-stars" name="rating" value="3"onclick="getnum(event)" />
+                            <label for="3-stars" class="star">&#9733;</label>
+                            <input type="radio" id="2-stars" name="rating" value="2" onclick="getnum(event)"/>
+                            <label for="2-stars" class="star">&#9733;</label>
+                            <input type="radio" id="1-star" name="rating" value="1" onclick="getnum(event)"/>
+                            <label for="1-star" class="star">&#9733;</label>
+                        </div>
+                        <input type="number" name="rate" id="rating_input" style="display: none;"/>
                         <button id="submit-btn" type="submit">등록</button>
+   
                         
                     </form>
                     
                   </div>
-                  <div class="review_box">
-                    <% if (reviews[0] != null) { %>
-                        <% for (var i=0; i < reviews.length; i++) { %> 
-                      <div  style="display: flex; font-size: 16px; justify-content: center;">
-                      
-                        <p>작성자 : <%= reviews[i].review_uid %> ---- </p>
-                        <p>한줄평 : <%= reviews[i].review_olreview %> ---- </p>   
-                        <p>평점: <%= reviews[i].review_grade%></p>
-                      </div>
-                      <% }; %>
-                      <% }else { %>
-                        <div>
-                            <h3>검색결과 없음</h3>
-                        </div>
-                    <% }; %>
-                  </div>
                 
                 </div>
               </div>
+              
         </div>
+        <div class="Comments">
+  <div class="review_box">
+    <% if (reviews[0] != null) { %>
+      <% for (var i = 0; i < reviews.length; i++) { %>
+        <div class="comment-box">
+          <p>작성자: <%= reviews[i].review_uid %></p>
+          <p>한줄평: <%= reviews[i].review_olreview %></p>
+          <p>평점: <%= reviews[i].review_grade %></p>
+        </div>
+      <% }; %>
+    <% } else { %>
+      <div>
+        <h3>검색결과 없음</h3>
+      </div>
+    <% }; %>
+  </div>
+</div>
+    </div>
+
 
         
         
@@ -144,7 +207,12 @@
 
 
     
-
+<script>
+     function getnum(event) {
+  document.getElementById('rating_input').value = 
+    event.target.value;
+}
+</script>
 
     <div class="detail-end"></div> 
 
@@ -159,7 +227,7 @@
                 return false;
             }
         }
-
+       
      
   </script>
 
