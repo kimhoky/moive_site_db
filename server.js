@@ -134,6 +134,9 @@ app.get('/login', function(req, res) {
 app.get('/choice', function(req, res) {
     res.render('choice.ejs');
 });   
+app.get('/musical', function(req, res) {
+    res.render('musical.ejs');
+});  
 app.get('/logoutprocess', function(req, res) {
     req.session.destroy(error => {if(error) console.log(error)});
     res.redirect('/');

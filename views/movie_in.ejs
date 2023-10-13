@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <head>
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./swiper.css">
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
     
@@ -167,30 +168,35 @@ article {
                         </div>
                         <input type="number" name="rate" id="rating_input" style="display: none;"/>
                         <button id="submit-btn" type="submit">등록</button>
+   
                         
                     </form>
                     
                   </div>
-                  <div class="review_box">
-                    <% if (reviews[0] != null) { %>
-                        <% for (var i=0; i < reviews.length; i++) { %> 
-                      <div  style="display: flex; font-size: 16px; justify-content: center;">
-                      
-                        <p>작성자 : <%= reviews[i].review_uid %> ---- </p>
-                        <p>한줄평 : <%= reviews[i].review_olreview %> ---- </p>   
-                        <p>평점: <%= reviews[i].review_grade%></p>
-                      </div>
-                      <% }; %>
-                      <% }else { %>
-                        <div>
-                            <h3>검색결과 없음</h3>
-                        </div>
-                    <% }; %>
-                  </div>
                 
                 </div>
               </div>
+              
         </div>
+        <div class="Comments">
+  <div class="review_box">
+    <% if (reviews[0] != null) { %>
+      <% for (var i = 0; i < reviews.length; i++) { %>
+        <div class="comment-box">
+          <p>작성자: <%= reviews[i].review_uid %></p>
+          <p>한줄평: <%= reviews[i].review_olreview %></p>
+          <p>평점: <%= reviews[i].review_grade %></p>
+        </div>
+      <% }; %>
+    <% } else { %>
+      <div>
+        <h3>검색결과 없음</h3>
+      </div>
+    <% }; %>
+  </div>
+</div>
+    </div>
+
 
         
         
