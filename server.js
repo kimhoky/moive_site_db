@@ -46,33 +46,6 @@ app.get('/', function (req, res) {
 });
 
 
-
-app.get('/musical', function (req, res) {
-    var nickname = req.session.nickname;
-    var IS = req.session.is_logined;
-    if (!authCheck.isOwner(req, res)) {
-       var sql = 'SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC';
-        conn.query(sql, function (err, row, fields) {
-            if(err) console.log('query is not excuted. select fail...\n' + err);
-           
-            else res.render('musical.ejs', {title : row, nickname : nickname, IS : IS});
-                });
-        return false;
-    }
-    else {
-        var sql = 'SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC';
-        conn.query(sql, function (err, row, fields) {
-            if(err) console.log('query is not excuted. select fail...\n' + err);
-            else 
-            var nickname = req.session.nickname;
-            var IS = req.session.is_logined;
-            
-            res.render('musical.ejs', {title : row, nickname : nickname, IS : IS});
-                });
-        return false;
-    }
-});
-
 app.get('/reserve', function(req, res) {
     if (!authCheck.isOwner(req, res)) {
         res.redirect('/login'); //로그인 안하고 예매페이지 갈시
