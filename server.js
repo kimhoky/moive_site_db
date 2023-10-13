@@ -45,6 +45,7 @@ app.get('/', function (req, res) {
     }
 });
 
+
 app.get('/reserve', function(req, res) {
     if (!authCheck.isOwner(req, res)) {
         res.redirect('/login'); //로그인 안하고 예매페이지 갈시
