@@ -1,89 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="login.css">
-        <link rel="stylesheet" href="./reset.css">
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="./swiper.css">
-        <script src="login.js"></script>
-    </head>
-<body>
-  
-  <header id="header">
-    <div style="background-color:white;" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./swiper.css" />
+    <script src="login.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <div style="background-color: white">
         <div class="row">
-            <div class="header clearfix">
-                <h1>
-                    <a href="/">
-                      <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
-                
-                    </a>    
-                </h1>
-                <nav id="mNav">
-                    <h2 class="ir_so">메가박스 전체메뉴</h2>
-                    <a href="/" class="ham"><span></span></a>
-                </nav>
-                <nav class="nav">
-                    <ul class="clearfix">
-                        <li><a href="/movie">영화</a></li>
-                        <li><a href="/the_moie">영화예매</a></li>
-                        
-                    </ul>
-                </nav>    
-            </div>
-        </div>
-    </div>
-</header>
-
-
-
-<!-- //header -->
-
-    <div class="container right-panel-active" style=" font-size: 18px; ">
-    
-      
-        <!-- Sign In -->
-        <div class="container__form container--signin">
-          <form action="/login_process" class="form" id="form2" method="POST">
-            <h2 class="form__title">로그인</h2>
-            <input type="text" placeholder="아이디" class="input" name="user_id" />
-            <input type="text" placeholder="비밀번호" class="input" name="user_pw" />
-            <a href="#" class="link">비밀번호 찾기</a>
-            <button class="btn" type="submit">로그인</button>
-          </form>
-        </div>
-
-          <!-- Sign Up -->
-          <div class="container__form container--signup">
-            <form action="/membership" calass = "form" id="form" method="POST">
-              <h2 class="form__title" style="font-size:22px; font-style:initial">회원가입</h2>
-                아이디<input type="text" placeholder="아이디" class="input" name="user_id" />
-                비밀번호<input type="text" placeholder="비밀번호" class="input" name="user_pw" />
-               이름<input type="text" placeholder="이름" class="input" name="user_name"/>
-                나이 <input type="int" placeholder="나이" class="input" name="user_age"/>
-                전화번호<input type="text" placeholder="전화번호" class="input" name="user_phonenum" />
-                이메일 <input type="text" placeholder="이메일" class="input" name="user_email" />
-                <div style="justify-content: center; display :flex; padding-top: 30px;">
-                  <button class="btn" type="submit">회원가입</button>
-                </div>
-              
-            </form>
-          </div>
-      
-        <!-- Overlay -->
-        <div class="container__overlay">
-          <div class="overlay">
-            <div class="overlay__panel overlay--left">
-              <button class="btn" id="signIn">로그인</button>
-            </div>
-            <div class="overlay__panel overlay--right">
-              <button class="btn" id="signUp">회원가입</button>
-            </div>
+          <div class="header clearfix">
+            <h1>
+              <a href="/">
+                <strong
+                  ><img
+                    src="assets/img/freash_tomato_main.png"
+                    alt="LIFE THEATER"
+                    style="transform: translateY(-20px)"
+                /></strong>
+              </a>
+            </h1>
+            <nav id="mNav">
+              <h2 class="ir_so">메가박스 전체메뉴</h2>
+              <a href="/" class="ham"><span></span></a>
+            </nav>
+            <nav class="nav">
+              <ul class="clearfix">
+                <li><a href="/movie">영화</a></li>
+                <li><a href="/the_moie">영화예매</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
-</body>
+    </header>
+
+    <!-- //header -->
+
+    <div class="container right-panel-active" style="font-size: 18px">
+      <!-- Sign In -->
+      <div class="container__form container--signin">
+        <form action="/login_process" class="form" id="form2" method="POST">
+          <h2 class="form__title">로그인</h2>
+          <input
+            type="text"
+            placeholder="아이디"
+            class="input"
+            name="user_id"
+          />
+          <input
+            type="text"
+            placeholder="비밀번호"
+            class="input"
+            name="user_pw"
+          />
+          <a href="#" class="link">비밀번호 찾기</a>
+          <button class="btn" type="submit">로그인</button>
+        </form>
+      </div>
+
+      <!-- Sign Up -->
+      <div class="container__form container--signup">
+        <form action="/membership" calass="form" id="form" method="POST">
+          <h2 class="form__title" style="font-size: 22px; font-style: initial">
+            회원가입
+          </h2>
+          아이디<input
+            type="text"
+            placeholder="아이디"
+            class="input"
+            name="user_id"
+          />
+          비밀번호<input
+            type="text"
+            placeholder="비밀번호"
+            class="input"
+            name="user_pw"
+          />
+          이름<input
+            type="text"
+            placeholder="이름"
+            class="input"
+            name="user_name"
+          />
+          나이
+          <input type="int" placeholder="나이" class="input" name="user_age" />
+          전화번호<input
+            type="text"
+            placeholder="전화번호"
+            class="input"
+            name="user_phonenum"
+          />
+          이메일
+          <input
+            type="text"
+            placeholder="이메일"
+            class="input"
+            name="user_email"
+          />
+          <div
+            style="justify-content: center; display: flex; padding-top: 30px"
+          >
+            <button class="btn" type="submit">회원가입</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Overlay -->
+      <div class="container__overlay">
+        <div class="overlay">
+          <div class="overlay__panel overlay--left">
+            <button class="btn" id="signIn">로그인</button>
+          </div>
+          <div class="overlay__panel overlay--right">
+            <button class="btn" id="signUp">회원가입</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,464 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-
-
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="webstoryboy">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="webstoryboy" />
 
     <title>freash_tomato</title>
-    <meta name="description" content="티켓팅을 위한 사이트">
-    <meta name="keywords" content="티켓팅을 위한 사이트">
+    <meta name="description" content="티켓팅을 위한 사이트" />
+    <meta name="keywords" content="티켓팅을 위한 사이트" />
     <title>Fresh Tomato</title>
 
     <!-- css -->
-    <link rel="stylesheet" href="./reset.css?after">
-    <link rel="stylesheet" href="./style.css?after">
-    <link rel="stylesheet" href="./swiper.css?after">
-    <link hredf="./style.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet">
-    <link hredf="./swiper.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet">
+    <link rel="stylesheet" href="./reset.css?after" />
+    <link rel="stylesheet" href="./style.css?after" />
+    <link rel="stylesheet" href="./swiper.css?after" />
+    <link
+      hredf="./style.css"
+      media="screen and (min-width: 512px) and (max-width: 1024px)"
+      rel="stylesheet"
+    />
+    <link
+      hredf="./swiper.css"
+      media="screen and (min-width: 512px) and (max-width: 1024px)"
+      rel="stylesheet"
+    />
 
-    
     <!-- 파비콘 -->
-    <link rel="shortcut icon" href="assets/icons/freash_tomato_logo.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/icons/freash_tomato_logo.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="96x96" href="assets/icons/freash_tomato_logo.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/icons/freash_tomato_logo.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="192x192" href="assets/icons/freash_tomato_logo.png" />
-    
+    <link rel="shortcut icon" href="assets/icons/freash_tomato_logo.png" />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="assets/icons/freash_tomato_logo.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="96x96"
+      href="assets/icons/freash_tomato_logo.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="assets/icons/freash_tomato_logo.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="192x192"
+      href="assets/icons/freash_tomato_logo.png"
+    />
+
     <!-- 페이스북 메타 태그 -->
     <meta property="og:title" content="Fresh Tomato" />
-    <meta property="og:url" content="https://github.com/webstoryboy/megabox2019" />
-    <meta property="og:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg" />
+    <meta
+      property="og:url"
+      content="https://github.com/webstoryboy/megabox2019"
+    />
+    <meta
+      property="og:image"
+      content="https://webstoryboy.github.io/megabox2019/mega.jpg"
+    />
     <meta property="og:description" content="티켓팅을 위한 사이트" />
-   
+
     <!-- 트위터 메타 태그 -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Fresh Tomato">
-    <meta name="twitter:url" content="https://github.com/webstoryboy/megabox2019/">
-    <meta name="twitter:image" content="https://webstoryboy.github.io/megabox2019/mega.jpg">
-    <meta name="twitter:description" content="티케팃을 위한 사이트">
-    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Fresh Tomato" />
+    <meta
+      name="twitter:url"
+      content="https://github.com/webstoryboy/megabox2019/"
+    />
+    <meta
+      name="twitter:image"
+      content="https://webstoryboy.github.io/megabox2019/mega.jpg"
+    />
+    <meta name="twitter:description" content="티케팃을 위한 사이트" />
+
     <!-- 웹 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_tnb.css"
+    />
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+    ></script>
+
     <!-- HTLM5shiv ie6~8 -->
-    <!--[if lt IE 9]> 
+    <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.min.js"></script>
       <script type="text/javascript">
-         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
+        alert(
+          "현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!"
+        );
       </script>
-   <![endif]-->
-</head>
-<body>
-    
-    <header id="header">
-        <div class="container">
-            <div class="row">
-                <div class="header clearfix">
-                    <h1>
-                        <a href="/">
-     
-                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
-                    
-                        </a>    
-                    </h1>
-                    <nav id="mNav">
-                        <h2 class="ir_so">티켓팅 전체메뉴</h2>
-                        <a href="#" class="ham"><span></span></a>
-                    </nav>
-                    <nav class="nav">
-                        <ul class="clearfix">
-                            <li><a href="/movie">영화</a></li>
-                            <li><a href="/choice">영화예매</a></li>
-                            <li><a href="/my_page">내정보</a></li>
-                           
-                        </ul>
-                    </nav>    
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- //header -->
+    <![endif]-->
+  </head>
 
-    <div class="search">
-        <div class="input-box">
-            <i class="uil uil-search"></i>
-            <form action="/search" calass = "form" id="form" method="POST">
-                <input type="text" placeholder="영화를 검색하세요" class="input" name="searchinput"/>
-                <a href="/search">
-                    <button class="button">
-                        <img src="assets/img/search.png">
-                    </button>
-                </a>
-            </form>
+  <header id="header">
+    <div class="container">
+      <div class="row">
+        <div class="header clearfix">
+          <h1>
+            <a href="/">
+              <strong
+                ><img
+                  src="assets/img/freash_tomato_main.png"
+                  alt="LIFE THEATER"
+                  style="transform: translateY(-20px)"
+              /></strong>
+            </a>
+          </h1>
+          <nav id="mNav">
+            <h2 class="ir_so">티켓팅 전체메뉴</h2>
+            <a href="#" class="ham"><span></span></a>
+          </nav>
+          <nav class="nav">
+            <ul class="clearfix">
+              <li><a href="/movie">영화</a></li>
+              <li><a href="/choice">영화예매</a></li>
+              <li><a href="/my_page">내정보</a></li>
+            </ul>
+          </nav>
         </div>
+      </div>
     </div>
-         <!-- 검색창 -->
-    
+  </header>
+  <!-- //header -->
 
+  <div class="search">
+    <div class="input-box">
+      <i class="uil uil-search"></i>
+      <form action="/search" calass="form" id="form" method="POST">
+        <input
+          type="text"
+          placeholder="영화를 검색하세요"
+          class="input"
+          name="searchinput"
+        />
+        <a href="/search">
+          <button class="button">
+            <img src="assets/img/search.png" />
+          </button>
+        </a>
+      </form>
+    </div>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"><script id="youtube-hd-fjdmkanbdloodhegphphhklnjfngoffa">var ythdlog = () => {};;var ythderror = () => {};</script><head id="ctl00_Head1"><script async="" src="http://ad.cgv.co.kr/NetInsight/text/CGV/CGV_201608/RIA@RIA_Skin_Ticketing?_=1696856224990"></script>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Script-Type" content="text/javascript">
-    <meta http-equiv="Content-Style-Type" content="text/css">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="No-Cache">
-    <meta http-equiv="imagetoolbar" content="no">
-    <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작">
-    <meta name="description" content="영화 그 이상의 감동. CGV">
-    <title>CGV 빠른예매</title>
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/common.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_tnb.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_popup.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_step3.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_step3_special.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_step3_step1.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2023/0720/FORM_TYPE/reservation_step3_step2.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/R2014/css/webfont.css">
-    <link rel="stylesheet" href="http://img.cgv.co.kr/resource_pc/css/cgv.min.css">
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/cgvpackage.min.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.api.ticket.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.api.payment.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.api.coupon.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.crypto.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.data.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/jquery.cgv.net.js"></script>
-    
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/reservation.alert.js"></script>
-    
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/reservation.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/reservation.popup.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/reservation.step1.js"></script>
-    <script type="text/javascript" src="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/reservation.step2.js"></script>
-    <script type="text/javascript">
-    // for loadStep3Resources_STEP2 include source path;
-    var CDN_PATH_JS = "http://img.cgv.co.kr/CGV_RIA/Ticket/Common/js/2023/1005.U_CULTURE/1600/";
-    // 초기 선택값 설정
-    preselectSetting( 
-      '20033940',
-      '20033629',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      '',
-      ''
-    );
-    </script>
-    <input type="hidden" id="_w_simile" data-inspect-config="3"><script type="text/javascript" src="chrome-extension://dbjbempljhcmhlfpfacalomonjpalpko/scripts/inspector.js"></script><script src="chrome-extension://njgehaondchbmjmajphnhlojfnbfokng/js/contentScripts/dom.js"></script><style type="text/css"></style></head>
-    
-    <body style="">
+  <body>
     <a name="t"></a>
-    <div id="wrap" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div
+      id="wrap"
+      oncontextmenu="return false"
+      ondragstart="return false"
+      onselectstart="return false"
+    >
       <!-- 컨텐츠 -->
       <div id="container">
         <!-- 빠른예매 -->
         <div id="ticket" class="ticket ko">
-          
-          <!-- 타이틀 -->
-          <div class="navi">
-            <div class="newsletter">
-              <p style="display: none;"><a href="#">Click here</a> if you want to receive newsletter about English subtitle movies</p>
-            </div>
-
-            
-          </div>
-          <!-- //타이틀 -->
           <!-- 메인컨텐츠 -->
           <div class="steps">
             <!-- step1 -->
-            <div class="step step1" style="height: 600px; display: block; color: #3333;">
+            <div
+              class="step step1"
+              style="
+                height: 650px;
+                width: max-content;
+                display: block;
+                color: #3333;
+              "
+            >
               <!-- MOVIE 섹션 -->
               <div class="section section-movie">
                 <!-- col-head -->
                 <div class="col-head" id="skip_movie_list">
                   <h3 class="sreader">영화</h3>
-             
                 </div>
                 <!-- col-body -->
-                <div class="col-body" style="height: 565px;">
+                <div class="col-body" style="height: 565px">
                   <!-- 영화선택 -->
                   <div class="movie-select">
                     <ul>
-                    <img src="\assets\img\가디언즈오브갤럭시3.jpg">     <!--영화 이미지-->
-                    <a style="font-size: 24px;">영화제목</a>
+                      <img
+                        src="\assets\img\<%= title[0].screening_name %>.jpg"
+                      />
+                      <!--영화 이미지-->
+                      <a style="font-size: 24px"
+                        ><%= title[0].screening_name %></a
+                      >
                     </ul>
-                 
- 
-                    <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list">
-                      <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -17px;"><div class="selectbox-movie-type checkedBD" style="width: auto; top: 36px; display: none;">
-                    
-               
-                       
+
+                    <div
+                      class="movie-list nano has-scrollbar has-scrollbar-y"
+                      id="movie_list"
+                    >
+                      <ul
+                        class="content scroll-y"
+                        onscroll="movieSectionScrollEvent();"
+                        tabindex="-1"
+                        style="right: -17px"
+                      ></ul>
+                      <div
+                        class="selectbox-movie-type checkedBD"
+                        style="width: auto; top: 36px; display: none"
+                      ></div>
                     </div>
-                    <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
-                    
+                    <div
+                      class="pane pane-y"
+                      style="display: block; opacity: 1; visibility: visible"
+                    ></div>
+                    <div
+                      class="pane pane-x"
+                      style="display: none; opacity: 1; visibility: visible"
+                    >
+                      <div class="slider slider-x" style="width: 50px"></div>
+                    </div>
                   </div>
                 </div>
               </div>
-    
+
               <!-- DATE 섹션 -->
               <div class="section section-date">
                 <div class="col-head" id="skip_date_list">
                   <h3 class="sreader">날짜</h3>
-                  <a href="#" onclick="return false;" class="skip_to_something">날짜 건너뛰기</a>
                 </div>
-                <div class="col-body" style="height: 565px;">
+                <div class="col-body" style="height: 565px">
                   <!-- 날짜선택 -->
-                  <div class="date-list nano has-scrollbar has-scrollbar-y" id="date_list"> 
-                    <ul class="content scroll-y" tabindex="-1" style="right: -17px;"><div><li class="month dimmed"><div><span class="year">2023</span><span class="month">10</span><div></div></div></li><li data-index="0" date="20231009" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">9</span><span class="sreader">선택불가</span></a></li><li data-index="1" date="20231010" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">10</span><span class="sreader">선택불가</span></a></li><li data-index="2" date="20231011" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">11</span><span class="sreader"></span></a></li><li data-index="3" date="20231012" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">12</span><span class="sreader"></span></a></li><li data-index="4" date="20231013" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">13</span><span class="sreader"></span></a></li><li data-index="5" date="20231014" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">14</span><span class="sreader"></span></a></li><li data-index="6" date="20231015" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">15</span><span class="sreader"></span></a></li><li data-index="7" date="20231016" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">16</span><span class="sreader"></span></a></li><li data-index="8" date="20231017" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">17</span><span class="sreader"></span></a></li><li data-index="9" date="20231018" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">18</span><span class="sreader">선택불가</span></a></li><li data-index="10" date="20231019" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">19</span><span class="sreader">선택불가</span></a></li><li data-index="11" date="20231020" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">20</span><span class="sreader">선택불가</span></a></li><li data-index="12" date="20231021" class="day day-sat dimmed"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">21</span><span class="sreader">선택불가</span></a></li><li data-index="13" date="20231022" class="day day-sun dimmed"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">22</span><span class="sreader">선택불가</span></a></li><li data-index="14" date="20231023" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">23</span><span class="sreader">선택불가</span></a></li><li data-index="15" date="20231024" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">24</span><span class="sreader">선택불가</span></a></li><li data-index="16" date="20231025" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">25</span><span class="sreader">선택불가</span></a></li><li data-index="17" date="20231027" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">27</span><span class="sreader">선택불가</span></a></li><li data-index="18" date="20231028" class="day day-sat dimmed"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">28</span><span class="sreader">선택불가</span></a></li><li data-index="19" date="20231029" class="day day-sun dimmed"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">29</span><span class="sreader">선택불가</span></a></li><li data-index="20" date="20231031" class="day dimmed"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">31</span><span class="sreader">선택불가</span></a></li></div></ul>
-                  <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px; top: 0px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
+                  <div
+                    class="date-list nano has-scrollbar has-scrollbar-y"
+                    id="date_list"
+                  >
+                    <ul
+                      class="content scroll-y"
+                      tabindex="-1"
+                      style="right: -17px"
+                    >
+                      <div>
+                        <li class="month dimmed">
+                          <div>
+                            <span class="year">2023</span
+                            ><span class="month">10</span>
+                            <div></div>
+                          </div>
+                        </li>
+                        <% for(var i = 0;i<31;i++) { %> <% let dayd = "day"; %>
+
+                        <li
+                          date-index="<%= i %>"
+                          date="<%= date[i][0] %>"
+                          class="<%= dayd %>"
+                        >
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek"><%= date[i][1] %></span
+                            ><span class="day"><%= i + 1 %></span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <% }; %>
+                        <!-- <li data-index="0" date="20231009" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">월</span
+                            ><span class="day">9</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="1" date="20231010" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">화</span
+                            ><span class="day">10</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="2" date="20231011" class="day">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">수</span
+                            ><span class="day">11</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="3" date="20231012" class="day">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">목</span
+                            ><span class="day">12</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="4" date="20231013" class="day">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">금</span
+                            ><span class="day">13</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="5" date="20231014" class="day day-sat">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">토</span
+                            ><span class="day">14</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="6" date="20231015" class="day day-sun">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">일</span
+                            ><span class="day">15</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="7" date="20231016" class="day">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">월</span
+                            ><span class="day">16</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="8" date="20231017" class="day">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">화</span
+                            ><span class="day">17</span
+                            ><span class="sreader"></span
+                          ></a>
+                        </li>
+                        <li data-index="9" date="20231018" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">수</span
+                            ><span class="day">18</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="10" date="20231019" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">목</span
+                            ><span class="day">19</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="11" date="20231020" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">금</span
+                            ><span class="day">20</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li
+                          data-index="12"
+                          date="20231021"
+                          class="day day-sat dimmed"
+                        >
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">토</span
+                            ><span class="day">21</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li
+                          data-index="13"
+                          date="20231022"
+                          class="day day-sun dimmed"
+                        >
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">일</span
+                            ><span class="day">22</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="14" date="20231023" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">월</span
+                            ><span class="day">23</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="15" date="20231024" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">화</span
+                            ><span class="day">24</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="16" date="20231025" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">수</span
+                            ><span class="day">25</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="17" date="20231027" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">금</span
+                            ><span class="day">27</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li
+                          data-index="18"
+                          date="20231028"
+                          class="day day-sat dimmed"
+                        >
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">토</span
+                            ><span class="day">28</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li
+                          data-index="19"
+                          date="20231029"
+                          class="day day-sun dimmed"
+                        >
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">일</span
+                            ><span class="day">29</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li>
+                        <li data-index="20" date="20231031" class="day dimmed">
+                          <a href="#" onclick="return false;"
+                            ><span class="dayweek">화</span
+                            ><span class="day">31</span
+                            ><span class="sreader">선택불가</span></a
+                          >
+                        </li> -->
+                      </div>
+                    </ul>
+                    <div
+                      class="pane pane-y"
+                      style="display: block; opacity: 1; visibility: visible"
+                    >
+                      <div
+                        class="slider slider-y"
+                        style="height: 50px; top: 0px"
+                      ></div>
+                    </div>
+                    <div
+                      class="pane pane-x"
+                      style="display: none; opacity: 1; visibility: visible"
+                    >
+                      <div class="slider slider-x" style="width: 50px"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <!-- TIME 섹션 -->
-              <div class="section section-time">
+              <div class="section section-time" style="width: max-content">
                 <div class="col-head" id="skip_time_list">
                   <h3 class="sreader">시간</h3>
-                  <a href="#" class="skip_to_something" onclick="skipToSomething('tnb_step_btn_right');return false;">시간선택 건너뛰기</a>
                 </div>
-                <div class="col-body" style="height: 565px;">
+                <div class="col-body" style="height: 565px">
                   <!-- 시간선택 -->
                   <div class="time-option">
-                    <span class="morning">모닝</span><span class="night">심야</span>
-
-                  </div><!--시간 상세내용-->
- <ul>
-    <li>
-        <button movie-start="15:00" movie-end="17:10" movie-name="가디언즈 갤럭시" class="custom-button">15:00 ~ 17:10 가디언즈 갤럭시</button>
-    </li>
-    <li>
-        <button movie-start="16:00" movie-end="17:10" movie-name="가디언즈 갤럭시" class="custom-button">16:00 ~ 17:10 가디언즈 갤럭시</button>
-    </li>
-    <li>
-        <button movie-start="17:00" movie-end="17:10" movie-name="가디언즈 갤럭시" class="custom-button">17:00 ~ 17:10 가디언즈 갤럭시</button>
-    </li>
-    <li>
-        <button movie-start="18:00" movie-end="17:10" movie-name="가디언즈 갤럭시" class="custom-button">18:00 ~ 17:10 가디언즈 갤럭시</button>
-    </li>
-</ul>
-
-
-                </div>
-                  
+                    <span class="morning">모닝</span
+                    ><span class="night">심야</span>
                   </div>
-                  
-                  </div>
+                  <!--시간 상세내용-->
+                  <ul>
+                    <li>
+                      <button
+                        movie-start="15:00"
+                        movie-end="17:10"
+                        movie-name="<%= title[0].screening_name %>"
+                        class="custom-button"
+                      >
+                        15:00 ~ 17:10 <%= title[0].screening_name %>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        movie-start="18:00"
+                        movie-end="20:10"
+                        movie-name="오펜하이머"
+                        class="custom-button"
+                      >
+                        18:00 ~ 20:10 오펜하이머
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        movie-start="21:00"
+                        movie-end="23:10"
+                        movie-name="오펜하이머"
+                        class="custom-button"
+                      >
+                        21:00 ~ 23:10 오펜하이머
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        movie-start="00:00"
+                        movie-end="02:10"
+                        movie-name="오펜하이머"
+                        class="custom-button"
+                      >
+                        00:00 ~ 02:10 오펜하이머
+                      </button>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <!-- //step1 -->
-            <!-- step2 -->
-            <div class="step step2" style="display: none;">
-              <!-- SEAT 섹션 -->
-              <div class="section section-seat">
-                <div class="col-head" id="skip_seat_list">
-                  <h3 class="sreader">
-                    인원 / 좌석
-                    <span class="sreader">인원/좌석선택은 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
-                  </h3>
-                  <a href="#" class="skip_to_something" onclick="skipToSomething('tnb_step_btn_right');return false;">인원/좌석선택 건너뛰기</a>
-                </div>
-                <div class="col-body">
-                  <div class="person_screen">
-                    <!-- NUMBEROFPEOPLE 섹션 -->
-                    <div class="section section-numberofpeople">
-                      <div class="col-body">
-    
-                        <!-- 인접좌석 -->
-                        <!-- <div class="adjacent_seat_wrap">
-                          <div class="adjacent_seat" id="adjacent_seat">
-                            <span class="title">좌석 붙임 설정</span>
-                            <div class="block_wrap">
-                              <span class="seat_block block1"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(1, this);" disabled><span class="box"></span><span class="sreader">1석 좌석붙임</span></label></span>
-                              <span class="seat_block block2"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(2, this);" disabled><span class="box"></span><span class="box"></span><span class="sreader">2석 좌석붙임</span></label></span>
-                              <span class="seat_block block3"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(3, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">3석 좌석붙임</span></label></span>
-                              <span class="seat_block block4"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(4, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">4석 좌석붙임</span></label></span>
-                            </div>
-                          </div>
-                        </div> -->
-    
-                        
-                          
-                        
-                      </div>
-                    </div>
-            
-            
-              <!-- 시간표 변경 -->
-            </div>
-            <!-- //step2 -->
-            <!-- step3 -->
-            <div class="step step3" style="display: none;">
-            </div>
-            <!-- //step3 -->
-            <!-- step4 -->
-            <div class="step step4" style="display: none;">
-            </div>
-            <!-- //step4 -->
-            <noscript>
-              <div class="noscript"><span>현재 사용중인 환경에서는 스크립트 동작이 활성화되지 않아 예매 서비스를 이용하실 수 없습니다.<br/>예매 서비스를 이용하기 위해서는 <a href='http://www.enable-javascript.com/ko/' rel='nofollow'>스크립트 동작을 활성화</a> 해주세요.</span></div>
-            </noscript>
           </div>
-          <!-- 팝업 -->
-          <div class="popups">                
-            <!-- Popup - 로그인 --> 
-    <div class="ft_layer_popup popup_login ko" style="display:none;">
-        <!--<div class="hd">
-            <div class="title_area">
-                
-                <h4>CGV회원 로그인</h4>
-          
-          <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
-            </div>
-            <a href="#" onclick="return false;" class="layer_close">닫기</a>
         </div>
-        <div class="bd">
-            <div class="login_form">
-                <div class="input_wrap id">
-                    <label for="txtUserId" class="blind">아이디</label>
-                    <input name="txtUserId" id="txtUserId" maxlength="25" type="text">
-                </div>
-                <div class="input_wrap password">
-                    <label for="txtPassword" class="blind">비밀번호</label>
-                    <input name="txtPassword" id="txtPassword" maxlength="25" type="password">
-                </div>
-                <button type="button" title="로그인" class="btn_login"><span>로그인</span></button>       
-            </div>
-            <div class="linkbar">
-              
-                <a href="#" onclick="return false;" class="join_member">회원가입</a>
-                <a href="#" onclick="return false;" class="join_guest">비회원 예매</a>
-                <a href="#" onclick="return false;" class="id_find">아이디찾기</a>
-                <a href="#" onclick="return false;" class="pw_find">비밀번호찾기</a>    
-          
-            </div>
-        </div>-->
-    </div>
-    <!-- //Popup -->
-    
-    <!-- Popup - 얼럿 --> 
-    <div class="ft_layer_popup popup_alert original ko" style="">
-        <div class="hd">
-            <div class="title_area">
-                <h4 class="alert_title">얼럿타이틀</h4>
-          <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
-            </div>
-            <a href="#" onclick="return false;" class="layer_close">닫기</a>
-        </div><!-- //hd -->
-        <div class="bd">
-            <p class="alert_msg" style="width: 475px;">얼럿메세지</p>
-        </div><!-- //bd -->
-        <div class="ft">
-            <a title="확인" href="#" onclick="return false;" class="btn btn_ok"><span>확인</span></a>
-            <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close"><span>취소</span></a>
-        </div><!-- //ft -->     
-    </div>
-    <!-- //Popup -->
-    
-    <!-- 2021.06.22 - 홈페이지 관람 안내 문구 팝업 창 -->
-    <div class="ft_layer_popup popup_alert w450 base ko" style="top: 50%; position: absolute;">
-        <div class="hd">
-            <div class="title_area">
-                <h4 class="alert_title">얼럿타이틀</h4>
-          <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
-            </div>
-            <a href="#" onclick="return false;" class="layer_close">닫기</a>
-        </div>
-        <div class="bd">
-            <p class="alert_msg">얼럿메세지</p>
-        </div>
-        <div class="ft">
-            <a title="확인" href="#" onclick="return false;" class="btn btn_ok">
-                <span>확인</span>
-            </a>
-            <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close">
-                <span>취소</span>
-            </a>
-        </div>
-    </div>
-    
-   
-    
-    
-    
-          </div>
-          <!-- //팝업 -->
-        </div>
-        <!-- //빠른예매 -->
       </div>
-      <!-- //컨텐츠 -->
-    
-     
-      
-      <div id="ticket_tnb" class="tnb_container ">
+      <!-- //step1 -->
+
+      <div id="ticket_tnb" class="tnb_container">
         <div class="tnb step1">
-          <button onclick="bt()" ><a class="btn-right"  title="좌석선택"></a></button><!--좌석선택버튼-->
+          <button onclick="bt()">
+            <a class="btn-right" title="좌석선택"></a></button
+          ><!--좌석선택버튼-->
         </div>
       </div>
-    
-   <script>
-           var dateSpans = document.querySelectorAll('.date-list li.day');
-        
-        dateSpans.forEach(function(dayElement) {
-            dayElement.addEventListener('click', function() {
-                var selectedDate = dayElement.getAttribute('date');
-                console.log('선택한 날짜:', selectedDate);
-                
-            });
+
+      <script>
+        var dateSpans = document.querySelectorAll(".date-list li.day");
+
+        dateSpans.forEach(function (dayElement) {
+          dayElement.addEventListener("click", function () {
+            var selectedDate = dayElement.getAttribute("date");
+            console.log("선택한 날짜:", selectedDate);
+          });
         });
-        
-var buttons = document.querySelectorAll('.custom-button');
 
+        var buttons = document.querySelectorAll(".custom-button");
 
-buttons.forEach(function (button) {
-    button.addEventListener('click', function () {
-        var movieName = button.getAttribute('movie-name');
-        var startTime = button.getAttribute('movie-start');
-        var endTime = button.getAttribute('movie-end');
-        console.log('영화 이름:', movieName);
-        console.log('상영 시작 시간:', startTime);
-        console.log('상영 종료 시간:', endTime);
-    });
-});
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var movieName = button.getAttribute("movie-name");
+            var startTime = button.getAttribute("movie-start");
+            var endTime = button.getAttribute("movie-end");
+            console.log("영화 이름:", movieName);
+            console.log("상영 시작 시간:", startTime);
+            console.log("상영 종료 시간:", endTime);
+          });
+        });
 
-
-        function bt(){
+        function bt() {
+          console.log("<%= rows2[0].screening_day %>");
+          console.log("<%= day %>");
           alert("좌석선택 클릭");
         }
-    
-        
-   </script>
-    
-    </body>
-
-
+      </script>
+    </div>
+  </body>
 </html>
