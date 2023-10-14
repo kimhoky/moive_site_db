@@ -251,6 +251,27 @@ app.post("/movie_in", function (req, res) {
   });
 });
 
+app.post("/musical_in", function (req, res) {
+  var body = req.body;
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+  var sql = "SELECT * FROM musical WHERE musical_name=?";
+  var sql2 = "SELECT * FROM mu_review WHERE mu_review_musicalname=?";
+  console.log(body.musicalname);
+  conn.query(sql, body.musicalname, function (err, rows, fields) {
+    conn.query(sql2, body.musicalname, function (err, data, fields) {
+      if (err) console.log("query is not excuted. select fail...\n" + err);
+      else
+        res.render("musical_in.ejs", {
+          list: rows,
+          reviews: data,
+          IS: IS,
+          nickname: nickname,
+        });
+    });
+  });
+});
+
 app.get("/login", function (req, res) {
   res.render("login.ejs");
 }); //로그인으로 가게함
