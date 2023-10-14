@@ -819,6 +819,8 @@ margin-top: 50px;
       background-color: #d0cfd1;
       left: 50%;
       transform: translate(-50%, -50%);
+
+      margin-top: 65px;
     }
     .main_text {
       margin-top: 10px;
