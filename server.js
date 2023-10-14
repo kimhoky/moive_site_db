@@ -368,6 +368,37 @@ app.post("/inreview", function (req, res) {
   }
 });
 
+app.post("/inmureview", function (req, res) {
+  var body = req.body;
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+
+  var sql =
+    "INSERT INTO mu_review (mu_review_uid, mu_review_grade, mu_review_olreview, mu_review_musicalname, mu_review_writedate) values (?,?,?,?,NOW())";
+  var params = [nickname, body.rate, body.olreview, body.musicalname];
+  var sql2 = "SELECT * FROM musical WHERE musical_name=?";
+  var sql3 = "SELECT * FROM mu_review WHERE mu_review_musicalname =?";
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/login"); //로그인 안하고 마이페이지 갈시
+  } else {
+    console.log(body.rate);
+    conn.query(sql, params, function (err, rows, fields) {
+      conn.query(sql2, body.musicalname, function (err, data) {
+        conn.query(sql3, body.musicalname, function (err, datas) {
+          if (err) console.log("query is not excuted. select fail...\n" + err);
+          else
+            res.render("musical_in.ejs", {
+              list: data,
+              reviews: datas,
+              IS: IS,
+              nickname: nickname,
+            });
+        });
+      });
+    });
+  }
+});
+
 app.get("/login", function (req, res) {
   res.render("login.ejs");
 }); //영화시간선택으로 가게함
