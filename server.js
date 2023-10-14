@@ -167,6 +167,10 @@ app.get("/reserve", function (req, res) {
 
 app.get("/choice", function (req, res) {
   //   let movie_name = req.query.movie_name;
+  var sn = null;
+  if (req.query.day != null) {
+    sn = req.query.day;
+  }
   let movie_name = "오펜하이머";
   var sql1 = "SELECT * FROM screening WHERE screening_name =?";
   conn.query(sql1, [movie_name], function (err, rows1, fields) {
@@ -180,11 +184,17 @@ app.get("/choice", function (req, res) {
           rows2.forEach((element, i) => {
             day.push(rows2[i].screening_day);
           });
+
+          var dayd = formated(date, day);
+          var selectednum = selectnum(date, day);
           res.render("choice.ejs", {
             title: rows1,
             date: date,
             rows2: rows2,
             day: day,
+            dayd: dayd,
+            selectednum: selectednum,
+            sn: sn,
           });
         }
       });
@@ -460,3 +470,62 @@ app.post("/login_process", function (req, res) {
   }
 });
 app.listen(3000, () => console.log("포트 3000번에서 시작"));
+
+function formated(date, day_input) {
+  var dayd = new Array(date.length);
+  var formattedsDate = new Array(day_input.length);
+  for (var i = 0; i < date.length; i++) {
+    dayd[i] = "day";
+    for (var j = 0; j < day_input.length; j++) {
+      var dateString = day_input[j];
+      var dateObj = new Date(dateString);
+
+      var year = dateObj.getFullYear();
+      var month = ("" + (dateObj.getMonth() + 1)).padStart(2, "");
+      var day = ("" + dateObj.getDate()).padStart(2, "");
+
+      formattedsDate[j] = year + month + day;
+    }
+    if (formattedsDate.indexOf(date[i][0]) < 0) {
+      if (date[i][1] == "토") {
+        dayd[i] += " day-sat dimmed";
+      } else if (date[i][1] == "일") {
+        dayd[i] += " day-sun dimmed";
+      } else {
+        dayd[i] += " dimmed";
+      }
+    } else {
+      if (date[i][1] == "토") {
+        dayd[i] += " day-sat";
+      } else if (date[i][1] == "일") {
+        dayd[i] += " day-sun";
+      }
+    }
+  }
+  return dayd;
+}
+
+function selectnum(date, day_input) {
+  var selectednum = [];
+  var formattedsDate = new Array(day_input.length);
+  var daynum = [];
+  for (var i = 0; i < date.length; i++) {
+    for (var j = 0; j < day_input.length; j++) {
+      var dateString = day_input[j];
+      var dateObj = new Date(dateString);
+
+      var year = dateObj.getFullYear();
+      var month = ("" + (dateObj.getMonth() + 1)).padStart(2, "");
+      var day = ("" + dateObj.getDate()).padStart(2, "");
+
+      daynum[j] = dateObj.getDate();
+      formattedsDate[j] = year + month + day;
+    }
+  }
+  for (let item of daynum) {
+    if (!selectednum.includes(item)) {
+      selectednum.push(item);
+    }
+  }
+  return selectednum;
+}

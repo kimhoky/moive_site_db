@@ -258,77 +258,30 @@
                             <div></div>
                           </div>
                         </li>
-                        <% for(var i = 0;i<31;i++) { %> <% let dayd = "day"; %>
-
+                        
+                        <% for(var i = 0;i<date.length;i++) { %>
+                        <% var stbg = [] %>
+                        <% var num %>
+                        <% if((dayd[i] == "day dimmed") || (dayd[i] == "day day-sat dimmed") || (dayd[i] == "day day-sun dimmed")) { %>
+                          <% stbg[i] = "선택불가" %>
+                        <% }else { %>
+                          <% stbg[i] = "" %>
+                        <% }; %>
                         <li
                           date-index="<%= i %>"
                           date="<%= date[i][0] %>"
-                          class="<%= dayd %>"
+                          class="<%= dayd[i] %>"
                         >
-                          <a href="#" onclick="return false;"
+                          <a href="/choice?day=<%= i + 1 %>" onclick=<% if((dayd[i] == "day dimmed") || (dayd[i] == "day day-sat dimmed") || (dayd[i] == "day day-sun dimmed")) { %>
+
+                          <% }; %>
                             ><span class="dayweek"><%= date[i][1] %></span
                             ><span class="day"><%= i + 1 %></span
-                            ><span class="sreader"></span
-                          ></a>
+                            >
+                            <span class="sreader"><%= stbg[i] %></span></a
+                          >
                         </li>
                         <% }; %>
-                        <!-- <li data-index="0" date="20231009" class="day dimmed">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">월</span
-                            ><span class="day">9</span
-                            ><span class="sreader">선택불가</span></a
-                          >
-                        </li>
-                        <li data-index="1" date="20231010" class="day dimmed">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">화</span
-                            ><span class="day">10</span
-                            ><span class="sreader">선택불가</span></a
-                          >
-                        </li>
-                        <li data-index="2" date="20231011" class="day">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">수</span
-                            ><span class="day">11</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        <li data-index="3" date="20231012" class="day">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">목</span
-                            ><span class="day">12</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        <li data-index="4" date="20231013" class="day">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">금</span
-                            ><span class="day">13</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        <li data-index="5" date="20231014" class="day day-sat">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">토</span
-                            ><span class="day">14</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        <li data-index="6" date="20231015" class="day day-sun">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">일</span
-                            ><span class="day">15</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        <li data-index="7" date="20231016" class="day">
-                          <a href="#" onclick="return false;"
-                            ><span class="dayweek">월</span
-                            ><span class="day">16</span
-                            ><span class="sreader"></span
-                          ></a>
-                        </li>
-                        -->
                       </div>
                     </ul>
                     <div
@@ -362,17 +315,24 @@
                   </div>
                   <!--시간 상세내용-->
                   <ul>
-                    <li>
-                      <button
-                        movie-start="15:00"
-                        movie-end="17:10"
-                        movie-name="<%= title[0].screening_name %>"
-                        class="custom-button"
-                      >
-                        15:00 ~ 17:10 <%= title[0].screening_name %>
-                      </button>
-                    </li>
-                    <li>
+                    <% if( sn != null) { %>
+                      <% for(var i = 0;i<title.length;i++) { %>
+                        <% if(title[i].screening_day.getDate() == sn) { %> 
+                        <li>
+                          <button
+                            movie-start="<%= title[i].screening_stime %>"
+                            movie-end="<%= title[i].screening_etime %>"
+                            movie-name="<%= title[i].screening_name %>"
+                            class="custom-button"
+                          >
+                            <%= title[i].screening_stime %> ~ <%= title[i].screening_etime %> <%= title[i].screening_name %>
+                          </button>
+                        </li>
+                        <% }; %>
+                      <% }; %>
+                    <% }; %>
+                    
+                    <!-- <li>
                       <button
                         movie-start="18:00"
                         movie-end="20:10"
@@ -381,27 +341,7 @@
                       >
                         18:00 ~ 20:10 오펜하이머
                       </button>
-                    </li>
-                    <li>
-                      <button
-                        movie-start="21:00"
-                        movie-end="23:10"
-                        movie-name="오펜하이머"
-                        class="custom-button"
-                      >
-                        21:00 ~ 23:10 오펜하이머
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        movie-start="00:00"
-                        movie-end="02:10"
-                        movie-name="오펜하이머"
-                        class="custom-button"
-                      >
-                        00:00 ~ 02:10 오펜하이머
-                      </button>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>
@@ -420,12 +360,18 @@
       </div>
 
       <script>
+        var sn = [
+          <% for(var i =0;i<selectednum.length;i++) { %>
+          <%= selectednum[i] %>,
+        <% }; %>
+         ""];
+        sn.pop();
         var dateSpans = document.querySelectorAll(".date-list li.day");
 
         dateSpans.forEach(function (dayElement) {
           dayElement.addEventListener("click", function () {
             var selectedDate = dayElement.getAttribute("date");
-            console.log("선택한 날짜:", selectedDate);
+              console.log("선택한 날짜:", selectedDate);
           });
         });
 
@@ -441,11 +387,22 @@
             console.log("상영 종료 시간:", endTime);
           });
         });
-
+      
         function bt() {
-          console.log("<%= rows2[0].screening_day %>");
+          console.log(sn)
+          console.log("<%= sn %>");
+          console.log("<%= selectednum %>");
           console.log("<%= day %>");
+          console.log("<%= dayd %>");
           alert("좌석선택 클릭");
+        }
+
+        function select(num) {
+          for(var i = 0;i<sn.length;i++) {
+            if(num == sn[i]) {
+
+            }
+          }
         }
       </script>
     </div>
