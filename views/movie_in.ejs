@@ -185,7 +185,8 @@ article {
         <div class="comment-box">
           <p>작성자: <%= reviews[i].review_uid %></p>
           <p>한줄평: <%= reviews[i].review_olreview %></p>
-          <p>평점: <%= reviews[i].review_grade %></p>
+          <p>평점: <span id="formatted-edate-<%= i %>"></span> </p>
+          
         </div>
       <% }; %>
     <% } else { %>
@@ -198,7 +199,38 @@ article {
     </div>
 
 
+        <script>
         
+           <% for (var i=0; i < reviews.length; i++) { %>
+
+
+            var inputValue<%= i %> = <%= reviews[i].review_grade %>;
+            var resultText= '';
+            var target = document.getElementById("target");
+
+            switch (inputValue<%= i %>) {
+                case 1:
+                    resultText = "★";
+                    break;
+                case 2:
+                    resultText = "★★";
+                    break;
+                case 3:
+                    resultText = "★★★";
+                    break;
+                case 4:
+                    resultText = "★★★★";
+                    break;
+                case 5:
+                    resultText = "★★★★★";
+                    break;
+                default:
+                    break;
+            }
+            var formattedeDate<%= i %> = resultText;
+            document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
+                <% }; %>  
+        </script>
         
 
           
