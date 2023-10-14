@@ -41,14 +41,7 @@
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
     
-    
-    <!-- HTLM5shiv ie6~8 -->
-    <!--[if lt IE 9]> 
-      <script src="assets/js/html5shiv.min.js"></script>
-      <script type="text/javascript">
-         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
-      </script>
-   <![endif]-->
+
 </head>
 <body>
     
@@ -64,19 +57,18 @@
                         </a>    
                     </h1>
 
-                    
-                    <nav id="mNav">
-                        
-                      <div class="navbar_overlay"></div>
 
-<div class="navbar_burger">
+
+
+                        <nav id="mNav">
+                        <div class="navbar_burger">
   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
   </svg>
 </div>
 
 <div class="navbar_menu">
-   <ul class="clearfix">
+        <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
                             <li><a href="/choice">영화예매</a></li>
                             <li><a href="/my_page">내정보</a></li>
@@ -92,7 +84,14 @@
     </svg>
   </div>
 </div>
+                        
                     </nav>
+                    
+      
+                        
+                    
+
+
                     <nav class="nav">
                      
                         <ul class="clearfix">
@@ -377,17 +376,14 @@
   .button:hover {
     color: orange;
   }
-  
-
-
-
+  /*햄버거 버튼 스타일*/
   .navbar_overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 998;
   opacity: 0;
   pointer-events: none;
@@ -396,10 +392,10 @@
 
 .navbar_burger {
   position: fixed;
-  top: 1rem;
+  top: 0.5rem;
   right: 1rem;
   cursor: pointer;
-  color: #000;
+  color: #39106a;
 }
 
 .navbar_burger_back {
@@ -414,9 +410,9 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 30%;
   height: 100%;
-  background-color: #0e0e0e;
+ background-color: rgba(0, 0, 0, 1);
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
@@ -445,10 +441,21 @@
   opacity: 1;
   pointer-events: auto;
 }
+.navbar_menu li:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 150%;
+    height: 1px; /* 가로선의 높이 설정 가능 */
+    background-color: white; /* 가로선의 색상 설정 가능 */
+    margin-top: 10px; /* 가로선 위 여백 설정 가능 */
+}
+
+
+  
 </style>
 
 <script>
-  const navbarBurger = document.querySelector('.navbar_burger');
+   const navbarBurger = document.querySelector('.navbar_burger');
   const navbarburgerback = document.querySelector('.navbar_burger_back');
   const navbarMenu = document.querySelector('.navbar_menu');
   const navbarOverlay = document.querySelector('.navbar_overlay');
@@ -467,6 +474,8 @@
     navbarMenu.classList.remove('active');
     navbarOverlay.classList.remove('active');
   });
+
+  
 
 </script>
 </html>
