@@ -205,7 +205,7 @@
                 <div class="movie">
             
                     <div class="index_button">
-                      <div class="movie_button"> <button><a herf="/">영화 순위</a></button></div>
+                      <div class="movie_button"> <button><a herf="/index">영화 순위</a></button></div>
                          <div class="musical_button"> <button><a herf="#">뮤지컬 순위</a></button></div>
                          </div>
           
@@ -229,11 +229,11 @@
                                     <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
                                     
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
-                                        <form action="/movie_in" class = "form" id="form" method="POST">
-                                            <input type="text" name="moviename" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
+                                        <form action="/musical_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="musicalname" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
                                             <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
                                         </form>
-                                        <a href="/reserve?movie_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
+                                        <a href="/reserve?musical_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
                                     </div>
                                         
                                         
@@ -259,11 +259,11 @@
                                 <div class="infor">
                                     <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
-                                        <form action="/movie_in" class = "form" id="form" method="POST">
-                                            <input type="text" name="moviename" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
+                                        <form action="/musical_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="musicalname" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
                                             <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
                                         </form>
-                                        <a href="/reserve?movie_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
+                                        <a href="/reserve?musical_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
                                     </div>
                                 </div>
                             </div>

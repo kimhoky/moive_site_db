@@ -110,9 +110,9 @@ article {
             <div class="detail-title">
             </div>
             <div class="movie-intro">
-                <img src="assets/img/<%= list[0].movie_name %>.jpg">
+                <img src="assets/img/<%= list[0].musical_name %>.jpg">
             </div>
-                <button class="btn_T"><a href="/reserve?movie_name=<%= list[0].movie_name %>" style ="color: white;">예매하기</a></button>
+                <button class="btn_T"><a href="/reserve?musical_name=<%= list[0].musical_name %>" style ="color: white;">예매하기</a></button>
         </div>
         
    
@@ -122,7 +122,7 @@ article {
                 <hr>
                 <div>
                 <p class="p_소개내용1">
-                    <%= list[0].movie_intro %>
+                    <%= list[0].musical_info %>
                 </p>
             </div>
             </div>
@@ -134,11 +134,10 @@ article {
                 <hr>
                 <div>
                 <p class="p_기본정보내용1">
-                    개봉 &nbsp; &nbsp;| &nbsp; &nbsp; <span id="formatted-date"></span><br>
-                    등급 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].movie_agecut %> 세 이상 관람가<br>
-                    장르 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].movie_genre %><br>
-                    감독 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].movie_director %><br>
-                    주연 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].movie_star %><br>
+                    
+                    등급 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_agecut %>세 이상 관람가<br>
+                   
+                    주연 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_actor %><br>
                     
                 </p>
             </div>
@@ -149,11 +148,11 @@ article {
                   <hr>
                   <div class="comment-bar" style="width:100%">
                    
-                    <form action="/inreview" calass = "form" id="get_form" method="POST" style="width:100%; display: flex; justify-content: center;">
+                    <form action="/inmureview" calass = "form" id="get_form" method="POST" style="width:100%; display: flex; justify-content: center;">
                         <input type="text" id="comment-input" name="olreview" placeholder="감상평을 작성해주세요..." style="width:70%; height:50%" >
                         
                        
-                        <input type="text" name="moviename" value="<%= list[0].movie_name %>" style="display:none" />
+                        <input type="text" name="musicalname" value="<%= list[0].musical_name %>" style="display:none" />
                         <div class="star-rating">
                             <input type="radio" id="5-stars" name="rating" value="5" onclick="getnum(event)"/>
                             <label for="5-stars" class="star">&#9733;</label>
@@ -183,8 +182,8 @@ article {
     <% if (reviews[0] != null) { %>
       <% for (var i = 0; i < reviews.length; i++) { %>
         <div class="comment-box">
-          <p>작성자: <%= reviews[i].review_uid %></p>
-          <p>한줄평: <%= reviews[i].review_olreview %></p>
+          <p>작성자: <%= reviews[i].mu_review_uid %></p>
+          <p>한줄평: <%= reviews[i].mu_review_olreview %></p>
           <p>평점: <span id="formatted-edate-<%= i %>"></span> </p>
           
         </div>
@@ -204,7 +203,7 @@ article {
            <% for (var i=0; i < reviews.length; i++) { %>
 
 
-            var inputValue<%= i %> = <%= reviews[i].review_grade %>;
+            var inputValue<%= i %> = <%= reviews[i].mu_review_grade %>;
             var resultText= '';
             var target = document.getElementById("target");
 

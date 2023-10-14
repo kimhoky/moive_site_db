@@ -81,7 +81,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/<%= movie[i].movie_name %>.jpg" alt="<%= movie[i].movie_name %>">
+                                        <img style="height:420px; width:292px" src="assets/img/<%= movie[i].movie_name %>.jpg" alt="<%= movie[i].movie_name %>">
                                     </figure>
                                     <div class="rank"><strong><%= i+1 %></strong></div>
                                     <div class="mx">
@@ -110,7 +110,7 @@
                             <div>
                                 <div class="poster">
                                     <figure>
-                                        <img src="assets/img/<%= movie[i].movie_name %>.jpg" alt="<%= movie[i].movie_name %>">
+                                        <img style="height:420px; width:292px" src="assets/img/<%= movie[i].movie_name %>.jpg" alt="<%= movie[i].movie_name %>">
                                     </figure>
                                     <div class="rank"><strong><%= i+1 %></strong></div>
                                     <div class="mx">
@@ -185,6 +185,45 @@
             }
         }
 </script>
+<style>
+
+       @media screen and (max-width:730px){
+         
+                .input-box  {
+                    width: 500px;}
+                    .search{
+                        width: 400px;
+                    }
+                    .searchinput{
+                        width: 300px;
+                    }
+     }
+      @media screen and (max-width:500px){
+                
+                .input-box  {
+                    width: 400px;}
+                 
+                    .searchinput{
+                        width: 200px;
+                    }
+                     .input-box .button {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (min-width:550px) and (max-width: 1280px) {
+    .chart_cont1 {
+      width: 900px;
+       height: 1300px;
+        margin-left: auto;
+    }
+       .chart_cont2 {
+       width: 900px;
+       height: 1300px;
+        margin-left: auto;
+       }
+    }
+</style>
 </body>
 </html>
 

@@ -241,8 +241,8 @@
                         <script>
                             <% for (var i=0; i < myreserve.length; i++) { %>
                           
-                                var dateString<%= i %> = "<%= myreserve[0].reserve_moviestart %>";
-                                var dateStringend<%= i %> = "<%= myreserve[0].reserve_movieend %>";
+                                var dateString<%= i %> = "<%= myreserve[i].reserve_moviestart %>";
+                                var dateStringend<%= i %> = "<%= myreserve[i].reserve_movieend %>";
                                  var dateObj<%= i %> = new Date(dateString<%= i %>);
                                  var dateObjend<%= i %> = new Date(dateStringend<%= i %>);
 
