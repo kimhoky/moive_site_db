@@ -52,8 +52,7 @@ app.use(
     store: new FileStore(),
   })
 );
-var sql2 =
-      "SELECT AVG(review_grade) FROM review GROUP BY review_moviename";
+var sql2 = "SELECT AVG(review_grade) FROM review GROUP BY review_moviename";
 // 추가 (이건 그냥 별거 아님)
 app.get("/", function (req, res) {
   var nickname = req.session.nickname;
@@ -64,7 +63,6 @@ app.get("/", function (req, res) {
     conn.query(sql, function (err, row, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
       else res.render("index.ejs", { title: row, nickname: nickname, IS: IS });
-    
     });
     return false;
   } else {
@@ -141,26 +139,31 @@ app.get("/reserve", function (req, res) {
     let movie_day = req.query.movie_day;
     let movie_stime = req.query.movie_stime;
     let movie_etime = req.query.movie_etime;
+    let reserve_stime = "2023-10-" + movie_day + " " + movie_stime;
     var sql1 = "SELECT * FROM movie WHERE movie_name =?";
     conn.query(sql1, [movie_name], function (err, rows1, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
       else
         var sql2 =
-          "SELECT reserve_seat FROM reserve WHERE reserve_moviename =?";
-      conn.query(sql2, [movie_name], function (err, rows2, fields) {
-        if (err) console.log("query is not excuted. select fail...\n" + err);
-        else {
-          var screening = new Array(3);
-          screening[0] = movie_day;
-          screening[1] = movie_stime;
-          screening[2] = movie_etime;
-          res.render("reserve.ejs", {
-            title: rows1,
-            seats: rows2,
-            screening: screening,
-          });
+          "SELECT reserve_seat FROM reserve WHERE reserve_moviename =? AND reserve_moviestart =?";
+      conn.query(
+        sql2,
+        [movie_name, reserve_stime],
+        function (err, rows2, fields) {
+          if (err) console.log("query is not excuted. select fail...\n" + err);
+          else {
+            var screening = new Array(3);
+            screening[0] = movie_day;
+            screening[1] = movie_stime;
+            screening[2] = movie_etime;
+            res.render("reserve.ejs", {
+              title: rows1,
+              seats: rows2,
+              screening: screening,
+            });
+          }
         }
-      });
+      );
     });
   }
 });
