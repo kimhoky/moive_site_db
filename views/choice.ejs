@@ -272,9 +272,7 @@
                           date="<%= date[i][0] %>"
                           class="<%= dayd[i] %>"
                         >
-                          <a href="/choice?day=<%= i + 1 %>" onclick=<% if((dayd[i] == "day dimmed") || (dayd[i] == "day day-sat dimmed") || (dayd[i] == "day day-sun dimmed")) { %>
-
-                          <% }; %>
+                          <a href="/choice?movie_name=<%= title[0].screening_name %>&day=<%= i + 1 %>"
                             ><span class="dayweek"><%= date[i][1] %></span
                             ><span class="day"><%= i + 1 %></span
                             >
@@ -319,14 +317,15 @@
                       <% for(var i = 0;i<title.length;i++) { %>
                         <% if(title[i].screening_day.getDate() == sn) { %> 
                         <li>
-                          <button
-                            movie-start="<%= title[i].screening_stime %>"
-                            movie-end="<%= title[i].screening_etime %>"
-                            movie-name="<%= title[i].screening_name %>"
-                            class="custom-button"
-                          >
-                            <%= title[i].screening_stime %> ~ <%= title[i].screening_etime %> <%= title[i].screening_name %>
-                          </button>
+                            ><button
+                              movie-start="<%= title[i].screening_stime %>"
+                              movie-end="<%= title[i].screening_etime %>"
+                              movie-name="<%= title[i].screening_name %>"
+                              class="custom-button"
+                              onclick=""
+                            >
+                              <%= title[i].screening_stime %> ~ <%= title[i].screening_etime %> <%= title[i].screening_name %>
+                            </button>
                         </li>
                         <% }; %>
                       <% }; %>
@@ -376,25 +375,36 @@
         });
 
         var buttons = document.querySelectorAll(".custom-button");
-
+        var movieName = null;
+        var startTime = null;
+        var endTime = null;
         buttons.forEach(function (button) {
           button.addEventListener("click", function () {
-            var movieName = button.getAttribute("movie-name");
-            var startTime = button.getAttribute("movie-start");
-            var endTime = button.getAttribute("movie-end");
+            movieName = button.getAttribute("movie-name");
+            startTime = button.getAttribute("movie-start");
+            endTime = button.getAttribute("movie-end");
             console.log("영화 이름:", movieName);
             console.log("상영 시작 시간:", startTime);
             console.log("상영 종료 시간:", endTime);
+            alert(movieName + " <%= sn %>일" + startTime + " ~ " + endTime + " 선택하셨습니다.");
           });
         });
       
         function bt() {
-          console.log(sn)
-          console.log("<%= sn %>");
-          console.log("<%= selectednum %>");
-          console.log("<%= day %>");
-          console.log("<%= dayd %>");
-          alert("좌석선택 클릭");
+          if(startTime != null) {
+            if (confirm(
+          			"이 내용으로 예매 하시겠습니까?"
+          			+ " 영화 : " + movieName
+          			+ " 날짜 : <%= sn %>일"
+          			+ " 시간 : " + startTime + " ~ " + endTime
+          			) == true){    //확인
+          					document.location.href="/reserve?movie_name="+movieName+"&movie_day=<%= sn %>&movie_stime=" + startTime + "&movie_etime=" + endTime;
+          					}else{   //취소
+          						return false;
+          					}
+          }else {
+            alert("시간을 선택해 주세요!")
+          }
         }
 
         function select(num) {

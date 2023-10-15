@@ -136,6 +136,9 @@ app.get("/reserve", function (req, res) {
     res.redirect("/login"); //로그인 안하고 예매페이지 갈시
   } else {
     let movie_name = req.query.movie_name;
+    let movie_day = req.query.movie_day;
+    let movie_stime = req.query.movie_stime;
+    let movie_etime = req.query.movie_etime;
     var sql1 = "SELECT * FROM movie WHERE movie_name =?";
     conn.query(sql1, [movie_name], function (err, rows1, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
@@ -144,11 +147,8 @@ app.get("/reserve", function (req, res) {
           "SELECT reserve_seat FROM reserve WHERE reserve_moviename =?";
       conn.query(sql2, [movie_name], function (err, rows2, fields) {
         if (err) console.log("query is not excuted. select fail...\n" + err);
-        else if (req.query.movie_day != null) {
-          let movie_day = req.query.movie_day;
-          let movie_stime = req.query.movie_stime;
-          let movie_etime = req.query.movie_etime;
-          var screening = screening[3];
+        else {
+          var screening = new Array(3);
           screening[0] = movie_day;
           screening[1] = movie_stime;
           screening[2] = movie_etime;
@@ -157,8 +157,6 @@ app.get("/reserve", function (req, res) {
             seats: rows2,
             screening: screening,
           });
-        } else {
-          res.render("reserve.ejs", { title: rows1, seats: rows2 });
         }
       });
     });
@@ -166,12 +164,12 @@ app.get("/reserve", function (req, res) {
 });
 
 app.get("/choice", function (req, res) {
-  //   let movie_name = req.query.movie_name;
+  let movie_name = req.query.movie_name;
   var sn = null;
   if (req.query.day != null) {
     sn = req.query.day;
   }
-  let movie_name = "오펜하이머";
+  // let movie_name = "오펜하이머";
   var sql1 = "SELECT * FROM screening WHERE screening_name =?";
   conn.query(sql1, [movie_name], function (err, rows1, fields) {
     if (err) console.log("query is not excuted. select fail...\n" + err);
@@ -202,32 +200,28 @@ app.get("/choice", function (req, res) {
   });
 });
 
-app.get("/reserve2", function (req, res) {
-  if (!authCheck.isOwner(req, res)) {
-    res.redirect("/login");
-  } else {
-    let movie_name = req.query.movie_name;
-    var sql1 = "SELECT * FROM screening WHERE screening_name =?";
-    conn.query(sql1, [movie_name], function (err, rows1, fields) {
-      if (err) console.log("query is not excuted. select fail...\n" + err);
-      else res.render("reserve2.ejs", { screening: rows1 });
-    });
-  }
-});
-
 app.get("/reserving", function (req, res) {
   let movie_name = req.query.movie_name;
-  let movie_time = req.query.movie_time;
+  let movie_day = req.query.movie_day;
+  let movie_stime = req.query.movie_stime;
+  let movie_etime = req.query.movie_etime;
   let movie_seats = req.query.seats;
   var movie_seat = movie_seats.split(",");
-  console.log(movie_name, movie_time, movie_seats.split(",").length);
   for (var i = 0; i < movie_seat.length; i++) {
     var sql =
       'insert into `reserve` (`reserve_uid`,  `reserve_seat`, `reserve_moviestart`, `reserve_movieend`, `reserve_moviename`) VALUES ("' +
       req.session.nickname +
       '", "' +
       movie_seat[i] +
-      '", "2023-07-07 00:00:00.000000", "2023-07-07 02:00:00.000000", "' +
+      '", "' +
+      movie_day +
+      " " +
+      movie_stime +
+      '", "' +
+      movie_day +
+      " " +
+      movie_etime +
+      '", "' +
       movie_name +
       '")';
     conn.query(sql, [movie_name], function (err) {

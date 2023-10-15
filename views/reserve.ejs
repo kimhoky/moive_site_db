@@ -77,179 +77,191 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       <h1>Movie Ticket Booking</h1>
       <div class="main">
         <div class="main-box">
-        <h2>Multiplex Theatre Showing Screen</h2>
-        <div class="demo">
-          <div id="seat-map">
-            <div class="front">SCREEN</div>
+          <h2>Multiplex Theatre Showing Screen</h2>
+          <div class="demo">
+            <div id="seat-map">
+              <div class="front">SCREEN</div>
+            </div>
+            <div class="booking-details">
+              <ul class="book-left">
+                <li>Movie</li>
+                <li>Date</li>
+                <li>Time</li>
+                <li>Tickets</li>
+                <li>Total</li>
+                <li>Seats :</li>
+              </ul>
+              <ul class="book-right">
+                <div class="movie-select">
+                  <select name="movie" id="movie">
+                    <option value="gingerclown">
+                      <%= title[0].movie_name %>
+                    </option>
+                  </select>
+                </div>
+                <div class="day-select">
+                  <label for="day"></label>
+                  <input
+                    type="date"
+                    id="day"
+                    name="day"
+                    value="2023-10-<%= screening[0] %>"
+                    disabled
+                  />
+                  <!--날짜 넣기-->
+                </div>
+                <div class="time-select">
+                  <label for="movie-time"></label>
+                  <!--시간넣기-->
+                  <input
+                    type="time"
+                    id="movie-time"
+                    name="movie-time"
+                    value="<%= screening[1] %>"
+                    disabled
+                  />
+                </div>
+                <li>: <span id="counter">0</span></li>
+                <li>
+                  : <b><i>₩</i><span id="total">0</span></b>
+                </li>
+              </ul>
+              <div class="clear"></div>
+              <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
+
+              <a class="checkout-button" onclick="reserveCheck()">Book Now</a>
+              <!-- </form>	 -->
+              <div id="legend"></div>
+            </div>
+            <div style="clear: both"></div>
           </div>
-          <div class="booking-details">
-            <ul class="book-left">
-              <li>Movie</li>
-              <li>Date</li>
-              <li>Time</li>
-              <li>Tickets</li>
-              <li>Total</li>
-              <li>Seats :</li>
-            </ul>
-            <ul class="book-right">
-              <div class="movie-select">
-                <select name="movie" id="movie">
-                  <option value="gingerclown">
-                    <%= title[0].movie_name %>
-                  </option>
-                </select>
-              </div>
-              <div class="day-select">
-                <label for="day"></label>
-                <input type="date" id="day" name="day" value="2023-10-11" />
-                <!--날짜 넣기-->
-              </div>
-              <div class="time-select">
-                <label for="movie-time"></label>
-                <!--시간넣기-->
-                <input type="time" id="movie-time" name="movie-time" />
-              </div>
-              <li>: <span id="counter">0</span></li>
-              <li>
-                : <b><i>₩</i><span id="total">0</span></b>
-              </li>
-            </ul>
-            <div class="clear"></div>
-            <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
-            <a class="checkout-button" onclick="reserveCheck()">Book Now</a>
-            <!-- </form>	 -->
-            <div id="legend"></div>
-          </div>
-          <div style="clear: both"></div>
-        </div>
+          <script type="text/javascript">
+            var seat = [];
+            var sm = 0;
+            var ttotal = 0;
+            var movie_time ='';
+            var movie_day = '';
+            // 10-09 수정
+            // var movie_day = ' running[0].movie_day %>'
+            // var movie_time = ' running[0].movie_starttime %>';
+            var price = <%= title[0].movie_price %>; //price
+            $(document).ready(function() {
+            	$cart = $('#selected-seats'), //Sitting Area
+            	$counter = $('#counter'), //Votes
+            	$total = $('#total'); //Total money
 
-        <script type="text/javascript">
-          var seat = [];
-          var sm = 0;
-          var ttotal = 0;
-          var movie_time ='';
-          var movie_day = '';
-          // 10-09 수정
-          // var movie_day = ' running[0].movie_day %>'
-          // var movie_time = ' running[0].movie_starttime %>';
-          var price = <%= title[0].movie_price %>; //price
-          $(document).ready(function() {
-          	$cart = $('#selected-seats'), //Sitting Area
-          	$counter = $('#counter'), //Votes
-          	$total = $('#total'); //Total money
+            	var sc = $('#seat-map').seatCharts({
+            		map: [  //Seating chart
+            			'aaaaaaaaaa',
+            			'aaaaaaaaaa',
+            			'__________',
+            			'aaaaaaaa__',
+            			'aaaaaaaaaa',
+            			'aaaaaaaaaa',
+            			'aaaaaaaaaa',
+            			'aaaaaaaaaa',
+            			'aaaaaaaaaa',
+            			'__aaaaaa__'
+            		],
+            		naming : {
+            			top : false,
+            			getLabel : function (character, row, column) {
+            				return column;
+            			}
+            		},
+            		legend : { //Definition legend
+            			node : $('#legend'),
+            			items : [
+            				[ 'a', 'available',   'Available' ],
+            				[ 'a', 'unavailable', 'Sold'],
+            				[ 'a', 'selected', 'Selected']
+            			]
+            		},
+            		click: function () { //Click event
+            			if (this.status() == 'available') { //optional seat
+            				$('<li name="seat">Row'+(this.settings.row+1)+' Seat'+this.settings.label+'</li>')
+            					.attr('id', 'cart-item-'+this.settings.id)
+            					.data('seatId', this.settings.id)
+            					.appendTo($cart);
 
-          	var sc = $('#seat-map').seatCharts({
-          		map: [  //Seating chart
-          			'aaaaaaaaaa',
-          			'aaaaaaaaaa',
-          			'__________',
-          			'aaaaaaaa__',
-          			'aaaaaaaaaa',
-          			'aaaaaaaaaa',
-          			'aaaaaaaaaa',
-          			'aaaaaaaaaa',
-          			'aaaaaaaaaa',
-          			'__aaaaaa__'
-          		],
-          		naming : {
-          			top : false,
-          			getLabel : function (character, row, column) {
-          				return column;
-          			}
-          		},
-          		legend : { //Definition legend
-          			node : $('#legend'),
-          			items : [
-          				[ 'a', 'available',   'Available' ],
-          				[ 'a', 'unavailable', 'Sold'],
-          				[ 'a', 'selected', 'Selected']
-          			]
-          		},
-          		click: function () { //Click event
-          			if (this.status() == 'available') { //optional seat
-          				$('<li name="seat">Row'+(this.settings.row+1)+' Seat'+this.settings.label+'</li>')
-          					.attr('id', 'cart-item-'+this.settings.id)
-          					.data('seatId', this.settings.id)
-          					.appendTo($cart);
-
-          				$counter.text(sc.find('selected').length+1);
-          				$total.text(recalculateTotal(sc)+price);
-          				ttotal += price;
-          				sm += 1;
-          				seat.push((this.settings.row+1)+'_'+this.settings.label);
+            				$counter.text(sc.find('selected').length+1);
+            				$total.text(recalculateTotal(sc)+price);
+            				ttotal += price;
+            				sm += 1;
+            				seat.push((this.settings.row+1)+'_'+this.settings.label);
 
 
-          				return 'selected';
-          			} else if (this.status() == 'selected') { //Checked
-          					//Update Number
-          					$counter.text(sc.find('selected').length-1);
-          					//update totalnum
-          					$total.text(recalculateTotal(sc)-price);
-          					ttotal -= price;
-          					for(var i = 0; i < seat.length; i++){
-          						if (seat[i] === (this.settings.row+1)+'_'+this.settings.label) {
-          								seat.splice(i, 1);
-          								i--;
-          							}
-          					}
+            				return 'selected';
+            			} else if (this.status() == 'selected') { //Checked
+            					//Update Number
+            					$counter.text(sc.find('selected').length-1);
+            					//update totalnum
+            					$total.text(recalculateTotal(sc)-price);
+            					ttotal -= price;
+            					for(var i = 0; i < seat.length; i++){
+            						if (seat[i] === (this.settings.row+1)+'_'+this.settings.label) {
+            								seat.splice(i, 1);
+            								i--;
+            							}
+            					}
 
 
-          					//Delete reservation
-          					$('#cart-item-'+this.settings.id).remove();
-          					//optional
-          					return 'available';
-          			} else if (this.status() == 'unavailable') { //sold
-          				return 'unavailable';
-          			} else {
-          				return this.style();
-          			}
-          		}
-          	});
-          	//sold seat
-          	<% for (var i = 0; i<seats.length; i++) { %>
-          		sc.get(['<%= seats[i].reserve_seat %>']).status('unavailable');
-          	<% }; %>
-          });
-          //sum total money
-          function recalculateTotal(sc) {
-          	var total = 0;
-          	sc.find('selected').each(function () {
-          		total += price;
-          	});
+            					//Delete reservation
+            					$('#cart-item-'+this.settings.id).remove();
+            					//optional
+            					return 'available';
+            			} else if (this.status() == 'unavailable') { //sold
+            				return 'unavailable';
+            			} else {
+            				return this.style();
+            			}
+            		}
+            	});
+            	//sold seat
+            	<% for (var i = 0; i<seats.length; i++) { %>
+            		sc.get(['<%= seats[i].reserve_seat %>']).status('unavailable');
+            	<% }; %>
+            });
+            //sum total money
+            function recalculateTotal(sc) {
+            	var total = 0;
+            	sc.find('selected').each(function () {
+            		total += price;
+            	});
 
-          	return total;
-          }
+            	return total;
+            }
 
-          if ( movie_time != null) {
-          	document.getElementById("day").innerHTML = movie_day;
-          	document.getElementById("movie-time").innerHTML = movie_time;
-          }
+            if ( movie_time != null) {
+            	document.getElementById("day").innerHTML = movie_day;
+            	document.getElementById("movie-time").innerHTML = movie_time;
+            }
 
-          function reserveCheck() {
-          	if ( seat == 0) {
-          		alert( "좌석을 선택해 주세요!");
-          	}
-          	// else if ( ){
+            function reserveCheck() {
+            	if ( seat == 0) {
+            		alert( "좌석을 선택해 주세요!");
+            	}
+            	// else if ( ){
 
-          	// }
-          	else {
-          		var movie_name = '<%= title[0].movie_name %>';
-          		if (confirm(
-          			"이 내용으로 예매 하시겠습니까?"
-          			+ " 영화 : " + movie_name
-          			+ " 날짜 : " + movie_day
-          			+ " 시간 : " + movie_time
-          			+ " 가격 : " + ttotal
-          			+ " 좌석 : " + seat
-          			) == true){    //확인
-          					document.location.href="/reserving/?movie_name="+movie_name+"&movie_time="+movie_time+"&seats="+seat;
-          					}else{   //취소
-          						return false;
-          					}
-          		}
-          }
-        </script>
+            	// }
+            	else {
+            		var movie_name = '<%= title[0].movie_name %>';
+            		if (confirm(
+            			"이 내용으로 예매 하시겠습니까?"
+            			+ " 영화 : " + movie_name
+            			+ " 날짜 : 2023-10-<%= screening[0] %>"
+            			+ " 시간 : <%= screening[1] %> ~ <%= screening[2] %>"
+            			+ " 가격 : " + ttotal
+            			+ " 좌석 : " + seat
+            			) == true){    //확인
+            					document.location.href="/reserving?movie_name="+movie_name+"&movie_day=2023-10-<%= screening[0] %>&movie_stime=<%= screening[1] %>&movie_etime=<%= screening[2] %>&seats="+seat;
+            					}else{   //취소
+            						return false;
+            					}
+            		}
+            }
+          </script>
         </div>
       </div>
       <p class="copy_rights">
@@ -260,44 +272,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="js/jquery.nicescroll.js"></script>
     <script src="js/scripts.js"></script>
     <style>
-
-     @media screen and (min-width:1400px){
-    .main-box{
-       width: 720px;
-       height: 500px;
+      @media screen and (min-width: 1400px) {
+        .main-box {
+          width: 720px;
+          height: 500px;
+        }
+        .clear {
+          width: 270px;
+          height: 30px;
+        }
       }
-      .clear{
-        width: 270px;
-        height: 30px;
+
+      @media screen and (min-width: 1000px) {
+        .main-box {
+          width: 720px;
+          height: 500px;
+        }
+        .clear {
+          width: 270px;
+          height: 30px;
+        }
       }
-     }
-     
-     @media screen and (min-width:1000px) {
-       .main-box{
-       width: 720px;
-       height: 500px;
+
+      @media screen and (min-width: 700px) {
+        .main {
+          width: 670px;
+          height: 500px;
+        }
       }
-      .clear{
-        width: 270px;
-        height: 30px;
-      }
-     }
-
-     @media screen and (min-width:700px) {
-
-          .main{
-       width: 670px;
-       height: 500px;
-      }
-      
-     }
-
-
-    
-      
-      
-     
-
     </style>
   </body>
 </html>
