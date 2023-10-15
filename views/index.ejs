@@ -240,6 +240,8 @@
                         <div class="chart_cont1">
                             <h2 style="font-size: 30px; margin: 10px;">영화 순위</h2>
                             <% for (var i=0; i < 4; i++) { %>
+
+                                
                             <div>
                                 <div class="poster">
                                     <figure>
@@ -253,7 +255,7 @@
                                 </div>
                                 <div class="infor">
                                     
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </strong></h3>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %>   </strong></h3>평점: <span id="fn-<%= i %>"></span>
                                     
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/movie_in" class = "form" id="form" method="POST">
@@ -268,6 +270,7 @@
                                 </div>
                             </div>
                             <% }; %>
+                          
                         </div>
                             
                         <div class="chart_cont2">
@@ -284,7 +287,7 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </strong></h3>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </p></strong></h3>평점: <span id="fn-<%= i %>"></span>
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/movie_in" class = "form" id="form" method="POST">
                                             <input type="text" name="moviename" style = "display:none" value =<%= title[i].review_moviename %> />
@@ -301,7 +304,15 @@
                 </div>
             </div>
         </div>
-        
+        <% for (var i=0; i < 8; i++) { %>
+            <script>
+                var on<%= i %> = <%= title[i].average %>;
+                var fn<%= i %> = on<%= i %>.toFixed(1);
+                document.getElementById("fn-<%= i %>").textContent = fn<%= i %>;
+
+            </script>
+<% }; %>
+
     </section>  
     <!-- //movie -->
     
@@ -311,6 +322,8 @@
     <script src="script.js"></script>
 
     <script>
+        
+
         //배너 이미지 슬라이드
         var swiper = new Swiper('.swiper-container',{
             pagination: {
