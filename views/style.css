@@ -924,7 +924,21 @@ margin-top: 50px;
   }
 }
 
-@media (max-width: 320px){
- 
+.index_button .movie_button button,
+.index_button .musical_button button {
+  background-color: Light/Gray/Black/Black (4%);
+  color: #FFFFFF;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 3px;
+  border-radius: 10px;
 }
-
+    .index_button .movie_button button:hover,
+    .index_button .musical_button button:hover {
+      background-color: #0056b3;
+    }
+      .button:hover {
+    color: orange;
+  }
