@@ -1,288 +1,325 @@
-
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="webstoryboy">
-    <meta name="description" content="티켓팅을 위한 사이트">
-    <meta name="keywords" content="티켓팅을 위한 사이트">
-    <title>fresh_tomato</title>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="author" content="webstoryboy" />
+  <meta name="description" content="티켓팅을 위한 사이트" />
+  <meta name="keywords" content="티켓팅을 위한 사이트" />
+  <title>fresh_tomato</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./swiper.css">
+  <!-- css -->
+  <link rel="stylesheet" href="./reset.css" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./swiper.css" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- 웹 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
-    
-    <style>
-        
-.star-rating {
-  border:solid 1px #ccc;
-  display:flex;
-  flex-direction: row-reverse;
-  font-size:1.5em;
-  justify-content:space-around;
-  padding:0 .2em;
-  text-align:center;
-  width:5em;
-}
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <!-- 웹 폰트 -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean"
+    rel="stylesheet"
+  />
 
-.star-rating input {
-  display:none;
-}
+  <style>
+    .star-rating {
+      border: solid 1px #ccc;
+      display: flex;
+      flex-direction: row-reverse;
+      font-size: 1.5em;
+      justify-content: space-around;
+      padding: 0 0.2em;
+      text-align: center;
+      width: 5em;
+    }
 
-.star-rating label {
-  color:white;
-  cursor:pointer;
-}
+    .star-rating input {
+      display: none;
+    }
 
-.star-rating :checked ~ label {
-  color:#f90;
-}
+    .star-rating label {
+      color: white;
+      cursor: pointer;
+    }
 
-.star-rating label:hover,
-.star-rating label:hover ~ label {
-  color:#fc0;
-}
+    .star-rating :checked ~ label {
+      color: #f90;
+    }
 
-/* explanation */
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: #fc0;
+    }
 
-article {
-  background-color:#ffe;
-  box-shadow:0 0 1em 1px rgba(0,0,0,.25);
-  color:#006;
-  font-family:cursive;
-  font-style:italic;
-  margin:4em;
-  max-width:30em;
-  padding:2em;
-}
-    </style>
+    /* explanation */
 
+    article {
+      background-color: #ffe;
+      box-shadow: 0 0 1em 1px rgba(0, 0, 0, 0.25);
+      color: #006;
+      font-family: cursive;
+      font-style: italic;
+      margin: 4em;
+      max-width: 30em;
+      padding: 2em;
+    }
+  </style>
 </head>
 <body>
-    
-    <header id="header">
-        <div class="container">
-            <div class="row">
-                <div class="header clearfix">
-                    <h1>
-                        <a href="/">
-                        <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
-                    
-                        </a>    
-                    </h1>
-                    <nav id="mNav">
-                        <h2 class="ir_so">티켓팅 전체메뉴</h2>
-                        <a href="#" class="ham"><span></span></a>
-                    </nav>
-                    <nav class="nav">
-                        <ul class="clearfix">
-                            <li><a href="/movie">영화</a></li>
-                            <!-- <li><a href="/the_moie">영화예매</a></li>     -->
-                            <li><a href="/my_page">내정보</a></li>        
-                            <% if (IS) { %>
-                                <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
-                                <% } else { %>
-                                <li><a href="/login">로그인</a></li>
-                                <% }; %>
-                        </ul>
-                           
-                       
-                            
-                  
-                        </ul>
-                    </nav>    
-                </div>
-            </div>
+  <header id="header">
+    <div class="container">
+      <div class="row">
+        <div class="header clearfix">
+          <h1>
+            <a href="/">
+              <strong
+                ><img
+                  src="assets/img/freash_tomato_main.png"
+                  alt="LIFE THEATER"
+                  style="transform: translateY(-20px)"
+              /></strong>
+            </a>
+          </h1>
+          <nav id="mNav">
+            <h2 class="ir_so">티켓팅 전체메뉴</h2>
+            <a href="#" class="ham"><span></span></a>
+          </nav>
+          <nav class="nav">
+            <ul class="clearfix">
+              <li><a href="/movie">영화</a></li
+              <li><a href="/my_page">내정보</a></li>
+              <% if (IS) { %>
+              <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
+              <% } else { %>
+              <li><a href="/login">로그인</a></li>
+              <% }; %>
+            </ul>
+          </nav>
         </div>
-    </header>
-    <!-- //header -->
+      </div>
+    </div>
+  </header>
+  <!-- //header -->
 
-   <div class="main_box">
+  <div class="main_box">
+    <div class="info-box">
+      <!-- 상세정보 박스-->
+      <div class="detail-title"></div>
+      <div class="movie-intro">
+        <img src="assets/img/<%= list[0].musical_name %>.jpg" />
+      </div>
+      <button class="btn_T">
+        <a
+          href="/reserve?musical_name=<%= list[0].musical_name %>"
+          style="color: white"
+          >예매하기</a
+        >
+      </button>
+    </div>
 
-        <div class="info-box"> <!-- 상세정보 박스-->
-            <div class="detail-title">
-            </div>
-            <div class="movie-intro">
-                <img src="assets/img/<%= list[0].musical_name %>.jpg">
-            </div>
-                <button class="btn_T"><a href="/reserve?musical_name=<%= list[0].musical_name %>" style ="color: white;">예매하기</a></button>
+    <div class="main_text">
+      <div class="main_top_text">
+        <p class="p_소개1">[ 소개 ]</p>
+        <hr />
+        <div>
+          <p class="p_소개내용1"><%= list[0].musical_info %></p>
         </div>
-        
-   
-        <div class="main_text"> 
-            <div class="main_top_text">
-                <p class="p_소개1">[ 소개 ]</p>
-                <hr>
-                <div>
-                <p class="p_소개내용1">
-                    <%= list[0].musical_info %>
-                </p>
-            </div>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="main_text2"> 
-            <div>
-                <p class="p_기본정보1">[ 기본정보 ]</p>
-                <hr>
-                <div>
-                <p class="p_기본정보내용1">
-                    
-                    등급 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_agecut %>세 이상 관람가<br>
-                   
-                    주연 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_actor %><br>
-                    
-                </p>
-            </div>
-            </div>
-            <div class="main_text3"> 
-                <div>
-                  <p class="p_한줄평가">[ 감상평 및 평점  ] <span class="rating-info"></span></p>
-                  <hr>
-                  <div class="comment-bar" style="width:100%">
-                   
-                    <form action="/inmureview" calass = "form" id="get_form" method="POST" style="width:100%; display: flex; justify-content: center;">
-                        <input type="text" id="comment-input" name="olreview" placeholder="감상평을 작성해주세요..." style="width:70%; height:50%" >
-                        
-                       
-                        <input type="text" name="musicalname" value="<%= list[0].musical_name %>" style="display:none" />
-                        <div class="star-rating">
-                            <input type="radio" id="5-stars" name="rating" value="5" onclick="getnum(event)"/>
-                            <label for="5-stars" class="star">&#9733;</label>
-                            <input type="radio" id="4-stars" name="rating" value="4" onclick="getnum(event)"/>
-                            <label for="4-stars" class="star">&#9733;</label>
-                            <input type="radio" id="3-stars" name="rating" value="3"onclick="getnum(event)" />
-                            <label for="3-stars" class="star">&#9733;</label>
-                            <input type="radio" id="2-stars" name="rating" value="2" onclick="getnum(event)"/>
-                            <label for="2-stars" class="star">&#9733;</label>
-                            <input type="radio" id="1-star" name="rating" value="1" onclick="getnum(event)"/>
-                            <label for="1-star" class="star">&#9733;</label>
-                        </div>
-                        <input type="number" name="rate" id="rating_input" style="display: none;"/>
-                        <button id="submit-btn" type="submit">등록</button>
-   
-                        
-                    </form>
-                    
-                  </div>
-                
-                </div>
+    <div class="main_text2">
+      <div>
+        <p class="p_기본정보1">[ 기본정보 ]</p>
+        <hr />
+        <div>
+          <p class="p_기본정보내용1">
+            등급 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_agecut %>세
+            이상 관람가<br />
+
+            주연 &nbsp; &nbsp;| &nbsp; &nbsp; <%= list[0].musical_actor %><br />
+          </p>
+        </div>
+      </div>
+      <div class="main_text3">
+        <div>
+          <p class="p_한줄평가">
+            [ 감상평 및 평점 ] <span class="rating-info"></span>
+          </p>
+          <hr />
+          <div class="comment-bar" style="width: 100%">
+            <form
+              action="/inmureview"
+              calass="form"
+              id="get_form"
+              method="POST"
+              style="width: 100%; display: flex; justify-content: center"
+            >
+              <input
+                type="text"
+                id="comment-input"
+                name="olreview"
+                placeholder="감상평을 작성해주세요..."
+                style="width: 70%; height: 50%"
+              />
+
+              <input
+                type="text"
+                name="musicalname"
+                value="<%= list[0].musical_name %>"
+                style="display: none"
+              />
+              <div class="star-rating">
+                <input
+                  type="radio"
+                  id="5-stars"
+                  name="rating"
+                  value="5"
+                  onclick="getnum(event)"
+                />
+                <label for="5-stars" class="star">&#9733;</label>
+                <input
+                  type="radio"
+                  id="4-stars"
+                  name="rating"
+                  value="4"
+                  onclick="getnum(event)"
+                />
+                <label for="4-stars" class="star">&#9733;</label>
+                <input
+                  type="radio"
+                  id="3-stars"
+                  name="rating"
+                  value="3"
+                  onclick="getnum(event)"
+                />
+                <label for="3-stars" class="star">&#9733;</label>
+                <input
+                  type="radio"
+                  id="2-stars"
+                  name="rating"
+                  value="2"
+                  onclick="getnum(event)"
+                />
+                <label for="2-stars" class="star">&#9733;</label>
+                <input
+                  type="radio"
+                  id="1-star"
+                  name="rating"
+                  value="1"
+                  onclick="getnum(event)"
+                />
+                <label for="1-star" class="star">&#9733;</label>
               </div>
-              
+              <input
+                type="number"
+                name="rate"
+                id="rating_input"
+                style="display: none"
+              />
+              <button id="submit-btn" type="submit">등록</button>
+            </form>
+          </div>
         </div>
-        <div class="Comments">
-  <div class="review_box">
-    <% if (reviews[0] != null) { %>
-      <% for (var i = 0; i < reviews.length; i++) { %>
+      </div>
+    </div>
+    <div class="Comments">
+      <div class="review_box">
+        <% if (reviews[0] != null) { %> <% for (var i = 0; i < reviews.length;
+        i++) { %>
         <div class="comment-box">
           <p>작성자: <%= reviews[i].mu_review_uid %></p>
           <p>한줄평: <%= reviews[i].mu_review_olreview %></p>
-          <p>평점: <span id="formatted-edate-<%= i %>"></span> </p>
-          
+          <p>평점: <span id="formatted-edate-<%= i %>"></span></p>
         </div>
-      <% }; %>
-    <% } else { %>
-      <div>
-        <h3>검색결과 없음</h3>
+        <% }; %> <% } else { %>
+        <div>
+          <h3>검색결과 없음</h3>
+        </div>
+        <% }; %>
       </div>
-    <% }; %>
-  </div>
-</div>
     </div>
+  </div>
+
+  <script>
+
+    <% for (var i=0; i < reviews.length; i++) { %>
 
 
-        <script>
-        
-           <% for (var i=0; i < reviews.length; i++) { %>
+     var inputValue<%= i %> = <%= reviews[i].mu_review_grade %>;
+     var resultText= '';
+     var target = document.getElementById("target");
 
+     switch (inputValue<%= i %>) {
+         case 1:
+             resultText = "★";
+             break;
+         case 2:
+             resultText = "★★";
+             break;
+         case 3:
+             resultText = "★★★";
+             break;
+         case 4:
+             resultText = "★★★★";
+             break;
+         case 5:
+             resultText = "★★★★★";
+             break;
+         default:
+             break;
+     }
+     var formattedeDate<%= i %> = resultText;
+     document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
+         <% }; %>
+  </script>
 
-            var inputValue<%= i %> = <%= reviews[i].mu_review_grade %>;
-            var resultText= '';
-            var target = document.getElementById("target");
+  <script>
+    function getnum(event) {
+      document.getElementById("rating_input").value = event.target.value;
+    }
+  </script>
 
-            switch (inputValue<%= i %>) {
-                case 1:
-                    resultText = "★";
-                    break;
-                case 2:
-                    resultText = "★★";
-                    break;
-                case 3:
-                    resultText = "★★★";
-                    break;
-                case 4:
-                    resultText = "★★★★";
-                    break;
-                case 5:
-                    resultText = "★★★★★";
-                    break;
-                default:
-                    break;
-            }
-            var formattedeDate<%= i %> = resultText;
-            document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
-                <% }; %>  
-        </script>
-        
-
-          
-</div>
-
-
-
-    
-<script>
-     function getnum(event) {
-  document.getElementById('rating_input').value = 
-    event.target.value;
-}
-</script>
-
-    <div class="detail-end"></div> 
-
-    
+  <div class="detail-end"></div>
 </body>
 
 <script>
-    function logoutCheck() {
-            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
-                document.location.href="/logoutprocess";
-            }else{   //취소
-                return false;
-            }
-        }
-       
-     
-  </script>
+  function logoutCheck() {
+    if (confirm("정말 로그아웃하시겠습니까??") == true) {
+      //확인
+      document.location.href = "/logoutprocess";
+    } else {
+      //취소
+      return false;
+    }
+  }
+</script>
 
+<script>
+  window.onload = function () {
+    var dateString = "<%= list[0].movie_releasedate %>";
+    var dateObj = new Date(dateString);
 
+    var year = dateObj.getFullYear();
+    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+    var day = ("0" + dateObj.getDate()).slice(-2);
 
-  <script>
-    window.onload = function() {
-      var dateString = "<%= list[0].movie_releasedate %>";
-      var dateObj = new Date(dateString);
+    var formattedDate = year + "년 " + month + "월 " + day + "일";
 
-      var year = dateObj.getFullYear();
-      var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
-      var day = ("0" + dateObj.getDate()).slice(-2);
-
-      var formattedDate = year + "년 " + month + "월 " + day + "일";
-
-      document.getElementById("formatted-date").innerHTML = formattedDate;
-    };
-    function logoutCheck() {
-            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
-                document.location.href="/logoutprocess";
-            }else{   //취소
-                return false;
-            }
-        }
-  </script>
-</html>
+    document.getElementById("formatted-date").innerHTML = formattedDate;
+  };
+  function logoutCheck() {
+    if (confirm("정말 로그아웃하시겠습니까??") == true) {
+      //확인
+      document.location.href = "/logoutprocess";
+    } else {
+      //취소
+      return false;
+    }
+  }
+</script>
