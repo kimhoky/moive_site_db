@@ -317,7 +317,7 @@
                       <% for(var i = 0;i<title.length;i++) { %>
                         <% if(title[i].screening_day.getDate() == sn) { %> 
                         <li style="width: max-content;">
-                            ><button
+                            <button
                               movie-start="<%= title[i].screening_stime %>"
                               movie-end="<%= title[i].screening_etime %>"
                               movie-name="<%= title[i].screening_name %>"
