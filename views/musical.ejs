@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="infor">
                                     
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>★ <span id="fn-<%= i %>"></span>
                                     
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/musical_in" class = "form" id="form" method="POST">
@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>★ <span id="fn-<%= i %>"></span>
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/musical_in" class = "form" id="form" method="POST">
                                             <input type="text" name="musicalname" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
@@ -275,9 +275,19 @@
                         </div>
                        
                     </div>
+                  
                 </div>
             </div>
         </div>
+
+        <% for (var i=0; i < 8; i++) { %>
+            <script>
+                var on<%= i %> = <%= title[i].average %>;
+                var fn<%= i %> = on<%= i %>.toFixed(1);
+                document.getElementById("fn-<%= i %>").textContent = fn<%= i %>;
+
+            </script>
+<% }; %>
     </section>  
     <!-- //movie -->
     

@@ -244,7 +244,7 @@
                                 </div>
                                 <div class="infor">
                                     
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %>   </strong></h3>평점: <span id="fn-<%= i %>"></span>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %>   </strong></h3>★ <span id="fn-<%= i %>"></span>
                                     
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/movie_in" class = "form" id="form" method="POST">
@@ -276,7 +276,7 @@
                                     </div>
                                 </div>
                                 <div class="infor">
-                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </p></strong></h3>평점: <span id="fn-<%= i %>"></span>
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].review_moviename %> </p></strong></h3>★ <span id="fn-<%= i %>"></span>
                                     <div class="infor_btn" style="display:flex; gap: 3px; ">
                                         <form action="/movie_in" class = "form" id="form" method="POST">
                                             <input type="text" name="moviename" style = "display:none" value =<%= title[i].review_moviename %> />
