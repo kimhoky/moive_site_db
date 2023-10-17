@@ -66,43 +66,52 @@
 
       <!-- Sign Up -->
       <div class="container__form container--signup">
-        <form action="/membership" calass="form" id="form" method="POST">
-          <h2 class="form__title" style="font-size: 22px; font-style: initial">
+        <form action="/membership" class="form" id="form" method="POST">
+          <h2 class="form__title" style="font-size: 22px; font-style: initial; font-weight: bold;">
             회원가입
           </h2>
-          아이디<input
+          아이디
+          <br>
+          <input
             type="text"
             placeholder="아이디"
             class="input"
             name="user_id"
+            
           />
-          비밀번호<input
+          <br>
+          비밀번호
+          <br>
+          <input
             type="text"
             placeholder="비밀번호"
             class="input"
             name="user_pw"
           />
-          이름<input
+          <br>
+          이름
+          <br>
+          <input
             type="text"
             placeholder="이름"
             class="input"
             name="user_name"
-          />
-          나이
-          <input type="int" placeholder="나이" class="input" name="user_age" />
-          전화번호<input
+          /> <br>
+          나이 <br>
+          <input type="int" placeholder="나이" class="input" name="user_age" /> <br>
+          전화번호 <br><input
             type="text"
             placeholder="전화번호"
             class="input"
             name="user_phonenum"
-          />
-          이메일
+          /> <br>
+          이메일 <br>
           <input
             type="text"
             placeholder="이메일"
             class="input"
             name="user_email"
-          />
+          /> <br>
           <div
             style="justify-content: center; display: flex; padding-top: 30px"
           >
@@ -123,5 +132,19 @@
         </div>
       </div>
     </div>
+    <style>
+      @media screen and (max-width:500px) {
+     .input {
+      width: 100px;
+     }
+     .btn{
+      height: 100px;
+     }
+
+  
+        
+      }
+    </style>
+
   </body>
 </html>

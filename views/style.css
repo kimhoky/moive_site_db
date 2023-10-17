@@ -68,7 +68,7 @@
 .slider .swiper-slide p {font-size: 27px; color: #fff; padding-top: 55px;}
 
 /* 무비 */
-.movie {padding: 100px 0;height : 1500px}
+.movie {padding: 100px 0;height : 1300px}
 .movie_title {margin-bottom: 60px; display: flex; justify-content: center;}
 .movie_title ul {overflow: hidden; width: 848px; margin: 0 auto; display: flex; justify-content: center;}
 .movie_title li {float: left; width: 210px; text-align: center; border: 1px solid #c4c4c4; margin-right: -1px;}

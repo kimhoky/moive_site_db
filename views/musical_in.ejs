@@ -255,35 +255,111 @@
      var resultText= '';
      var target = document.getElementById("target");
 
-     switch (inputValue<%= i %>) {
-         case 1:
-             resultText = "★";
-             break;
-         case 2:
-             resultText = "★★";
-             break;
-         case 3:
-             resultText = "★★★";
-             break;
-         case 4:
-             resultText = "★★★★";
-             break;
-         case 5:
-             resultText = "★★★★★";
-             break;
-         default:
-             break;
-     }
-     var formattedeDate<%= i %> = resultText;
-     document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
-         <% }; %>
-  </script>
+            switch (inputValue<%= i %>) {
+                case 1:
+                    resultText = "★";
+                    break;
+                case 2:
+                    resultText = "★★";
+                    break;
+                case 3:
+                    resultText = "★★★";
+                    break;
+                case 4:
+                    resultText = "★★★★";
+                    break;
+                case 5:
+                    resultText = "★★★★★";
+                    break;
+                default:
+                    break;
+            }
+            var formattedeDate<%= i %> = resultText;
+            document.getElementById("formatted-edate-<%= i %>").innerHTML = formattedeDate<%= i %>;
+                <% }; %>  
+        </script>
+        
 
-  <script>
-    function getnum(event) {
-      document.getElementById("rating_input").value = event.target.value;
+          
+</div>
+
+
+<style>
+      @media screen and (max-width:961px) {
+        .main_text{
+            height: 200px;
+        }
+        .main_text2{
+            width: 400px;
+          height: 200px;
+           position: relative;
+    bottom: 100px;
+    left: 150px;
+   
+        }
     }
-  </script>
+        @media screen and (max-width:770px) {
+            .main_box{
+                height: 400px;
+            }
+           
+        .movie-intro img {
+            width: 100px;
+            height: auto;
+        }
+        .btn_T{
+            width: 100px;
+            position: relative;
+            right: 40px;
+        }
+        .movie-intro{
+            width: 150px;
+        }
+        .info-box{
+            height: 100px;
+        }
+        .main_text{
+            width: 100px;
+            height: 50px;
+            position: relative;
+            bottom: 100px;
+            left: 30px;
+           font-size: 8px;
+        }
+        .main_top_text{
+            width: 200px;
+        }
+        .main_text2{
+            font-size: 8px;
+            position: relative;
+            top: 20px;
+        }
+       .main_text3 {
+            width: 200px;
+        }
+       #comment-input{
+            width: 100px;
+             
+        }
+       
+
+
+
+
+        
+        .Comments{
+             position: relative;
+             top: 200px;
+        }
+    }
+</style>
+    
+<script>
+     function getnum(event) {
+  document.getElementById('rating_input').value = 
+    event.target.value;
+}
+</script>
 
   <div class="detail-end"></div>
 </body>

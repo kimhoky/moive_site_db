@@ -66,14 +66,13 @@ article {
 
 </head>
 <body>
-    
     <header id="header">
         <div class="container">
             <div class="row">
                 <div class="header clearfix">
                     <h1>
                         <a href="/">
-                        <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
+                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
                     
                         </a>    
                     </h1>
@@ -84,18 +83,13 @@ article {
                     <nav class="nav">
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <!-- <li><a href="/the_moie">영화예매</a></li>     -->
-                            <li><a href="/my_page">내정보</a></li>        
+                            <!-- <li><a href="/reserve">영화예매</a></li> -->
+                            <li><a href="/my_page">내정보</a></li>
                             <% if (IS) { %>
                                 <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
                                 <% } else { %>
                                 <li><a href="/login">로그인</a></li>
                                 <% }; %>
-                        </ul>
-                           
-                       
-                            
-                  
                         </ul>
                     </nav>    
                 </div>
@@ -115,7 +109,7 @@ article {
                 <button class="btn_T"><a href="/reserve?movie_name=<%= list[0].movie_name %>" style ="color: white;">예매하기</a></button>
         </div>
         
-   
+
         <div class="main_text"> 
             <div class="main_top_text">
                 <p class="p_소개1">[ 소개 ]</p>
@@ -142,7 +136,8 @@ article {
                     
                 </p>
             </div>
-            </div>
+        </div>
+   
             <div class="main_text3"> 
                 <div>
                   <p class="p_한줄평가">[ 감상평 및 평점  ] <span class="rating-info"></span></p>
@@ -236,7 +231,75 @@ article {
           
 </div>
 
+<style>
+    @media screen and (max-width:961px) {
+        .main_text{
+            height: 200px;
+        }
+        .main_text2{
+            width: 400px;
+          height: 200px;
+           position: relative;
+    bottom: 100px;
+    left: 150px;
+   
+        }
+    }
+        @media screen and (max-width:770px) {
+            .main_box{
+                height: 400px;
+            }
+           
+        .movie-intro img {
+            width: 100px;
+            height: auto;
+        }
+        .btn_T{
+            width: 100px;
+            position: relative;
+            right: 40px;
+        }
+        .movie-intro{
+            width: 150px;
+        }
+        .info-box{
+            height: 100px;
+        }
+        .main_text{
+            width: 100px;
+            height: 50px;
+            position: relative;
+            bottom: 100px;
+            left: 30px;
+           font-size: 8px;
+        }
+        .main_top_text{
+            width: 200px;
+        }
+        .main_text2{
+            font-size: 8px;
+            position: relative;
+            top: 20px;
+        }
+       .main_text3 {
+            width: 200px;
+        }
+       #comment-input{
+            width: 100px;
+             
+        }
+       
 
+
+
+
+        
+        .Comments{
+             position: relative;
+             top: 200px;
+        }
+    }
+</style>
 
     
 <script>
