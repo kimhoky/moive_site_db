@@ -84,7 +84,7 @@ app.get("/musical", function (req, res) {
   var IS = req.session.is_logined;
   if (!authCheck.isOwner(req, res)) {
     var sql =
-      "SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
+      "SELECT mu_review_musicalname, AVG(mu_review_grade) as average FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
     conn.query(sql, function (err, row, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
       else
@@ -93,7 +93,7 @@ app.get("/musical", function (req, res) {
     return false;
   } else {
     var sql =
-      "SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
+      "SELECT mu_review_musicalname, AVG(mu_review_grade) as average FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
     conn.query(sql, function (err, row, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
       else var nickname = req.session.nickname;
