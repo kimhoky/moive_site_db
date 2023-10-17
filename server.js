@@ -113,7 +113,11 @@ app.get("/musical_page", function (req, res) {
     conn.query(sql, function (err, row, fields) {
       if (err) console.log("query is not excuted. select fail...\n" + err);
       else
-        res.render("musical_page.ejs", { title: row, nickname: nickname, IS: IS });
+        res.render("musical_page.ejs", {
+          title: row,
+          nickname: nickname,
+          IS: IS,
+        });
     });
     return false;
   } else {
@@ -124,7 +128,11 @@ app.get("/musical_page", function (req, res) {
       else var nickname = req.session.nickname;
       var IS = req.session.is_logined;
 
-      res.render("musical_page.ejs", { title: row, nickname: nickname, IS: IS });
+      res.render("musical_page.ejs", {
+        title: row,
+        nickname: nickname,
+        IS: IS,
+      });
     });
     return false;
   }

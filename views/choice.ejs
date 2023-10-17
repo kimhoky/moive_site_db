@@ -316,7 +316,7 @@
                     <% if( sn != null) { %>
                       <% for(var i = 0;i<title.length;i++) { %>
                         <% if(title[i].screening_day.getDate() == sn) { %> 
-                        <li>
+                        <li style="width: max-content;">
                             ><button
                               movie-start="<%= title[i].screening_stime %>"
                               movie-end="<%= title[i].screening_etime %>"
@@ -407,13 +407,7 @@
           }
         }
 
-        function select(num) {
-          for(var i = 0;i<sn.length;i++) {
-            if(num == sn[i]) {
-
-            }
-          }
-        }
+        
       </script>
     </div>
   </body>

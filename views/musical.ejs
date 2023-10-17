@@ -208,13 +208,14 @@
                 <div class="movie">
             
                     <div class="index_button">
-                      <div class="movie_button"> <button><a herf="/index">영화 순위</a></button></div>
+                      <div class="movie_button"> <button onclick="bt()"><a herf="/">영화 순위</a></button></div>
                          <div class="musical_button"> <button><a herf="#">뮤지컬 순위</a></button></div>
                          </div>
           
                     
                     <div class="movie_chart">
                         <div class="chart_cont1">
+                            <h2 style="font-size: 30px; margin: 10px;">뮤지컬 순위</h2>
                             <% for (var i=0; i < 4; i++) { %>
                             <div>
                                 <div class="poster">
@@ -321,6 +322,9 @@
             }else{   //취소
                 return false;
             }
+        }
+        function bt() {
+            document.location.href="/";
         }
     </script>
     <!— 자바스크립트 라이브러리 —>
