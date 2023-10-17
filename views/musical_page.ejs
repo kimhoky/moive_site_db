@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="티켓팅을 위한 사이트.">
+    <meta name="keywords" content="티켓팅을 위한 사이트.">
+    <title>fresh_tomato</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style_movie.css">
+    <link rel="stylesheet" href="./swiper.css">
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="header clearfix">
+                    <h1>
+                        <a href="/">
+                            <strong><img src="assets/img/freash_tomato_main.png" alt="LIFE THEATER" style="transform: translateY(-20px);"></strong>
+                    
+                        </a>    
+                    </h1>
+                    <nav id="mNav">
+                        <h2 class="ir_so">티켓팅 전체메뉴</h2>
+                        <a href="#" class="ham"><span></span></a>
+                    </nav>
+                    <nav class="nav">
+                        <ul class="clearfix">
+                            <li><a href="/movie">영화</a></li>
+                            <!-- <li><a href="/reserve">영화예매</a></li> -->
+                            <li><a href="/my_page">내정보</a></li>
+                            <% if (IS) { %>
+                                <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
+                                <% } else { %>
+                                <li><a href="/login">로그인</a></li>
+                                <% }; %>
+                        </ul>
+                    </nav>    
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- //header -->
+
+
+<div class="search">
+    <div class="input-box">
+        <form action="/search" calass = "form" id="form" method="POST">
+            <input type="text" placeholder="영화를 검색하세요" class="input" name="searchinput"/>
+            <a href="/search">
+                <button class="button">
+                    <img src="assets/img/search.png">
+                </button>
+            </a>
+        </form>
+    </div>
+
+</div>
+     <!-- 검색창 -->
+
+     <section id="movie">
+        <h2 class="ir_so">최신 영화 정보</h2>
+        <div class="container">
+            <div class="row">
+                <div class="movie">
+                   
+                    
+                  <div class="movie_chart">
+                        <div class="chart_cont1">
+                            <% for (var i=0; i < 4; i++) { %>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/<%= title[i].mu_review_musicalname %>.jpg" alt="<%= title[i].mu_review_musicalname %>">
+                                    </figure>
+                                    <div class="rank"><strong><%= i+1 %></strong></div>
+                                    <div class="mx">
+                                        <span class="icon m ir_pm">MX</span>
+                                        <span class="icon b ir_pm">Boutique</span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
+                                    
+                                    <div class="infor_btn" style="display:flex; gap: 3px; ">
+                                        <form action="/musical_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="musicalname" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
+                                            <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
+                                        </form>
+                                        <a href="/reserve?musical_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
+                                    </div>
+                                        
+                                        
+                                    
+                                </div>
+                            </div>
+                            <% }; %>
+                        </div>
+                            
+                        <div class="chart_cont2">
+                            <% for (var i=4; i < 8; i++) { %>
+                            <div>
+                                <div class="poster">
+                                    <figure>
+                                        <img src="assets/img/<%= title[i].mu_review_musicalname %>.jpg" alt="<%= title[i].mu_review_musicalname %>">
+                                    </figure>
+                                    <div class="rank"><strong><%= i+1 %></strong></div>
+                                    <div class="mx">
+                                        <span class="icon m ir_pm">MX</span>
+                                        <span class="icon b ir_pm">Boutique</span>
+                                    </div>
+                                </div>
+                                <div class="infor">
+                                    <h3><span class="icon all ir_pm">전체관람가</span> <strong> <%= title[i].mu_review_musicalname %> </strong></h3>
+                                    <div class="infor_btn" style="display:flex; gap: 3px; ">
+                                        <form action="/musical_in" class = "form" id="form" method="POST">
+                                            <input type="text" name="musicalname" style = "display:none" value =<%= title[i].mu_review_musicalname %> />
+                                            <button type = "submit" class="button" style="display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;">상세정보</button>
+                                        </form>
+                                        <a href="/reserve?musical_name=<%= title[i].mu_review_musicalname %>">예매하기</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }; %>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- //movie -->
+    
+    
+    
+    
+<!-- 자바스크립트 라이브러리 -->
+<script src="assets/js/jquery.min_1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="assets/js/ie-checker.js"></script>
+<script src="assets/js/swiper.min.js"></script>
+<script>
+    //배너 이미지 슬라이드
+    var swiper = new Swiper('.swiper-container',{
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+    });
+    
+    //영화차트 탭 메뉴
+    var movBtn = $(".movie_title > ul > li"); // movie_title과 연동되는 버튼 > 자식 ui > 자식 li 버튼 4개
+    var movCont = $(".movie_chart > div");  // 컨텐츠 차트 4개
+
+    // movCont.hide().eq(0).show(); // 첫번째만 보여줌
+
+    movBtn.click(function(e){ //화면 위로 올라가는 거 차단
+        e.preventDefault();
+        var target = $(this);  // 버튼 클릭한 곳 this    
+        var index = target.index();  // 버튼에 번호를 매김
+        movBtn.removeClass("active");   
+        target.addClass("active");    //클릭한 곳(해당 번호)에 활성화
+        movCont.css("display","none"); 
+        movCont.eq(index).css("display","block"); //해당되는 번호만 보여줌
+    });
+    function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
+</script>
+<style>
+
+       @media screen and (max-width:730px){
+         
+                .input-box  {
+                    width: 500px;}
+                    .search{
+                        width: 400px;
+                    }
+                    .searchinput{
+                        width: 300px;
+                    }
+     }
+      @media screen and (max-width:500px){
+                
+                .input-box  {
+                    width: 400px;}
+                 
+                    .searchinput{
+                        width: 200px;
+                    }
+                     .input-box .button {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (min-width:550px) and (max-width: 1280px) {
+    .chart_cont1 {
+      width: 900px;
+       height: 1300px;
+        margin-left: auto;
+    }
+       .chart_cont2 {
+       width: 900px;
+       height: 1300px;
+        margin-left: auto;
+       }
+    }
+  
+     
+      
+    
+      
+    
+
+    .rank{
+        visibility: hidden;
+    }
+</style>
+</body>
+</html>
+

@@ -104,6 +104,31 @@ app.get("/musical", function (req, res) {
     return false;
   }
 });
+app.get("/musical_page", function (req, res) {
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+  if (!authCheck.isOwner(req, res)) {
+    var sql =
+      "SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
+    conn.query(sql, function (err, row, fields) {
+      if (err) console.log("query is not excuted. select fail...\n" + err);
+      else
+        res.render("musical_page.ejs", { title: row, nickname: nickname, IS: IS });
+    });
+    return false;
+  } else {
+    var sql =
+      "SELECT mu_review_musicalname FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
+    conn.query(sql, function (err, row, fields) {
+      if (err) console.log("query is not excuted. select fail...\n" + err);
+      else var nickname = req.session.nickname;
+      var IS = req.session.is_logined;
+
+      res.render("musical_page.ejs", { title: row, nickname: nickname, IS: IS });
+    });
+    return false;
+  }
+});
 
 app.get("/musical", function (req, res) {
   var nickname = req.session.nickname;
@@ -289,6 +314,9 @@ app.get("/choice", function (req, res) {
 });
 app.get("/musical", function (req, res) {
   res.render("musical.ejs");
+});
+app.get("/musical_page", function (req, res) {
+  res.render("musical_page.ejs");
 });
 app.get("/logoutprocess", function (req, res) {
   req.session.destroy((error) => {

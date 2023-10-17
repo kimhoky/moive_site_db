@@ -59,7 +59,7 @@
 
 
 
-
+                    <!--햄버거 버튼 요소-->
                         <nav id="mNav">
                         <div class="navbar_burger">
   <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -70,7 +70,7 @@
 <div class="navbar_menu">
         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <li><a href="/choice">영화예매</a></li>
+                            <li><a href="/musical">뮤지컬</a></li>
                             <li><a href="/my_page">내정보</a></li>
                             <% if (IS) { %>
                             <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
@@ -90,13 +90,13 @@
       
                         
                     
-
+                    <!--네브바 요소-->
 
                     <nav class="nav">
                      
                         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <!-- <li><a href="/choice">영화예매</a></li> -->
+                          <li><a href="/musical_page">뮤지컬</a></li> 
                             <li><a href="/my_page">내정보</a></li>
                             <% if (IS) { %>
                             <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
@@ -159,7 +159,7 @@
             <div class="slide">
                 <img src="./assets/img/main_slider02.jpg" />              
                 <div class="h1_text">
-                <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
+           
               </div>
                 </div>
             <div class="nav" style="top:0">
@@ -173,7 +173,7 @@
                 <div class="slide">
                     <img src="./assets/img/main_slider01.jpg" />              
                     <div class="h1_text">
-                    <!-- <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1> -->
+
                   </div>
                 </div>
             <div class="nav">
@@ -195,20 +195,9 @@
               <label for="img-1" class="next">&#x203a;</label>
             </div>
             </li>
-        
-            <!-- <input type="radio" name="radio-btn" id="img-4" />
-            <li class="slide-container">
-                <div class="slide">
-                    <img src="./assets/img/main_slider04_03.jpg" />               -->
-                    <!-- <div class="h1_text">
-                    <h1>봄바람 타고,<br>여행 떠나보는 건 어때요?</h1>
-                  </div> -->
+
                 </div>
-            <!-- <div class="nav">
-              <label for="img-3" class="prev">&#x2039;</label>
-              <label for="img-1" class="next">&#x203a;</label>
-            </div>
-            </li> -->
+
         
         
             <li class="nav-dots">
@@ -369,26 +358,9 @@
 </body>
 <style>
 
-  .index_button .movie_button button,
-  .index_button .musical_button button {
-    background-color: Light/Gray/Black/Black (4%); 
-    color: #FFFFFF; 
-    font-size: 18px; 
-    padding: 10px 20px; 
-    border: none; 
-    cursor: pointer; 
-    margin: 3px;
-      border-radius: 10px;
-  }
 
-  
-  .index_button .movie_button button:hover,
-  .index_button .musical_button button:hover {
-    background-color: #0056b3;
-  }
-  .button:hover {
-    color: orange;
-  }
+
+
   /*햄버거 버튼 스타일*/
   .navbar_overlay {
   position: fixed;
