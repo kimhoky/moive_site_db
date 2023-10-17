@@ -72,39 +72,40 @@
   </style>
 </head>
 <body>
-  <header id="header">
-    <div class="container">
-      <div class="row">
-        <div class="header clearfix">
-          <h1>
-            <a href="/">
-              <strong
-                ><img
-                  src="assets/img/freash_tomato_main.png"
-                  alt="LIFE THEATER"
-                  style="transform: translateY(-20px)"
-              /></strong>
-            </a>
-          </h1>
-          <nav id="mNav">
-            <h2 class="ir_so">티켓팅 전체메뉴</h2>
-            <a href="#" class="ham"><span></span></a>
-          </nav>
-          <nav class="nav">
-            <ul class="clearfix">
-              <li><a href="/movie">영화</a></li
-              <li><a href="/my_page">내정보</a></li>
-              <% if (IS) { %>
-              <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
-              <% } else { %>
-              <li><a href="/login">로그인</a></li>
-              <% }; %>
-            </ul>
-          </nav>
+    <header id="header">
+        <div class="container">
+          <div class="row">
+            <div class="header clearfix">
+              <h1>
+                <a href="/">
+                  <strong
+                    ><img
+                      src="assets/img/freash_tomato_main.png"
+                      alt="LIFE THEATER"
+                      style="transform: translateY(-20px)"
+                  /></strong>
+                </a>
+              </h1>
+              <nav id="mNav">
+                <h2 class="ir_so">티켓팅 전체메뉴</h2>
+                <a href="#" class="ham"><span></span></a>
+              </nav>
+              <nav class="nav">
+                <ul class="clearfix">
+                  <li><a href="/movie">영화</a></li>
+                  <li><a href="/musical">뮤지컬</a></li>
+                  <li><a href="/my_page">내정보</a></li>
+                  <% if (IS) { %>
+                  <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
+                  <% } else { %>
+                  <li><a href="/login">로그인</a></li>
+                  <% }; %>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </header>
+      </header>
   <!-- //header -->
 
   <div class="main_box">
