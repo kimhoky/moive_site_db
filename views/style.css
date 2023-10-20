@@ -1,5 +1,11 @@
 @charset "utf-8";
 
+:root{
+  --white: #e9e9e9;
+    --gray: #333;
+    --blue: #0367a6;
+    --lightblue: #008997;
+}
 /* 레이아웃 */
 #mNav {display: none; position: absolute; top: 10px; right: 14px;}
 #header {width: 100%; border-bottom: 1px solid #c6c6c6;}
@@ -145,10 +151,14 @@
   margin-top: 20px;
   border-radius: 25px;
   padding: 8px;
-  color: #ffffff;
   font-size: 17px;
-  background-color: rgb(56, 10, 136);
+
+  background-color: var(--blue);
+  background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+  border: 1px solid var(--blue);
 }
+
+
 
 
 
@@ -496,6 +506,20 @@
 .movie_chart > div > div .infor h3 span.a19 {background-position: -29px -125px;}
 .movie_chart > div > div .infor .infor_btn a {display: inline-block; background: #f2f2f2; font-size: 18px; padding: 15px 30px;}
 
+.btn {
+  background-color: var(--blue);
+  background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+  border-radius: 20px;
+  border: 1px solid var(--blue);
+  color: var(--white);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  padding: 0.9rem 4rem;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
 
 .btn_time{
   margin-left: 700px;
