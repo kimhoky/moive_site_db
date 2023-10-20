@@ -182,9 +182,9 @@ article {
     <% if (reviews[0] != null) { %>
       <% for (var i = 0; i < reviews.length; i++) { %>
         <div class="comment-box">
-          <p>작성자: <%= reviews[i].review_uid %></p> |  
-          <p> 한줄평: <%= reviews[i].review_olreview %></p> |  
-          <p > 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700"></span> </p>
+          <p>작성자: <%= reviews[i].review_uid %></p> 
+          <p id="text_input"> : <%= reviews[i].review_olreview %></p> 
+          <p > 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700;  "></span> </p>
           
         </div>
       <% }; %>
@@ -236,6 +236,12 @@ article {
 </div>
 
 <style>
+  /*텍스트 한줄이상이면 ...*/
+#text_input {
+    white-space: nowrap;     
+    overflow: hidden;          
+    text-overflow: ellipsis;  
+}
     @media screen and (max-width:961px) {
         .main_text{
             height: 200px;
