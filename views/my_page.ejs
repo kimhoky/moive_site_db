@@ -187,8 +187,8 @@
                 <label for="email">이메일:</label>
                 <input type="text" id="email" name="email" value="<%= mypage[0].User_email %>"/>
             
-                <label for="salary">금액:</label>
-                <input type="int" id="salary" name="cash"value="<%= mypage[0].User_cash %>"readonly/>
+                <!-- <label for="salary">금액:</label>
+                <input type="int" id="salary" name="cash"value="<%= mypage[0].User_cash %>"readonly/> -->
             </div>
             <!-- <div class="form-group"> -->
                 <button type="submit" class="btn">수정</button>
@@ -209,30 +209,30 @@
                             </div>
                             <div class="reserve_info">
                                 <div class="reservator_info">
-                                    <label for="password">예매 번호: </label>
-                                    <label for="phone"><%= i + 1 %></label>
+                                    <label>예매 번호: </label>
+                                    <label><%= i + 1 %></label>
                                     
                                
-                                    <label for="phone">예매자 ID: </label>
-                                    <label for="phone"><%= myreserve[i].reserve_uid %></label>
+                                    <label>예매자 ID: </label>
+                                    <label><%= myreserve[i].reserve_uid %></label>
                                     
                                
-                                    <label for="email">예매 좌석: </label>
-                                    <label for="phone"><%= myreserve[i].reserve_seat %></label>
+                                    <label>예매 좌석: </label>
+                                    <label><%= myreserve[i].reserve_seat %></label>
                                 </div>
                                
                                 
                             <div class="movie_info">
-                                <label for="salary">영화 이름: </label>
-                                <label for="salary"><%= myreserve[i].reserve_moviename %></label>
+                                <label>영화 이름: </label>
+                                <label><%= myreserve[i].reserve_moviename %></label>
                                 <br>
 
-                                <label for="salary">영화 시작시간 : </label>
-                                <label for="phone"><span id="formatted-date-<%= i %>"></span></label>
+                                <label>영화 시작시간 : </label>
+                                <label><span id="formatted-date-<%= i %>"></span></label>
                                 
                                 <br>
-                                <label for="salary">영화 종료시간: </label>
-                                <label for="phone"><span id="formatted-edate-<%= i %>"></span></label>
+                                <label>영화 종료시간: </label>
+                                <label><span id="formatted-edate-<%= i %>"></span></label>
                             </div>
                             </div>
                             
@@ -253,20 +253,20 @@
 
 
                                 var year<%= i %> = dateObj<%= i %>.getFullYear();
-                            var month<%= i %> = ("0" + (dateObj<%= i %>.getMonth() + 1)).padStart(2, '0');
-                            var day<%= i %> = ("0" + dateObj<%= i %>.getDate()).padStart(2, '0');
-                            var hours<%= i %> = ("0" + dateObj<%= i %>.getHours()).padStart(2, '0');
-                            var minutes<%= i %> = ("0" + dateObj<%= i %>.getMinutes()).padStart(2, '0');
+                            var month<%= i %> = ("" + (dateObj<%= i %>.getMonth() + 1)).padStart(2, '');
+                            var day<%= i %> = ("" + dateObj<%= i %>.getDate()).padStart(2, '');
+                            var hours<%= i %> = ("" + dateObj<%= i %>.getHours()).padStart(2, '');
+                            var minutes<%= i %> = ("" + dateObj<%= i %>.getMinutes()).padStart(2, '');
                   
                             var eyear<%= i %> = dateObjend<%= i %>.getFullYear();
-                            var emonth<%= i %> = ("0" + (dateObjend<%= i %>.getMonth() + 1)).padStart(2, '0');
-                            var eday<%= i %> = ("0" + dateObjend<%= i %>.getDate()).padStart(2, '0');
-                            var ehours<%= i %> = ("0" + dateObjend<%= i %>.getHours()).padStart(2, '0');
-                            var eminutes<%= i %> = ("0" + dateObjend<%= i %>.getMinutes()).padStart(2, '0');
+                            var emonth<%= i %> = ("" + (dateObjend<%= i %>.getMonth() + 1)).padStart(2, '');
+                            var eday<%= i %> = ("" + dateObjend<%= i %>.getDate()).padStart(2, '');
+                            var ehours<%= i %> = ("" + dateObjend<%= i %>.getHours()).padStart(2, '');
+                            var eminutes<%= i %> = ("" + dateObjend<%= i %>.getMinutes()).padStart(2, '');
                   
                   
-                            var formattedsDate<%= i %> = year<%= i %> + "년 " + month<%= i %> + "월 " + day<%= i %> + "일" + hours<%= i %> + "시 " + minutes<%= i %> + "분";
-                            var formattedeDate<%= i %> = eyear<%= i %> + "년 " + emonth<%= i %> + "월 " + eday<%= i %> + "일" + ehours<%= i %> + "시 " + eminutes<%= i %> + "분";
+                            var formattedsDate<%= i %> = year<%= i %> + "년 " + month<%= i %> + "월 " + day<%= i %> + "일 " + hours<%= i %> + "시 " + minutes<%= i %> + "분";
+                            var formattedeDate<%= i %> = eyear<%= i %> + "년 " + emonth<%= i %> + "월 " + eday<%= i %> + "일 " + ehours<%= i %> + "시 " + eminutes<%= i %> + "분";
                       
                             console.log(formattedsDate<%= i %>);
                             document.getElementById("formatted-date-<%= i %>").innerHTML = formattedsDate<%= i %>;

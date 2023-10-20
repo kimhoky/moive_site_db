@@ -165,6 +165,8 @@ app.get("/musical", function (req, res) {
 });
 
 app.get("/reserve", function (req, res) {
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
   if (!authCheck.isOwner(req, res)) {
     res.redirect("/login"); //로그인 안하고 예매페이지 갈시
   } else {
@@ -193,6 +195,8 @@ app.get("/reserve", function (req, res) {
               title: rows1,
               seats: rows2,
               screening: screening,
+              IS: IS,
+            nickname: nickname
             });
           }
         }
@@ -202,6 +206,11 @@ app.get("/reserve", function (req, res) {
 });
 
 app.get("/choice", function (req, res) {
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+  if (!authCheck.isOwner(req, res)) {
+    res.redirect("/login"); //로그인 안하고 예매페이지 갈시
+  } else {
   let movie_name = req.query.movie_name;
   var sn = null;
   if (req.query.day != null) {
@@ -231,12 +240,14 @@ app.get("/choice", function (req, res) {
             dayd: dayd,
             selectednum: selectednum,
             sn: sn,
+            IS: IS,
+            nickname: nickname
           });
         }
       });
     }
   });
-});
+}});
 
 app.get("/reserving", function (req, res) {
   let movie_name = req.query.movie_name;

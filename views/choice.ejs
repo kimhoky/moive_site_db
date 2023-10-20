@@ -244,7 +244,7 @@
                 <div class="col-head" id="skip_date_list">
                   <h3 class="sreader">날짜</h3>
                 </div>
-                <div class="col-body" style="height: 565px">
+                <div class="col-body" style="height: 565px; overflow: auto;">
                   <!-- 날짜선택 -->
                   <div
                     class="date-list nano has-scrollbar has-scrollbar-y"
@@ -253,7 +253,7 @@
                     <ul
                       class="content scroll-y"
                       tabindex="-1"
-                      style="right: -17px"
+                      style="right: 17px; height: 565px; width:85px;  overflow: auto;"
                     >
                       <div>
                         <li class="month dimmed">
@@ -291,10 +291,10 @@
                       class="pane pane-y"
                       style="display: block; opacity: 1; visibility: visible"
                     >
-                      <div
+                      <!-- <div
                         class="slider slider-y"
                         style="height: 50px; top: 0px"
-                      ></div>
+                      ></div> -->
                     </div>
                     <div
                       class="pane pane-x"
@@ -317,11 +317,11 @@
                     ><span class="night">심야</span>
                   </div>
                   <!--시간 상세내용-->
-                  <ul>
+                  <ul style="height:565px; width: max-content; overflow: auto;">
                     <% if( sn != null) { %>
                       <% for(var i = 0;i<title.length;i++) { %>
                         <% if(title[i].screening_day.getDate() == sn) { %> 
-                        <li style="width: max-content;">
+                        <li style="width: max-content; ">
                             <button
                               movie-start="<%= title[i].screening_stime %>"
                               movie-end="<%= title[i].screening_etime %>"
