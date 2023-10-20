@@ -182,9 +182,9 @@ article {
     <% if (reviews[0] != null) { %>
       <% for (var i = 0; i < reviews.length; i++) { %>
         <div class="comment-box">
-          <p>작성자: <%= reviews[i].review_uid %></p>
-          <p>한줄평: <%= reviews[i].review_olreview %></p>
-          <p>평점: <span id="formatted-edate-<%= i %>"></span> </p>
+          <p>작성자: <%= reviews[i].review_uid %></p> |  
+          <p> 한줄평: <%= reviews[i].review_olreview %></p> |  
+          <p > 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700"></span> </p>
           
         </div>
       <% }; %>
@@ -271,7 +271,7 @@ article {
         }
         .main_text{
             width: 100px;
-            height: 50px;
+            height: max-content;
             position: relative;
             bottom: 100px;
             left: 30px;
@@ -279,11 +279,12 @@ article {
         }
         .main_top_text{
             width: 200px;
+            height:200px;
         }
         .main_text2{
             font-size: 8px;
             position: relative;
-            top: 20px;
+            margin-top: 100px;
         }
        .main_text3 {
             width: 200px;
@@ -314,7 +315,7 @@ article {
         }
         .main_text{
             width: 100px;
-            height: 50px;
+            height: fit-content;
             position: relative;
             bottom: 100px;
             left: 30px;
@@ -326,6 +327,7 @@ article {
         .main_text2{
             font-size: 8px;
             position: relative;
+            margin-top: 50px;
      
         }
        .main_text3 {
