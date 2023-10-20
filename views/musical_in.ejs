@@ -235,8 +235,8 @@
         i++) { %>
         <div class="comment-box">
           <p>작성자: <%= reviews[i].mu_review_uid %></p>
-          <p>한줄평: <%= reviews[i].mu_review_olreview %></p>
-          <p>평점: <span id="formatted-edate-<%= i %>"></span></p>
+          <p id="text_input">: <%= reviews[i].mu_review_olreview %></p>
+         <p id="edate"> 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700;  "></span> </p>
         </div>
         <% }; %> <% } else { %>
         <div>
@@ -286,6 +286,16 @@
 
 
 <style>
+  /*텍스트 한줄이상이면 ...*/
+#text_input {
+    white-space: nowrap;     
+    overflow: hidden;          
+    text-overflow: ellipsis;  
+}
+#edate{
+ margin-left: auto;
+}
+
       @media screen and (max-width:961px) {
         .main_text{
           height: fit-content;
