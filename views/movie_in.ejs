@@ -184,7 +184,7 @@ article {
         <div class="comment-box">
           <p>작성자: <%= reviews[i].review_uid %></p> 
           <p id="text_input"> : <%= reviews[i].review_olreview %></p> 
-          <p > 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700;  "></span> </p>
+          <p id="edate"> 평점: <span id="formatted-edate-<%= i %>" style="color:#FFD700;  "></span> </p>
           
         </div>
       <% }; %>
@@ -241,6 +241,9 @@ article {
     white-space: nowrap;     
     overflow: hidden;          
     text-overflow: ellipsis;  
+}
+#edate{
+ margin-left: auto;
 }
     @media screen and (max-width:961px) {
         .main_text{
