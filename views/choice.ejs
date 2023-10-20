@@ -191,7 +191,7 @@
               "
             >
               <!-- MOVIE 섹션 -->
-              <div class="section section-movie">
+              <div class="section section-movie" id="movie1">
                 <!-- col-head -->
                 <div class="col-head" id="skip_movie_list">
                   <h3 class="sreader">영화</h3>
@@ -240,7 +240,7 @@
               </div>
 
               <!-- DATE 섹션 -->
-              <div class="section section-date">
+              <div class="section section-date" id="date1">
                 <div class="col-head" id="skip_date_list">
                   <h3 class="sreader">날짜</h3>
                 </div>
@@ -306,7 +306,7 @@
                 </div>
               </div>
               <!-- TIME 섹션 -->
-              <div class="section section-time" style="width: max-content">
+              <div class="section section-time" id="time1" style="width: max-content">
                 <div class="col-head" id="skip_time_list">
                   <h3 class="sreader">시간</h3>
                 </div>
@@ -358,7 +358,7 @@
 
       <div id="ticket_tnb" class="tnb_container">
         <div class="tnb step1" id="tnb1">
-          <button onclick="bt()">
+          <button onclick="bt()" id="clbtn">
             <a class="btn-right" title="좌석선택"></a></button
           ><!--좌석선택버튼-->
         </div>
@@ -441,29 +441,49 @@
               width: 350px;
             }
           }
-           @media screen and (max-width: 500px) {
-    #ticket {
-        height: 200px;
-        width: 200px;
-    }
-    #ticket_tnb {
-        width: 350px;
-    }
-    #tnb1 {
-        width: 350px;
-    }
-    #container{
-       width: 300vw;
-       height: 650px;
-    }
-    #wrap{
-      width: 300px;
 
+          
+           @media screen and (max-width: 600px) {
+#ticket .section-movie{
+              width: 600px;
+              position: relative;
+             left: 60px;
+             
+            }
+            #container{
+              height: 1300px;
+            }
+            
+            #date1{
+              position: relative;
+              top: 650px;
+             right: 550px;
+            }
+            #time1{
+                  width: 500px;
+              position: relative;
+              top: 650px;
+              right: 555px;
+          
+            }
+            .movie-select {
+              position: relative;
+              left: 150px;
+           
+            }
+             #ticket_tnb{
+              width: 200px;
+            }
+            #tnb1{
+              width: 20px;
+            }
+            #clbtn{
+              position: relative;
+              bottom: 20px;
+
+            }
       
-    }
-    #tnb1{
-      width: 200px;
-    }
+
 }
 
 
