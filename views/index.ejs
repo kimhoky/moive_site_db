@@ -355,7 +355,7 @@
 </body>
 
 
-<footer style="margin-right: 10px; text-align: right; height:90px; left:20px; color: darkgray;">
+<div class="fter"   style=" color: darkgray;">
 원광대학교 벤처스타트업 아카데미 장단기 강좌 경진대회 작품
 <br>
 Team : fresh_tomato 
@@ -363,7 +363,8 @@ Team : fresh_tomato
 조장 : 김영우
 <br>
 조원 : 이효민, 김경호
-</footer>
+</div>
+<footer></footer>
 
 <style>
 
@@ -457,7 +458,40 @@ Team : fresh_tomato
     
  
      }
+  .fter {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+footer {
+    height: 10rem;
+
+}
+@media screen and (max-width:1280px) {
+    .fter{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: 1250px;
+
+    }
+    
+}
+@media screen and (max-width:550px) {
+    .fter{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: 3800px;
+
+    }
+}
 
   
 </style>
