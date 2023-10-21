@@ -70,7 +70,7 @@
 <div class="navbar_menu">
         <ul class="clearfix">
                             <li><a href="/movie">영화</a></li>
-                            <li><a href="/musical">뮤지컬</a></li>
+                            <li><a href="/musical_page">뮤지컬</a></li> 
                             <li><a href="/my_page">내정보</a></li>
                             <% if (IS) { %>
                             <li>  <a href="#" onclick="logoutCheck()"><%= nickname %></a>  </li>
@@ -115,7 +115,7 @@
         <div class="input-box">
             <i class="uil uil-search"></i>
             <form action="/search" calass = "form" id="form" method="POST">
-                <input type="text" placeholder="영화를 검색하세요" class="input" name="searchinput"/>
+                <input type="text" placeholder="검색어를 입력해 주세요." class="input" name="searchinput"/>
                 <a href="/search">
                     <button class="button">
                         <img src="assets/img/search.png">
