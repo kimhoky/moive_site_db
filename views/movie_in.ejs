@@ -147,7 +147,7 @@ article {
                   <p class="p_한줄평가">[ 감상평 및 평점  ] <span class="rating-info"></span></p>
                   <hr>
                   <div class="comment-bar" style="width:100%">
-                   
+                    <% if (duplicate == "false") { %>
                     <form action="/inreview" calass = "form" id="get_form" method="POST" style="width:100%; display: flex; justify-content: center;">
                         <input type="text" id="comment-input" name="olreview" placeholder="감상평을 작성해주세요..." style="width:70%; height:50%" >
                         
@@ -166,11 +166,15 @@ article {
                             <label for="1-star" class="star">&#9733;</label>
                         </div>
                         <input type="number" name="rate" id="rating_input" style="display: none;"/>
+                        
                         <button class="btn" id="submit-btn" type="submit">등록</button>
+                        
    
                         
                     </form>
-                    
+                    <% }else { %>
+                      <p>이미 감상평을 작성하셨습니다!</p>
+                    <% }; %>
                   </div>
                 
                 </div>

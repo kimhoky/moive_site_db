@@ -196,7 +196,7 @@ app.get("/reserve", function (req, res) {
               seats: rows2,
               screening: screening,
               IS: IS,
-            nickname: nickname
+              nickname: nickname,
             });
           }
         }
@@ -211,43 +211,45 @@ app.get("/choice", function (req, res) {
   if (!authCheck.isOwner(req, res)) {
     res.redirect("/login"); //로그인 안하고 예매페이지 갈시
   } else {
-  let movie_name = req.query.movie_name;
-  var sn = null;
-  if (req.query.day != null) {
-    sn = req.query.day;
-  }
-  // let movie_name = "오펜하이머";
-  var sql1 = "SELECT * FROM screening WHERE screening_name =?";
-  conn.query(sql1, [movie_name], function (err, rows1, fields) {
-    if (err) console.log("query is not excuted. select fail...\n" + err);
-    else {
-      var sql2 = "SELECT screening_day FROM screening WHERE screening_name =?";
-      conn.query(sql2, [movie_name], function (err, rows2, fields) {
-        if (err) console.log("query is not excuted. select fail...\n" + err);
-        else {
-          let day = [];
-          rows2.forEach((element, i) => {
-            day.push(rows2[i].screening_day);
-          });
-
-          var dayd = formated(date, day);
-          var selectednum = selectnum(date, day);
-          res.render("choice.ejs", {
-            title: rows1,
-            date: date,
-            rows2: rows2,
-            day: day,
-            dayd: dayd,
-            selectednum: selectednum,
-            sn: sn,
-            IS: IS,
-            nickname: nickname
-          });
-        }
-      });
+    let movie_name = req.query.movie_name;
+    var sn = null;
+    if (req.query.day != null) {
+      sn = req.query.day;
     }
-  });
-}});
+    // let movie_name = "오펜하이머";
+    var sql1 = "SELECT * FROM screening WHERE screening_name =?";
+    conn.query(sql1, [movie_name], function (err, rows1, fields) {
+      if (err) console.log("query is not excuted. select fail...\n" + err);
+      else {
+        var sql2 =
+          "SELECT screening_day FROM screening WHERE screening_name =?";
+        conn.query(sql2, [movie_name], function (err, rows2, fields) {
+          if (err) console.log("query is not excuted. select fail...\n" + err);
+          else {
+            let day = [];
+            rows2.forEach((element, i) => {
+              day.push(rows2[i].screening_day);
+            });
+
+            var dayd = formated(date, day);
+            var selectednum = selectnum(date, day);
+            res.render("choice.ejs", {
+              title: rows1,
+              date: date,
+              rows2: rows2,
+              day: day,
+              dayd: dayd,
+              selectednum: selectednum,
+              sn: sn,
+              IS: IS,
+              nickname: nickname,
+            });
+          }
+        });
+      }
+    });
+  }
+});
 
 app.get("/reserving", function (req, res) {
   let movie_name = req.query.movie_name;
@@ -287,19 +289,28 @@ app.post("/movie_in", function (req, res) {
   var body = req.body;
   var nickname = req.session.nickname;
   var IS = req.session.is_logined;
+  var duplicate = "false";
+  var params2 = [nickname, body.moviename];
   var sql = "SELECT * FROM movie WHERE movie_name=?";
   var sql2 = "SELECT * FROM review WHERE review_moviename=?";
+  var sql4 = "SELECT * FROM review WHERE review_uid =? and review_moviename =?";
   console.log(body.moviename);
   conn.query(sql, body.moviename, function (err, rows, fields) {
     conn.query(sql2, body.moviename, function (err, data, fields) {
-      if (err) console.log("query is not excuted. select fail...\n" + err);
-      else
-        res.render("movie_in.ejs", {
-          list: rows,
-          reviews: data,
-          IS: IS,
-          nickname: nickname,
-        });
+      conn.query(sql4, params2, function (err, row) {
+        if (row != "") {
+          duplicate = "true";
+        }
+        if (err) console.log("query is not excuted. select fail...\n" + err);
+        else
+          res.render("movie_in.ejs", {
+            list: rows,
+            reviews: data,
+            IS: IS,
+            nickname: nickname,
+            duplicate: duplicate,
+          });
+      });
     });
   });
 });
@@ -397,27 +408,36 @@ app.post("/inreview", function (req, res) {
   var body = req.body;
   var nickname = req.session.nickname;
   var IS = req.session.is_logined;
-
+  var duplicate = "false";
   var sql =
     "INSERT INTO review (review_uid, review_grade, review_olreview, review_moviename, review_writedate) values (?,?,?,?,NOW())";
   var params = [nickname, body.rate, body.olreview, body.moviename];
+  var params2 = [nickname, body.moviename];
   var sql2 = "SELECT * FROM movie WHERE movie_name=?";
   var sql3 = "SELECT * FROM review WHERE review_moviename =?";
+  var sql4 = "SELECT * FROM review WHERE review_uid =? and review_moviename =?";
   if (!authCheck.isOwner(req, res)) {
     res.redirect("/login"); //로그인 안하고 마이페이지 갈시
   } else {
     console.log(body.rate);
-    conn.query(sql, params, function (err, rows, fields) {
+    conn.query(sql, params, function (err, row) {
       conn.query(sql2, body.moviename, function (err, data) {
         conn.query(sql3, body.moviename, function (err, datas) {
-          if (err) console.log("query is not excuted. select fail...\n" + err);
-          else
-            res.render("movie_in.ejs", {
-              list: data,
-              reviews: datas,
-              IS: IS,
-              nickname: nickname,
-            });
+          conn.query(sql4, params2, function (err, rows) {
+            if (rows != "") {
+              duplicate = "true";
+            }
+            if (err)
+              console.log("query is not excuted. select fail...\n" + err);
+            else
+              res.render("movie_in.ejs", {
+                list: data,
+                reviews: datas,
+                IS: IS,
+                nickname: nickname,
+                duplicate: duplicate,
+              });
+          });
         });
       });
     });
