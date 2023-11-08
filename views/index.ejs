@@ -352,19 +352,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="assets/js/ie-checker.js"></script>
     <script src="assets/js/swiper.min.js"></script>
+
+
+
+    <!--footer-->
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="social-links">
+ 
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/facebook-2429746_640.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/instagram-1675670_640.png" alt="Facebook">
+    </a>
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/twitter-2430933_640.png" alt="Facebook">
+    </a>
+    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+        <img src="assets/img/facebook-2429746_640.png" alt="Facebook">
+    </a>
+    </div>
+    <div class="footer-links" style="position: relative; bottom: 10px; font-size: 15px;">
+      <a href="/conditions-of-use">Conditions of Use</a>
+      <a href="/privacy-policy">Privacy & Policy</a>
+      <a href="/press-room">Press Room</a>
+    </div>
+    <div class="copyright" style="font-size: 15px; position: relative; bottom: 10px;">
+      © 2023프로젝트 김영우,김경호,이효민,신민수,박세준
+    </div>
+  </div>
+</footer>
+
+
 </body>
 
 
-<div class="fter"   style=" color: darkgray; text-align: right;">
-원광대학교 벤처스타트업 아카데미 장단기 강좌 경진대회 작품
-<br>
-Team : fresh_tomato 
-<br>
-조장 : 김영우
-<br>
-조원 : 이효민, 김경호
-</div>
-<footer></footer>
 
 <style>
 
@@ -458,7 +481,7 @@ Team : fresh_tomato
     
  
      }
-  .fter {
+  .site-footer {
     height: 30px;
     display: flex;
     flex-direction: column;
@@ -470,8 +493,8 @@ footer {
 
 }
 @media screen and (max-width:1280px) {
-    .fter{
-    min-height: 100vh;
+    .site-footer{
+    min-height: 5vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -482,8 +505,8 @@ footer {
     
 }
 @media screen and (max-width:550px) {
-    .fter{
-    min-height: 100vh;
+    .site-footer{
+    min-height: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -492,6 +515,64 @@ footer {
 
     }
 }
+.site-footer {
+  background: #333; 
+  color: white; 
+  text-align: center; 
+  padding: 70px; 
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links a, .footer-links a {
+  color: white; /* Links color */
+  margin: 0 8px; /* Spacing between links */
+  text-decoration: none; /* Removing the underline from links */
+}
+
+.social-links a:hover, .footer-links a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width:1022px) {
+    .social-links img{
+        max-width:30px;
+        height: auto;
+
+    }
+    
+}
+.social-links img{
+    max-width: 50px;
+    height: auto;
+    position: relative;
+    bottom: 10px;
+}
+@media screen and (min-width:1120px) {
+.social-links-container {
+  display: flex;
+  flex-direction: column; 
+}
+.social-links-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0; 
+}
+    }
+    
+
 
   
 </style>
