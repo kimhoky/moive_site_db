@@ -102,7 +102,8 @@ article {
       </header>
     <!-- //header -->
 
-   <div class="main_box">
+    
+   <div class="main_box" style="clear:both;">
 
         <div class="info-box"> <!-- 상세정보 박스-->
             <div class="detail-title">
@@ -140,7 +141,7 @@ article {
                     
                 </p>
             </div>
-        </div>
+          </div>
    
             <div class="main_text3"> 
                 <div>
@@ -172,13 +173,31 @@ article {
                     </form>
                     
                   </div>
+
+              
                 
                 </div>
+                
+           
               </div>
               
         </div>
-        <div class="Comments">
-  <div class="review_box">
+
+        
+        <div class="video_box" style="clear:both;">
+
+          <iframe  width="780" height="400"
+          src= "<%= list[0].movie_link %>"
+           title="YouTube video player" 
+           frameborder="0" 
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+         </iframe>
+        </div>
+
+
+
+        <div class="Comments" style="clear:both;">
+  <div class="review_box" >
     <% if (reviews[0] != null) { %>
       <% for (var i = 0; i < reviews.length; i++) { %>
         <div class="comment-box">
@@ -354,6 +373,13 @@ article {
         .Comments{
              position: relative;
              top: 200px;
+        }
+
+        .video_box{
+          width:100%;
+          height:fit-content;
+          display: flex;
+          justify-content: center;
         }
     }
  

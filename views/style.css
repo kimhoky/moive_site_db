@@ -103,7 +103,7 @@
 .main_box{
   position: absolute;
   width: 1000px;
-  height: 600px;
+  height: 700px;
   top: 450px;
   background-color: #d0cfd1;
   left: 50%;
@@ -117,6 +117,7 @@
   height: 400px;
   padding-left: 20px;
   padding-top: 20px;
+  clear:both;
 }
 
 
@@ -125,7 +126,7 @@
   margin-top: -480px;
   width: 600px;
   padding: 25px;
-
+  height:230px;
 }
 
 .main_text2 {
@@ -133,7 +134,7 @@
   margin-top: 10px;
   width: 600px;
   padding: 25px;
-
+  height:250px;
 }
 
 .p_j{
@@ -632,7 +633,7 @@ margin-top: 50px;
 .main_box {
   position: absolute;
   width: 1000px;
-  height: 600px;
+  height: 700px;
   top: 450px;
   background-color: #d0cfd1;
   left: 50%;
@@ -676,6 +677,14 @@ margin-top: 50px;
 .rate label:hover,
 .rate label:hover~label {
   color: #f73c32 !important;
+}
+.video_box{
+  width:100%;
+  margin-top:50px;
+  height:440px;
+  display: flex;
+  justify-content: center;
+  background-color: #d0cfd1;
 }
 
 .rate input:checked+.rate label:hover,
@@ -730,7 +739,7 @@ margin-top: 50px;
     .main_box {
       position: absolute;
       width: 800px;
-      height: 600px;
+      height: 100%;
       top: 450px;
       background-color: #d0cfd1;
       left: 50%;
