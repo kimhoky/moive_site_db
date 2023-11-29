@@ -79,9 +79,12 @@ app.get("/", function (req, res) {
   }
 });
 
+
+//뮤지컬 페이지로 이동
 app.get("/musical", function (req, res) {
   var nickname = req.session.nickname;
   var IS = req.session.is_logined;
+  //뮤지컬 리뷰테이블에서 평점의 평균값을 토대로 순위 배정
   if (!authCheck.isOwner(req, res)) {
     var sql =
       "SELECT mu_review_musicalname, AVG(mu_review_grade) as average FROM mu_review GROUP BY mu_review_musicalname order by AVG(mu_review_grade) DESC";
@@ -104,6 +107,7 @@ app.get("/musical", function (req, res) {
     return false;
   }
 });
+
 app.get("/musical_page", function (req, res) {
   var nickname = req.session.nickname;
   var IS = req.session.is_logined;
@@ -314,6 +318,38 @@ app.post("/movie_in", function (req, res) {
     });
   });
 });
+
+
+
+// 통계페이지
+app.post("/stat", function (req, res) {
+  var body = req.body;
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+  var duplicate = "false";
+  var params2 = [nickname, body.moviename];
+  var sql = "SELECT * FROM movie";
+  var sql2 = "SELECT * FROM reserve WHERE reserve_uid=?";
+  var sql4 = "SELECT * FROM user WHERE User_ID =?";
+  conn.query(sql,  function (err, rows, fields) {
+    conn.query(sql2, nickname, function (err, data, fields) {
+      conn.query(sql4, nickname, function (err, row) {
+       
+        if (err) console.log("query is not excuted. select fail...\n" + err);
+        else
+          res.render("stat.ejs", {
+            list: rows,
+            reviews: data,
+            IS: IS,
+            nickname: nickname,
+            duplicate: duplicate,
+          });
+      });
+    });
+  });
+});
+
+
 
 app.post("/musical_in", function (req, res) {
   var body = req.body;
