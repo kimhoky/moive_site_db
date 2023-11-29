@@ -182,15 +182,19 @@ app.get("/statistics", function (req, res) {
     var nickname = req.session.nickname;
     var IS = req.session.is_logined;
     var sql2 = "SELECT * FROM user WHERE user_id =?";
+    var sql3 = "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
     conn.query(sql2, [nickname], function (err, row, fields) {
       conn.query(sql, function (err, rows, fields) {
+        conn.query(sql3, function(err, list, fields){
         if (err) console.log("query is not excuted. select fail...\n" + err);
         else
           res.render("statistics.ejs", {
+            list: list,
             movie: rows,
             nickname: nickname,
             IS: IS,
           });
+        });
       });
     });
   }
