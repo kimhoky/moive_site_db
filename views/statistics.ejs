@@ -54,10 +54,17 @@
 <!-- //header -->
 <body>
     
-    <div style="width: 50%; height: 600px;">
-        <canvas id="radar-chart" width="800" height="600"></canvas>
+    <div class="chart1" style="justify-content:center; display:flex">
+        <div style="width: 50%; height: 600px;">
+            <canvas id="radar-chart" width="800" height="600"></canvas>
+        </div>
+    
+        <div style="width: 40%; height: 600px;">
+            <canvas id="radar-chart_genre" width="800" height="600"></canvas>
+        </div>
+    
     </div>
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script>
         function logoutCheck() {
@@ -105,6 +112,56 @@
 			    }
             }
         });
+
+       
+        var chartData = <%- JSON.stringify(list) %>;
+        console.log("chartData:", chartData);
+
+        var labels = [];
+        var data = [];
+
+// 데이터를 레이블과 값으로 분리
+chartData.forEach(item => {
+  labels.push(item.movie_genre);
+  data.push(item.count_of_reservations);
+});
+
+        //전체 장르 통계
+        new Chart(document.getElementById("radar-chart_genre"), {
+    type: 'radar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: "전체 통계",
+            fill: true,
+            backgroundColor: "rgba(179,181,198,0.2)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            data: data
+        }]
+    },
+    options: {
+        scale: {
+            ticks: {
+                beginAtZero: true,   // 축의 최소값을 0으로 시작
+                min: 0,              // 축의 최소값
+                max: 10,             // 축의 최대값
+                stepSize: 2          // 축의 간격
+            }
+        },
+        title: {
+            display: true,
+            text: 'Distribution in % of world population'
+        },
+        legend: {
+            labels: {
+                fontSize: 18
+            }
+        }
+    }
+});
+
     </script>
     <style>
 
