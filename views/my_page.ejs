@@ -350,5 +350,39 @@
         }
        
     </script>
+    <style>
+.reserve_group {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* 호버 효과를 위한 전환 추가 */
+}
+
+.reserve_group:hover {
+    transform: translateY(-10px); /* 마우스 호버 시 약간 위로 이동 */
+}
+
+.reserve_img img {
+    width: 100%;
+    display: block;
+}
+
+.reserve_info {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
+}
+
+.reservator_info, .movie_info {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    /* 절대 위치 속성 제거 */
+}
+</style>
 </body>
 </html>
