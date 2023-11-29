@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="티켓팅을 위한 사이트.">
+    <meta name="keywords" content="티켓팅을 위한 사이트.">
+    <title>fresh_tomato</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style_movie.css">
+    <link rel="stylesheet" href="./swiper.css">
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+
+</head>
+<body>
+    
+    <header id="header">
+        <div class="container">
+          <div class="row">
+            <div class="header clearfix">
+              <h1>
+                <a href="/">
+                  <strong
+                    ><img
+                      src="assets/img/freash_tomato_main.png"
+                      alt="LIFE THEATER"
+                      style="transform: translateY(-20px)"
+                  /></strong>
+                </a>
+              </h1>
+              <nav id="mNav">
+                <h2 class="ir_so">티켓팅 전체메뉴</h2>
+                <a href="#" class="ham"><span></span></a>
+              </nav>
+              <nav class="nav">
+                <ul class="clearfix">
+                  <li><a href="/movie">영화</a></li>
+                  <li><a href="/musical_page">뮤지컬</a></li> 
+                  <li><a href="/my_page">내정보</a></li>
+                  <% if (IS) { %>
+                  <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
+                  <% } else { %>
+                  <li><a href="/login">로그인</a></li>
+                  <% }; %>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+    <!-- //header -->
+
+
+<div class="search">
+    <div class="input-box">
+        <form action="/search" calass = "form" id="form" method="POST">
+            <input type="text" placeholder="검색어를 입력해 주세요." class="input" name="searchinput" style="font-size: 20px; margin-top: 15px;"/>
+            <a href="/search">
+                <button class="button">
+                    <img src="assets/img/search.png">
+                </button>
+            </a>
+        </form>
+    </div>
+
+</div>
+     <!-- 검색창 -->
+
+     <section id="movie">
+        <h2 class="ir_so">최신 영화 정보</h2>
+        <div class="container">
+            <div class="row">
+                <div class="movie">
+                   
+                    
+                    <div class="movie_chart">
+                        <div class="chart_cont1">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                            <canvas id="radar-chart" width="250" height="250"></canvas>
+                        </div>
+                            
+                        <div class="chart_cont2">
+                            
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- //movie -->
+    
+    
+    
+    
+<!-- 자바스크립트 라이브러리 -->
+<script src="assets/js/jquery.min_1.12.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="assets/js/ie-checker.js"></script>
+<script src="assets/js/swiper.min.js"></script>
+
+
+
+
+<script>
+
+
+
+new Chart(document.getElementById("radar-chart"), {
+    type: 'radar',
+    data: {
+      labels: ["코미디", "드라마", "액션", "판타지", "스릴러"],
+      datasets: [
+        {
+          label: "1950",
+          fill: true,
+          backgroundColor: "rgba(179,181,198,0.2)",
+          borderColor: "rgba(179,181,198,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          data: [8.77,55.61,21.69,6.62,6.82]
+        }, {
+          label: "2050",
+          fill: true,
+          backgroundColor: "rgba(255,99,132,0.2)",
+          borderColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          data: [25.48,54.16,7.61,8.06,4.45]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Distribution in % of world population'
+      }
+    }
+});
+
+
+
+
+
+
+
+
+
+    //배너 이미지 슬라이드
+    var swiper = new Swiper('.swiper-container',{
+        pagination: {
+            el: '.swiper-pagination',
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+        },
+    });
+    
+    //영화차트 탭 메뉴
+    var movBtn = $(".movie_title > ul > li"); // movie_title과 연동되는 버튼 > 자식 ui > 자식 li 버튼 4개
+    var movCont = $(".movie_chart > div");  // 컨텐츠 차트 4개
+
+    // movCont.hide().eq(0).show(); // 첫번째만 보여줌
+
+    movBtn.click(function(e){ //화면 위로 올라가는 거 차단
+        e.preventDefault();
+        var target = $(this);  // 버튼 클릭한 곳 this    
+        var index = target.index();  // 버튼에 번호를 매김
+        movBtn.removeClass("active");   
+        target.addClass("active");    //클릭한 곳(해당 번호)에 활성화
+        movCont.css("display","none"); 
+        movCont.eq(index).css("display","block"); //해당되는 번호만 보여줌
+    });
+    function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
+</script>
+<style>
+
+       @media screen and (max-width:730px){
+         
+                .input-box  {
+                    width: 500px;}
+                    .search{
+                        width: 400px;
+                    }
+                    .searchinput{
+                        width: 300px;
+                    }
+     }
+      @media screen and (max-width:500px){
+                
+                .input-box  {
+                    width: 400px;}
+                 
+                    .searchinput{
+                        width: 200px;
+                    }
+                     .input-box .button {
+        width: 100px;
+        height: 100px;
+    }
+}
+@media screen and (min-width:550px) and (max-width: 1280px) {
+    .chart_cont1 {
+      width: 900px;
+       height: 1300px;
+        margin-left: auto;
+    }
+       .chart_cont2 {
+       width: 900px;
+       height: 1300px;
+        margin-left: auto;
+       }
+    }
+  
+     
+      
+    
+      
+    
+
+    .rank{
+        visibility: hidden;
+    }
+</style>
+</body>
+</html>
+
