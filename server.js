@@ -164,6 +164,34 @@ app.get("/musical", function (req, res) {
   }
 });
 
+app.get("/statistics", function (req, res) {
+  var nickname = req.session.nickname;
+  var IS = req.session.is_logined;
+  if (!authCheck.isOwner(req, res)) {
+    var sql = "SELECT * FROM movie";
+    conn.query(sql, function (err, rows, fields) {
+      if (err) console.log("query is not excuted. select fail...\n" + err);
+      else res.render("movie.ejs", { movie: rows, IS: IS });
+    });
+  } else {
+    var sql = "SELECT * FROM movie";
+    var nickname = req.session.nickname;
+    var IS = req.session.is_logined;
+    var sql2 = "SELECT * FROM user WHERE user_id =?";
+    conn.query(sql2, [nickname], function (err, row, fields) {
+      conn.query(sql, function (err, rows, fields) {
+        if (err) console.log("query is not excuted. select fail...\n" + err);
+        else
+          res.render("statistics.ejs", {
+            movie: rows,
+            nickname: nickname,
+            IS: IS,
+          });
+      });
+    });
+  }
+});
+
 app.get("/reserve", function (req, res) {
   var nickname = req.session.nickname;
   var IS = req.session.is_logined;

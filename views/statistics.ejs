@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="webstoryboy">
+    <meta name="description" content="티켓팅을 위한 사이트.">
+    <meta name="keywords" content="티켓팅을 위한 사이트.">
+    <title>fresh_tomato</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style_movie.css">
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&subset=korean" rel="stylesheet">
+
+</head>
+<header id="header">
+    <div class="container">
+      <div class="row">
+        <div class="header clearfix">
+          <h1>
+            <a href="/">
+              <strong
+                ><img
+                  src="assets/img/freash_tomato_main.png"
+                  alt="LIFE THEATER"
+                  style="transform: translateY(-20px)"
+              /></strong>
+            </a>
+          </h1>
+          <nav id="mNav">
+            <h2 class="ir_so">티켓팅 전체메뉴</h2>
+            <a href="#" class="ham"><span></span></a>
+          </nav>
+          <nav class="nav">
+            <ul class="clearfix">
+              <li><a href="/movie">영화</a></li>
+              <li><a href="/musical_page">뮤지컬</a></li> 
+              <li><a href="/my_page">내정보</a></li>
+              <% if (IS) { %>
+              <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
+              <% } else { %>
+              <li><a href="/login">로그인</a></li>
+              <% }; %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+<!-- //header -->
+<body>
+    
+    <div style="width: 50%; height: 600px;">
+        <canvas id="radar-chart" width="800" height="600"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+        function logoutCheck() {
+                if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                    document.location.href="/logoutprocess";
+                }else{   //취소
+                    return false;
+                }
+        }
+        new Chart(document.getElementById("radar-chart"), {
+            type: 'radar',
+            data: {
+            labels: ["코미디", "액션", "판타지", "드라마", "스릴러"],
+            datasets: [
+                {
+                label: "1950",
+                fill: true,
+                backgroundColor: "rgba(179,181,198,0.2)",
+                borderColor: "rgba(179,181,198,1)",
+                pointBorderColor: "#fff",
+                pointBackgroundColor: "rgba(179,181,198,1)",
+                data: [8.77,55.61,21.69,6.62,6.82]
+                }, {
+                label: "2050",
+                fontSize: 18,
+                fill: true,
+                backgroundColor: "rgba(255,99,132,0.2)",
+                borderColor: "rgba(255,99,132,1)",
+                pointBorderColor: "#fff",
+                pointBackgroundColor: "rgba(255,99,132,1)",
+                pointBorderColor: "#fff",
+                data: [25.48,54.16,7.61,8.06,4.45]
+                }
+            ]
+            },
+            options: {
+                title: {
+                display: true,
+                text: 'Distribution in % of world population'
+                },
+                legend: {
+                    labels: {
+                        fontSize: 18
+                    }
+			    }
+            }
+        });
+    </script>
+    <style>
+
+        @media screen and (max-width:730px){
+            
+            .input-box  {
+                width: 500px;}
+            .search{
+                width: 400px;
+            }
+            .searchinput{
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width:500px){
+                    
+            .input-box  {
+            width: 400px;
+            }
+                    
+            .searchinput{
+                width: 200px;
+            }
+            .input-box .button {
+            width: 100px;
+            height: 100px;
+            }
+        }
+        @media screen and (min-width:550px) and (max-width: 1280px) {
+            .chart_cont1 {
+                width: 900px;
+                height: 1300px;
+                margin-left: auto;
+            }
+            .chart_cont2 {
+                width: 900px;
+                height: 1300px;
+                margin-left: auto;
+            }
+        }
+
+        .rank{
+            visibility: hidden;
+        }
+    </style>
+</body>
+</html>
+
