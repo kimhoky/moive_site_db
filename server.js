@@ -182,36 +182,32 @@ app.get("/statistics", function (req, res) {
     var nickname = req.session.nickname;
     var IS = req.session.is_logined;
     var sql2 = "SELECT * FROM user WHERE user_id =?";
-    var sql3 = "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
+    var sql3 =
+      "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
     conn.query(sql2, [nickname], function (err, row, fields) {
       conn.query(sql, function (err, rows, fields) {
-        conn.query(sql3, function(err, list, fields){
-        if (err) console.log("query is not excuted. select fail...\n" + err);
-        else
+        conn.query(sql3, async function (err, list, fields) {
+          if (err) console.log("query is not excuted. select fail...\n" + err);
+          else var data_0_9 = await queryForAgeGroup("0-9");
+          var data_10_19 = await queryForAgeGroup("10-19");
+          var data_20_29 = await queryForAgeGroup("20-29");
+          var data_30_39 = await queryForAgeGroup("30-39");
+          var data_40_49 = await queryForAgeGroup("40-49");
+          var data_50_59 = await queryForAgeGroup("50-59");
+          console.log(data_20_29);
           res.render("statistics.ejs", {
             list: list,
             movie: rows,
             nickname: nickname,
             IS: IS,
+            data_0_9: data_0_9,
+            data_10_19: data_10_19,
+            data_20_29: data_20_29,
+            data_30_39: data_30_39,
+            data_40_49: data_40_49,
+            data_50_59: data_50_59,
           });
         });
-    conn.query(sql, async function (err, rows, fields) {
-      const data_0_9 = await queryForAgeGroup("0-9");
-      const data_10_19 = await queryForAgeGroup("10-19");
-      const data_20_29 = await queryForAgeGroup("20-29");
-      const data_30_39 = await queryForAgeGroup("30-39");
-      const data_40_49 = await queryForAgeGroup("40-49");
-      const data_50_59 = await queryForAgeGroup("50-59");
-      res.render("statistics.ejs", {
-        movie: rows,
-        nickname: nickname,
-        IS: IS,
-        data_0_9: data_0_9,
-        data_10_19: data_10_19,
-        data_20_29: data_20_29,
-        data_30_39: data_30_39,
-        data_40_49: data_40_49,
-        data_50_59: data_50_59,
       });
     });
   }
@@ -738,7 +734,7 @@ function queryForAgeGroup(ageGroup) {
       JOIN reserve r ON u.user_id = r.reserve_uid
       JOIN movie m ON r.reserve_moviename = m.movie_name
       WHERE u.user_age >= ? AND u.user_age <= ?
-      GROUP BY m.movie_genre
+      GROUP BY m.movie_genre ORDER BY m.movie_genre
     `;
 
     // 나이대에 따라 매핑되는 실제 나이 범위 설정 (예: '0-9' -> 0, 9)
@@ -761,7 +757,9 @@ function queryForAgeGroup(ageGroup) {
       if (err) {
         reject(err);
       } else {
-        resolve(results);
+        // 결과를 배열 형태로 변환하여 반환
+        const genreCounts = results.map((row) => row.genre_count);
+        resolve([genreCounts]);
       }
     });
   });
