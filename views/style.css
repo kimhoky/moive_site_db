@@ -633,8 +633,8 @@ margin-top: 50px;
 .main_box {
   position: absolute;
   width: 1000px;
-  height: 700px;
-  top: 450px;
+  height: 1000px;
+  top: 600px;
   background-color: #d0cfd1;
   left: 50%;
   transform: translate(-50%, -50%);
