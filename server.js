@@ -174,8 +174,39 @@ app.get("/statistics", function (req, res) {
   if (!authCheck.isOwner(req, res)) {
     var sql = "SELECT * FROM movie";
     conn.query(sql, function (err, rows, fields) {
-      if (err) console.log("query is not excuted. select fail...\n" + err);
-      else res.render("statistics.ejs", { movie: rows, IS: IS });
+      var sql = "SELECT * FROM movie";
+      var nickname = req.session.nickname;
+      var IS = req.session.is_logined;
+      var sql2 = "SELECT * FROM user WHERE user_id =?";
+      var sql3 =
+        "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
+      conn.query(sql2, [nickname], function (err, row, fields) {
+        conn.query(sql, function (err, rows, fields) {
+          conn.query(sql3, async function (err, list, fields) {
+            if (err)
+              console.log("query is not excuted. select fail...\n" + err);
+            else var data_0_9 = await queryForAgeGroup("0-9");
+            var data_10_19 = await queryForAgeGroup("10-19");
+            var data_20_29 = await queryForAgeGroup("20-29");
+            var data_30_39 = await queryForAgeGroup("30-39");
+            var data_40_49 = await queryForAgeGroup("40-49");
+            var data_50_59 = await queryForAgeGroup("50-59");
+            console.log(data_20_29);
+            res.render("statistics.ejs", {
+              list: list,
+              movie: rows,
+              nickname: nickname,
+              IS: IS,
+              data_0_9: data_0_9,
+              data_10_19: data_10_19,
+              data_20_29: data_20_29,
+              data_30_39: data_30_39,
+              data_40_49: data_40_49,
+              data_50_59: data_50_59,
+            });
+          });
+        });
+      });
     });
   } else {
     var sql = "SELECT * FROM movie";
