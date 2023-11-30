@@ -797,3 +797,46 @@ function queryForAgeGroup(ageGroup) {
 }
 
 module.exports = { queryForAgeGroup };
+
+// 나이대 별로 데이터를 가져오는 함수
+function queryForAgeGroup(ageGroup) {
+  return new Promise((resolve, reject) => {
+    // 나이대 별로 쿼리 작성
+    const query = `
+      SELECT m.movie_genre, COUNT(*) AS genre_count
+      FROM user u
+      JOIN reserve r ON u.user_id = r.reserve_uid
+      JOIN movie m ON r.reserve_moviename = m.movie_name
+      WHERE u.user_age >= ? AND u.user_age <= ?
+      GROUP BY m.movie_genre ORDER BY m.movie_genre
+    `;
+
+    // 나이대에 따라 매핑되는 실제 나이 범위 설정 (예: '0-9' -> 0, 9)
+    let ageRange = [0, 9];
+    if (ageGroup === "10-19") {
+      ageRange = [10, 19];
+    } else if (ageGroup === "20-29") {
+      ageRange = [20, 29];
+    } else if (ageGroup === "30-39") {
+      ageRange = [30, 39];
+    } else if (ageGroup === "40-49") {
+      ageRange = [40, 49];
+    } else if (ageGroup === "50-59") {
+      ageRange = [50, 59];
+    }
+    // 다른 나이대에 대한 범위도 추가 가능
+
+    // 쿼리 실행
+    conn.query(query, ageRange, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        // 결과를 배열 형태로 변환하여 반환
+        const genreCounts = results.map((row) => row.genre_count);
+        resolve([genreCounts]);
+      }
+    });
+  });
+}
+
+module.exports = { queryForAgeGroup };
