@@ -180,35 +180,35 @@ app.get("/statistics", function (req, res) {
       var sql2 = "SELECT * FROM user WHERE user_id =?";
       var sql3 =
         "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
-      var sql4="SELECT reserve_moviename, COUNT(*) AS c_name FROM reserve GROUP BY reserve_moviename";
+      var sql4 =
+        "SELECT reserve_moviename, COUNT(*) AS c_name FROM reserve GROUP BY reserve_moviename";
       conn.query(sql2, [nickname], function (err, row, fields) {
         conn.query(sql, function (err, rows, fields) {
-          conn.query(sql4,function(err,count,fields){
-            conn.query(sql3, async function (err, list, fields){
+          conn.query(sql4, function (err, count, fields) {
+            conn.query(sql3, async function (err, list, fields) {
               if (err)
-              console.log("query is not excuted. select fail...\n" + err);
-            else var data_0_9 = await queryForAgeGroup("0-9");
-            var data_10_19 = await queryForAgeGroup("10-19");
-            var data_20_29 = await queryForAgeGroup("20-29");
-            var data_30_39 = await queryForAgeGroup("30-39");
-            var data_40_49 = await queryForAgeGroup("40-49");
-            var data_50_59 = await queryForAgeGroup("50-59");
-            console.log(data_20_29);
-            res.render("statistics.ejs", {
-              list: list,
-              movie: rows,
-              nickname: nickname,
-              IS: IS,
-              count: count,
-              data_0_9: data_0_9,
-              data_10_19: data_10_19,
-              data_20_29: data_20_29,
-              data_30_39: data_30_39,
-              data_40_49: data_40_49,
-              data_50_59: data_50_59,
+                console.log("query is not excuted. select fail...\n" + err);
+              else var data_0_9 = await queryForAgeGroup("0-9");
+              var data_10_19 = await queryForAgeGroup("10-19");
+              var data_20_29 = await queryForAgeGroup("20-29");
+              var data_30_39 = await queryForAgeGroup("30-39");
+              var data_40_49 = await queryForAgeGroup("40-49");
+              var data_50_59 = await queryForAgeGroup("50-59");
+              console.log(data_20_29);
+              res.render("statistics.ejs", {
+                list: list,
+                movie: rows,
+                nickname: nickname,
+                IS: IS,
+                count: count,
+                data_0_9: data_0_9,
+                data_10_19: data_10_19,
+                data_20_29: data_20_29,
+                data_30_39: data_30_39,
+                data_40_49: data_40_49,
+                data_50_59: data_50_59,
+              });
             });
-            });
-            
           });
         });
       });
@@ -336,6 +336,32 @@ app.get("/choice", function (req, res) {
   }
 });
 
+app.get("/cancelprocess", function (req, res) {
+  let reserve_id = req.query.id;
+  var sql = "DELETE FROM reserve WHERE reserve_id=" + reserve_id;
+  conn.query(sql, function (err) {
+    if (err) console.log("query is not excuted. select fail...\n" + err);
+    else {
+      var nickname = req.session.nickname;
+      var IS = req.session.is_logined;
+      var sql = "SELECT * FROM user WHERE user_id =?";
+      var sql2 = "SELECT * FROM reserve WHERE reserve_uid=? ";
+      conn.query(sql, [nickname], function (err, rows, fields) {
+        conn.query(sql2, [nickname], function (err, data, fields) {
+          if (err) console.log("query is not excuted. select fail...\n" + err);
+          else
+            res.render("my_page.ejs", {
+              mypage: rows,
+              myreserve: data,
+              nickname: nickname,
+              IS: IS,
+            });
+        });
+      });
+    }
+  });
+});
+
 app.get("/reserving", function (req, res) {
   let movie_name = req.query.movie_name;
   let movie_day = req.query.movie_day;
@@ -421,11 +447,14 @@ app.post("/movie_in", function (req, res) {
 
         duplicate = row && row.length > 0 ? "true" : "false";
 
-        conn.query(sqlAgeDistribution, [body.moviename], function (err, ageData) {
-          if (err) {
-            console.log("Query failed: ", err);
-            return res.status(500).send("Error in age distribution query.");
-          }
+        conn.query(
+          sqlAgeDistribution,
+          [body.moviename],
+          function (err, ageData) {
+            if (err) {
+              console.log("Query failed: ", err);
+              return res.status(500).send("Error in age distribution query.");
+            }
 
             res.render("movie_in.ejs", {
               list: rows,

@@ -235,6 +235,7 @@
                                 <label>영화 종료시간: </label>
                                 <label><span id="formatted-edate-<%= i %>"></span></label>
                             </div>
+                            <label><a href="/cancelprocess?id=<%= myreserve[i].reserve_id %>"><button>예매취소</button></a></label>
                             </div>
                             
                           
@@ -345,6 +346,14 @@
         function logoutCheck() {
             if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
                 document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
+        function reserveCancel(int) {
+            var num = int;
+            if (confirm("정말 취소하시겠습니까??") == true){    //확인
+                document.location.href="/cancelprocess?id=" + num;
             }else{   //취소
                 return false;
             }
