@@ -220,8 +220,10 @@ app.get("/statistics", function (req, res) {
     var sql2 = "SELECT * FROM user WHERE user_id =?";
     var sql3 =
       "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
+      var sql4="SELECT reserve_moviename, COUNT(*) AS c_name FROM reserve GROUP BY reserve_moviename";
     conn.query(sql2, [nickname], function (err, row, fields) {
       conn.query(sql, function (err, rows, fields) {
+        conn.query(sql4,function(err,count,fields){
         conn.query(sql3, async function (err, list, fields) {
           if (err) console.log("query is not excuted. select fail...\n" + err);
           else var data_0_9 = await queryForAgeGroup("0-9");
@@ -236,6 +238,7 @@ app.get("/statistics", function (req, res) {
             movie: rows,
             nickname: nickname,
             IS: IS,
+            count:count,
             data_0_9: data_0_9,
             data_10_19: data_10_19,
             data_20_29: data_20_29,
@@ -243,6 +246,7 @@ app.get("/statistics", function (req, res) {
             data_40_49: data_40_49,
             data_50_59: data_50_59,
           });
+        });
         });
       });
     });

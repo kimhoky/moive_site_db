@@ -214,6 +214,12 @@ barchartData.forEach(items => {
             ]
             },
             options: {
+              scale: {
+            ticks: {
+                beginAtZero: true,   // 축의 최소값을 0으로 시작
+               
+            }
+        },
                 title: {
                 display: true,
                 text: '나이대별 장르 통계'
@@ -255,6 +261,13 @@ chartData.forEach(item => {
         }]
     },
     options: {
+      scale: {
+            ticks: {
+                beginAtZero: true,   // 축의 최소값을 0으로 시작
+                min: 0,              // 축의 최소값
+               
+            }
+        },
         
         title: {
             display: true,
