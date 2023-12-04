@@ -1,4 +1,4 @@
-# 12-04
+# 12-04 수정사항
 - 영화 상세정보 도넛 그래프 기능 추가
   
  ![image](https://github.com/vahallla/moive_site_db/assets/89891803/635d7c82-5539-4beb-b775-d74e07a1d7c1)
