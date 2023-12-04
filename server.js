@@ -174,8 +174,39 @@ app.get("/statistics", function (req, res) {
   if (!authCheck.isOwner(req, res)) {
     var sql = "SELECT * FROM movie";
     conn.query(sql, function (err, rows, fields) {
-      if (err) console.log("query is not excuted. select fail...\n" + err);
-      else res.render("statistics.ejs", { movie: rows, IS: IS });
+      var sql = "SELECT * FROM movie";
+      var nickname = req.session.nickname;
+      var IS = req.session.is_logined;
+      var sql2 = "SELECT * FROM user WHERE user_id =?";
+      var sql3 =
+        "SELECT m.movie_genre, COUNT(*) AS count_of_reservations FROM reserve r JOIN movie m ON r.reserve_moviename = m.movie_name GROUP BY m.movie_genre";
+      conn.query(sql2, [nickname], function (err, row, fields) {
+        conn.query(sql, function (err, rows, fields) {
+          conn.query(sql3, async function (err, list, fields) {
+            if (err)
+              console.log("query is not excuted. select fail...\n" + err);
+            else var data_0_9 = await queryForAgeGroup("0-9");
+            var data_10_19 = await queryForAgeGroup("10-19");
+            var data_20_29 = await queryForAgeGroup("20-29");
+            var data_30_39 = await queryForAgeGroup("30-39");
+            var data_40_49 = await queryForAgeGroup("40-49");
+            var data_50_59 = await queryForAgeGroup("50-59");
+            console.log(data_20_29);
+            res.render("statistics.ejs", {
+              list: list,
+              movie: rows,
+              nickname: nickname,
+              IS: IS,
+              data_0_9: data_0_9,
+              data_10_19: data_10_19,
+              data_20_29: data_20_29,
+              data_30_39: data_30_39,
+              data_40_49: data_40_49,
+              data_50_59: data_50_59,
+            });
+          });
+        });
+      });
     });
   } else {
     var sql = "SELECT * FROM movie";
@@ -333,6 +364,8 @@ app.get("/reserving", function (req, res) {
 });
 
 app.use(express.static("views"));
+
+// 추가 (이게 핵심)
 // 추가 (이게 핵심)
 app.post("/movie_in", function (req, res) {
   var body = req.body;
@@ -343,26 +376,68 @@ app.post("/movie_in", function (req, res) {
   var sql = "SELECT * FROM movie WHERE movie_name=?";
   var sql2 = "SELECT * FROM review WHERE review_moviename=?";
   var sql4 = "SELECT * FROM review WHERE review_uid =? and review_moviename =?";
-  console.log(body.moviename);
+
+  // 나이 분포를 조회하는 쿼리 정의
+  var sqlAgeDistribution = `
+    SELECT
+      CASE
+        WHEN u.User_age >= 10 AND u.User_age <= 19 THEN '10대'
+        WHEN u.User_age >= 20 AND u.User_age <= 29 THEN '20대'
+        WHEN u.User_age >= 30 AND u.User_age <= 39 THEN '30대'
+        WHEN u.User_age >= 40 AND u.User_age <= 49 THEN '40대'
+        WHEN u.User_age >= 50 THEN '50대 이상'
+        ELSE '기타'
+      END AS age_group,
+      COUNT(*) as count
+    FROM reserve r
+    JOIN user u ON r.reserve_uid = u.User_ID
+    WHERE r.reserve_moviename = ?
+    GROUP BY age_group`;
+
+  console.log("Movie name for query: ", body.moviename);
+
   conn.query(sql, body.moviename, function (err, rows, fields) {
+    if (err) {
+      console.log("Query failed: ", err);
+      return res.status(500).send("Error in first query.");
+    }
+
     conn.query(sql2, body.moviename, function (err, data, fields) {
+      if (err) {
+        console.log("Query failed: ", err);
+        return res.status(500).send("Error in second query.");
+      }
+
       conn.query(sql4, params2, function (err, row) {
-        if (row != "") {
-          duplicate = "true";
+        if (err) {
+          console.log("Query failed: ", err);
+          return res.status(500).send("Error in third query.");
         }
-        if (err) console.log("query is not excuted. select fail...\n" + err);
-        else
+
+        duplicate = row && row.length > 0 ? "true" : "false";
+
+        conn.query(sqlAgeDistribution, [body.moviename], function (err, ageData) {
+          if (err) {
+            console.log("Query failed: ", err);
+            return res.status(500).send("Error in age distribution query.");
+          }
+
           res.render("movie_in.ejs", {
             list: rows,
             reviews: data,
+            ageData: ageData,
             IS: IS,
             nickname: nickname,
-            duplicate: duplicate,
+            duplicate: duplicate
           });
+        });
       });
     });
   });
 });
+
+
+
 
 // 통계페이지
 app.post("/stat", function (req, res) {
