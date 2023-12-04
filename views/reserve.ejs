@@ -45,17 +45,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     />
   </head>
   <body>
-    <header id="header" style="background-color: white;">
+    <header id="header" style="background-color: white">
       <div class="container">
-        <div class="row" style="background-color: white;">
-          <div class="header clearfix" style="background-color: white;">
+        <div class="row" style="background-color: white">
+          <div class="header clearfix" style="background-color: white">
             <h1>
               <a href="/">
                 <strong
                   ><img
                     src="assets/img/freash_tomato_main.png"
                     alt="LIFE THEATER"
-                    style="transform: translateY(-20px); width:170px; height:max-content;"
+                    style="
+                      transform: translateY(-20px);
+                      width: 170px;
+                      height: max-content;
+                    "
                 /></strong>
               </a>
             </h1>
@@ -67,6 +71,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <ul class="clearfix">
                 <li><a href="/movie">영화</a></li>
                 <li><a href="/musical">뮤지컬</a></li>
+                <li><a href="/statistics">통계</a></li>
                 <li><a href="/my_page">내정보</a></li>
                 <% if (IS) { %>
                 <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
@@ -81,7 +86,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </header>
     <div class="content">
       <h1>Movie Ticket Booking</h1>
-      <div class="main" style="height: fit-content;">
+      <div class="main" style="height: fit-content">
         <div class="main-box">
           <h2>Multiplex Theatre Showing Screen</h2>
           <div class="demo">
@@ -135,7 +140,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
               <div class="clear"></div>
               <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
 
-              <a class="checkout-button" style="width:fit-content" onclick="reserveCheck()">Book Now</a>
+              <a
+                class="checkout-button"
+                style="width: fit-content"
+                onclick="reserveCheck()"
+                >Book Now</a
+              >
               <!-- </form>	 -->
               <div id="legend"></div>
             </div>

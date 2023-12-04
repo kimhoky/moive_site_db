@@ -87,7 +87,8 @@ article {
               <nav class="nav">
                 <ul class="clearfix">
                   <li><a href="/movie">영화</a></li>
-                 <li><a href="/musical_page">뮤지컬</a></li> 
+                 <li><a href="/musical_page">뮤지컬</a></li>
+                 <li><a href="/statistics">통계</a></li> 
                   <li><a href="/my_page">내정보</a></li>
                   <% if (IS) { %>
                   <li><a href="#" onclick="logoutCheck()"><%= nickname %></a></li>
@@ -405,6 +406,48 @@ article {
      
  
 </style>
+  <script>
+  var ageData = <%- JSON.stringify(ageData) %>;
+
+  // 나이대별로 그룹화하여 데이터 계산
+  var ageGroups = {
+    "10대": 0,
+    "20대": 0,
+    "30대": 0,
+    "40대": 0,
+    "50대 이상": 0
+  };
+
+ ageData.forEach(function(item) {
+  var ageGroup = item.age_group;
+  var count = item.count;
+
+  ageGroups[ageGroup] += count;
+});
+  var labels = Object.keys(ageGroups);
+  var counts = Object.values(ageGroups);
+
+  new Chart(document.getElementById("doughnut-chart"), {
+    type: "doughnut",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "예매 수",
+        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+        data: counts
+      }],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "나이대별 영화 예매 분포"
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    },
+  });
+</script>
+
 
  
 <script>
