@@ -416,28 +416,29 @@ app.post("/movie_in", function (req, res) {
 
         duplicate = row && row.length > 0 ? "true" : "false";
 
-        conn.query(sqlAgeDistribution, [body.moviename], function (err, ageData) {
-          if (err) {
-            console.log("Query failed: ", err);
-            return res.status(500).send("Error in age distribution query.");
-          }
+        conn.query(
+          sqlAgeDistribution,
+          [body.moviename],
+          function (err, ageData) {
+            if (err) {
+              console.log("Query failed: ", err);
+              return res.status(500).send("Error in age distribution query.");
+            }
 
-          res.render("movie_in.ejs", {
-            list: rows,
-            reviews: data,
-            ageData: ageData,
-            IS: IS,
-            nickname: nickname,
-            duplicate: duplicate
-          });
-        });
+            res.render("movie_in.ejs", {
+              list: rows,
+              reviews: data,
+              ageData: ageData,
+              IS: IS,
+              nickname: nickname,
+              duplicate: duplicate,
+            });
+          }
+        );
       });
     });
   });
 });
-
-
-
 
 // 통계페이지
 app.post("/stat", function (req, res) {
