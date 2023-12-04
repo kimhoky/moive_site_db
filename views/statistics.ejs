@@ -110,7 +110,7 @@ barchartData.forEach(items => {
       labels: barlabels,
       datasets: [
         {
-          label: "Population (millions)",
+          label: "reserve",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#5858FA","#FE2EC8"],
           data: bardata
         }
@@ -127,7 +127,7 @@ barchartData.forEach(items => {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Predicted world population (millions) in 2050'
+        text: '영화 예약 현황'
       }
     }
 });
@@ -296,6 +296,7 @@ chartData.forEach(item => {
             width: 800px;
             height: 800px;
             border-radius: 30px;
+            
         }
 
         @media screen and (max-width:730px){
