@@ -371,7 +371,7 @@ app.get("/reserving", function (req, res) {
 app.use(express.static("views"));
 
 // 추가 (이게 핵심)
-// 추가 (이게 핵심)
+
 app.post("/movie_in", function (req, res) {
   var body = req.body;
   var nickname = req.session.nickname;
@@ -404,31 +404,28 @@ app.post("/movie_in", function (req, res) {
   conn.query(sql, body.moviename, function (err, rows, fields) {
     if (err) {
       console.log("Query failed: ", err);
-      return res.status(500).send("Error in first query.");
+      return res.status(500).send("영화이름 오류");
     }
 
     conn.query(sql2, body.moviename, function (err, data, fields) {
       if (err) {
         console.log("Query failed: ", err);
-        return res.status(500).send("Error in second query.");
+        return res.status(500).send("리뷰 영화이름 오류");
       }
 
       conn.query(sql4, params2, function (err, row) {
         if (err) {
           console.log("Query failed: ", err);
-          return res.status(500).send("Error in third query.");
+          return res.status(500).send("리뷰 아이디,영화 오류");
         }
 
         duplicate = row && row.length > 0 ? "true" : "false";
 
-        conn.query(
-          sqlAgeDistribution,
-          [body.moviename],
-          function (err, ageData) {
-            if (err) {
-              console.log("Query failed: ", err);
-              return res.status(500).send("Error in age distribution query.");
-            }
+        conn.query(sqlAgeDistribution, [body.moviename], function (err, ageData) {
+          if (err) {
+            console.log("Query failed: ", err);
+            return res.status(500).send("Error in age distribution query.");
+          }
 
             res.render("movie_in.ejs", {
               list: rows,
