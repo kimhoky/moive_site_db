@@ -413,23 +413,45 @@
             alert("시간을 선택해 주세요!")
           }
         }
-          function isMorningOrEvening(startTime) {
-    var hour = parseInt(startTime.split(":")[0]);
-    return hour < 9 || hour >= 17; // 아침(09시 이전) 또는 저녁(17시 이후)인 경우 true 반환
+        function isMorning(startTime) {
+  var hour = parseInt(startTime.split(":")[0]);
+  return hour < 10; 
+}
+
+function isEvening(startTime) {
+  var hour = parseInt(startTime.split(":")[0]);
+  return hour >= 17; 
+}
+//영화 버튼 아침/저녁 이미지
+document.querySelectorAll('.custom-button').forEach(function(button) {
+  var startTime = button.getAttribute('movie-start');
+
+  // 아침 
+  if (isMorning(startTime)) {
+    var imgElement = document.createElement('img');
+    imgElement.style.width = '30px'; 
+    imgElement.style.height = '30px';
+    imgElement.src = 'assets/img/2.png'; 
+    imgElement.alt = 'Morning Image';
+    button.parentElement.appendChild(imgElement); 
+  }
+  // 저녁
+  else if (isEvening(startTime)) {
+    var imgElement = document.createElement('img');
+    imgElement.style.width = '30px'; 
+    imgElement.style.height = '30px';
+    imgElement.src = 'assets/img/1.png'; 
+    imgElement.alt = 'Evening Image';
+    button.parentElement.appendChild(imgElement); 
   }
 
-  document.querySelectorAll('.custom-button').forEach(function(button) {
-    var startTime = button.getAttribute('movie-start');
-    var endTime = button.getAttribute('movie-end');
-    if (isMorningOrEvening(startTime)) {
-      var imgElement = document.createElement('img');
-      imgElement.src = 'path_to_morning_or_evening_image.jpg'; // 아침 또는 저녁 이미지의 경로
-      imgElement.alt = 'Morning or Evening Image';
-      imgElement.style.width = '20px'; // 이미지 너비 조절
-      imgElement.style.height = '20px'; // 이미지 높이 조절
-      button.parentElement.appendChild(imgElement); // 버튼 부모 요소에 이미지 추가
-    }
-  });
+ 
+  var parentElement = button.parentElement;
+  if (parentElement) {
+    parentElement.style.display = 'flex'; 
+    parentElement.style.alignItems = 'center'; 
+  }
+});
 
         
       </script>
