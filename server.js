@@ -463,7 +463,7 @@ app.post("/movie_in", function (req, res) {
             res.render("movie_in.ejs", {
               list: rows,
               reviews: data,
-              ageData: ageData,
+              ageData: ageData||{},
               IS: IS,
               nickname: nickname,
               duplicate: duplicate,
