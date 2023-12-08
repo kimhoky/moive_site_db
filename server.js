@@ -603,6 +603,22 @@ app.post("/inreview", function (req, res) {
   var sql2 = "SELECT * FROM movie WHERE movie_name=?";
   var sql3 = "SELECT * FROM review WHERE review_moviename =?";
   var sql4 = "SELECT * FROM review WHERE review_uid =? and review_moviename =?";
+
+  var sqlAgeDistribution = `
+    SELECT
+      CASE
+        WHEN u.User_age >= 10 AND u.User_age <= 19 THEN '10대'
+        WHEN u.User_age >= 20 AND u.User_age <= 29 THEN '20대'
+        WHEN u.User_age >= 30 AND u.User_age <= 39 THEN '30대'
+        WHEN u.User_age >= 40 AND u.User_age <= 49 THEN '40대'
+        WHEN u.User_age >= 50 THEN '50대 이상'
+        ELSE '기타'
+      END AS age_group,
+      COUNT(*) as count
+    FROM reserve r
+    JOIN user u ON r.reserve_uid = u.User_ID
+    WHERE r.reserve_moviename = ?
+    GROUP BY age_group`;
   if (!authCheck.isOwner(req, res)) {
     res.redirect("/login"); //로그인 안하고 마이페이지 갈시
   } else {
@@ -611,6 +627,14 @@ app.post("/inreview", function (req, res) {
       conn.query(sql2, body.moviename, function (err, data) {
         conn.query(sql3, body.moviename, function (err, datas) {
           conn.query(sql4, params2, function (err, rows) {
+            conn.query(
+              sqlAgeDistribution,
+              [body.moviename],
+              function (err, ageData) {
+                if (err) {
+                  console.log("Query failed: ", err);
+                  return res.status(500).send("Error in age distribution query.");
+                }
             if (rows != "") {
               duplicate = "true";
             }
@@ -620,10 +644,12 @@ app.post("/inreview", function (req, res) {
               res.render("movie_in.ejs", {
                 list: data,
                 reviews: datas,
+                ageData: ageData||{},
                 IS: IS,
                 nickname: nickname,
                 duplicate: duplicate,
               });
+            });
           });
         });
       });
