@@ -396,6 +396,14 @@
             alert(movieName + " <%= sn %>일" + startTime + " ~ " + endTime + " 선택하셨습니다.");
           });
         });
+
+        function logoutCheck() {
+            if (confirm("정말 로그아웃하시겠습니까??") == true){    //확인
+                document.location.href="/logoutprocess";
+            }else{   //취소
+                return false;
+            }
+        }
       
         function bt() {
           if(startTime != null) {
